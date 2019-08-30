@@ -1,0 +1,116 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="BlogAdmin.master.cs" Inherits="BlogAdmin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+    <!-- Meta Tag -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- SEO -->
+    <meta name="description" content="150 words"/>
+    <meta name="author" content="uipasta"/>
+    <meta name="url" content="http://www.yourdomainname.com"/>
+    <meta name="copyright" content="company name"/>
+    <meta name="robots" content="index,follow"/>
+    <title>Blog Admin</title>
+    
+    <!-- Favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="Login/images/Author.png" />
+    <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png"/>
+    
+    <!-- All CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="css/plugin.css"/>
+    
+    <!-- Main CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700"/>    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <!-- Preloader Start -->
+    <div class="preloader">
+        <div class="rounder"></div>
+    </div>
+    <!-- Preloader End -->
+
+    <div id="main">
+        <div class="container">
+            <form id="form1" runat="server">
+            <div class="row">
+
+
+
+                <!-- About Me (Left Sidebar) Start -->
+                <div class="col-md-3">
+                    <div class="about-fixed">
+
+                        <div class="my-pic">
+                            <img src="images/pic/my-pic.png" alt="">
+                            <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>
+                            
+                            <div id="menu" class="collapse">
+                                <ul class="menu-link">
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="work.html">Work</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="post.aspx">Post</a></li>
+                                </ul>
+                                <ul class="social-icon">
+                                <li><button runat="server" id="btnLogout" onserverclick="btnLogout_ServerClick" class="facebook"><i class="fa fa-power-off"></i></button></li>
+                                    </ul>
+                            </div>
+                        </div>
+
+
+
+                        <div class="my-detail">
+
+                            <div class="white-spacing">
+                                <h1>Alex Parker</h1>
+                                <span>Web Developer</span>
+                            </div>
+
+                            <ul class="social-icon">
+                                <li><a href="#" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#" target="_blank" class="github"><i class="fa fa-github"></i></a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- About Me (Left Sidebar) End -->
+                
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Start -->
+    <a href="#" class="scroll-to-top"><i class="fa fa-long-arrow-up"></i></a>
+    <!-- Back to Top End -->
+
+
+    <!-- All Javascript Plugins  -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugin.js"></script>
+
+    <!-- Main Javascript File  -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>
