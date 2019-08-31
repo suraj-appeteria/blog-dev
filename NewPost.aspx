@@ -49,6 +49,13 @@
         });
     </script>
 
+    <!--MultiSelect Text Box -->
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.common-material.min.css" />
+    <%--<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.material.min.css" />--%>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.material.mobile.min.css" />
+    <link href="css/kendo.material.min.css" rel="stylesheet" />
+    <%--<script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>--%>
+    <script src="https://kendo.cdn.telerik.com/2019.2.619/js/kendo.all.min.js"></script>
 </head>
 <body>
         <div id="main">
@@ -74,16 +81,50 @@
                                <asp:Label runat="server" Text="Description"></asp:Label>
                                 <span>
                                     <asp:TextBox ID="txtDescription" Height="600px" name="editordata" runat="server" TextMode="MultiLine" CssClass="form-control" placeholder="Write a post here..."></asp:TextBox>
-                                 
                                 </span>
                                 <br />
-                                <asp:Button ID="btnsave" OnClick="btnsave_Click" Text="Save" runat="server" />
-                                <div class="col-md-12 text-center">
-                                    <asp:Button id="loadmorepost" OnClick="loadmorepost_Click" runat="server" CssClass="load-more-button" Text="Share" />
-                                </div>
-                            </div>
-                    </div>
+                                 <asp:Label runat="server" Text="Add To Category"></asp:Label>
+                              
+                                <div id="example" role="application">
+                                    <div class="demo-section k-content" >
+                                        <select id="required"  runat="server" data-placeholder="Select Category..." >
+                                                                                     
+                                        </select>
+                                        </div>
+                                    <style>
+                                        .demo-section label {
+                                            display: block;
+                                            margin: 15px 0 5px 0;
+                                            
+                                        }
 
+                                        #get {
+                                            float: right;
+                                            margin: 25px auto 0;
+                                            
+                                        }
+                                    </style>
+                                    <script>
+                                        $(document).ready(function () {
+                                            // create MultiSelect from select HTML element
+                                            var required = $("#required").kendoMultiSelect().data("kendoMultiSelect");
+                                            var optional = $("#optional").kendoMultiSelect({
+                                                autoClose: false
+                                            }).data("kendoMultiSelect");
+
+                                            $("#get").click(function () {
+                                                alert("Attendees:\n\nRequired: " + required.value() + "\nOptional: " + optional.value());
+                                            });
+                                        });
+                                    </script>
+
+                                    <br />
+                                    <div class="col-md-12 text-center">
+                                        <asp:Button ID="loadmorepost" OnClick="loadmorepost_Click" runat="server" CssClass="load-more-button" Text="Share" />
+                                    </div>
+                                </div>
+                    </div>
+                        <asp:HiddenField runat="server" ID="hdnPostId"/>
 
                 </div>
 

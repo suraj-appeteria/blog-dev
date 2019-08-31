@@ -16,14 +16,31 @@ public partial class NewPost : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lblErrorMsg.Text = "";
+        ddlFill();
     }
 
+    protected void ddlFill()
+    {
+        try
+        {
+            DataSet ds = db.ExecuteDataSet("select * from categorymaster where isnull(parentid,0)=0", CommandType.Text);
+            required.DataTextField = "category";
+            required.DataValueField = "categoryid";
+            required.DataSource = ds;
+            required.DataBind();
+        }
+        catch(Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
     protected void loadmorepost_Click(object sender, EventArgs e)
     {
         try
         {
             string st = txtDescription.Text;
-            db.AddParameter("@postid", 0);
+            hdnPostId.Value = "30";
+            db.AddParameter("@postid",hdnPostId.Value);
             db.AddParameter("@postTitle", txtTitle.Text);
             db.AddParameter("@postdescription", st);
             db.AddParameter("@ImageUrl", DBNull.Value);
@@ -33,7 +50,25 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@CreatedByEmail", "sg@gmail.com");
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@mobile", DBNull.Value);
-            db.ExecuteDataSet("Save_posts", CommandType.StoredProcedure);
+            int id = Convert.ToInt32(db.ExecuteScalar("Save_posts", CommandType.StoredProcedure));
+
+            string[] arry = (Request.Form["required"]).ToString().Split(',');
+            db.ExecuteNonQuery("delete from PostCategory where postid="+hdnPostId.Value, CommandType.Text);
+            for (int i = 0; i < arry.Length; i++)
+            {
+                if (hdnPostId.Value == "0")
+                {
+                    db.AddParameter("@categoryid", arry[i]);
+                    db.AddParameter("@postid", id);
+                    db.ExecuteNonQuery("save_postCategory", CommandType.StoredProcedure);
+                }
+                else
+                {
+                    db.AddParameter("@categoryid", arry[i]);
+                    db.AddParameter("@postid", hdnPostId.Value);
+                    db.ExecuteNonQuery("save_postCategory", CommandType.StoredProcedure);
+                }
+            }
             lblErrorMsg.Text = "Post Shared...";
             
         }
@@ -43,28 +78,4 @@ public partial class NewPost : System.Web.UI.Page
         }
     }
 
-    protected void btnsave_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            string st = txtDescription.Text;
-            db.AddParameter("@postid", 0);
-            db.AddParameter("@postTitle", txtTitle.Text);
-            db.AddParameter("@postdescription", st);
-            db.AddParameter("@ImageUrl", DBNull.Value);
-            db.AddParameter("@VideoUrl", DBNull.Value);
-            db.AddParameter("@CreatedBy", 1);
-            db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
-            db.AddParameter("@CreatedByEmail", "sg@gmail.com");
-            db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
-            db.AddParameter("@mobile", DBNull.Value);
-            db.ExecuteDataSet("Save_posts", CommandType.StoredProcedure);
-            lblErrorMsg.Text = "Post Shared...";
-
-        }
-        catch (Exception ex)
-        {
-            lblErrorMsg.Text = ex.Message.ToString();
-        }
-    }
 }
