@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="sub-title">
                     <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
-                    <center><h2><asp:LinkButton ID="btnAdd" runat="server" Text="Write New Post"></asp:LinkButton></h2></center>
+                    <center><h2><asp:LinkButton ID="btnAdd" runat="server" Text="Write New Post" PostBackUrl="~/NewPost.aspx"></asp:LinkButton></h2></center>
                 </div>
             </div>
 

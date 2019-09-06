@@ -74,4 +74,23 @@ public partial class SinglePost : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
+
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if(Request.QueryString["type"]=="admin")
+            {
+                Response.Redirect("addpost.aspx");
+            }
+            else
+            {
+                Response.Redirect("post.aspx");
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
 }

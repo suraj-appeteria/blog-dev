@@ -38,7 +38,7 @@ public partial class AddPost : System.Web.UI.Page
             {
                 db.AddParameter("@postid", e.CommandArgument);
                 db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
-                Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString());
+                Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString()+"&type=admin");
             }
         }
         catch (Exception ex)

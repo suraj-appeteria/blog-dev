@@ -14,6 +14,7 @@
                     <a href="post.aspx" title="Go to Home Page">
                         <h2>Back Home</h2>
                     </a>
+                    <h2><asp:LinkButton ID="btnBack" OnClick="btnBack_Click" Text="Back Home" runat="server" /></h2>
                     <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
                 </div>
                 <div class="col-md-12 content-page">
