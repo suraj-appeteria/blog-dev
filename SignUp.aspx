@@ -53,11 +53,27 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Enter Mobile Number" ControlToValidate="txtMobile" Display="None"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter Valid Mobile Number" ControlToValidate="txtMobile" Display="None" ValidationExpression="(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$"></asp:RegularExpressionValidator>
                     </div>
+                    
                     <div class="form-holder">
-                        <span class="lnr lnr-envelope"></span>
-                        <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Email Id"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Enter Valid Email Id" Display="None" ControlToValidate="txtEmail" CssClass="auto-style1" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                        <table>
+                            <tr>
+                                <td>
+                                    <span class="lnr lnr-envelope"></span>
+                                    <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Email Id"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Enter Valid Email Id" Display="None" ControlToValidate="txtEmail" CssClass="auto-style1" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                </td>
+                                <td>
+                                    <asp:LinkButton runat="server" ID="btnOtp" Text="Get OTP" OnClick="btnOtp_Click" CausesValidation="false"></asp:LinkButton>
+
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    <div class="form-holder">
+                        <span class="lnr lnr-keyboard"></span>
+                        <asp:TextBox ID="txtOtp" runat="server" class="form-control" placeholder="Enter OTP"></asp:TextBox>
                     </div>
                     <div class="form-holder">
                         <span class="lnr lnr-lock"></span>

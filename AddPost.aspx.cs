@@ -20,13 +20,15 @@ public partial class AddPost : System.Web.UI.Page
     {
         try
         {
+            db.AddParameter("@page_no", 5);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
+
         }
         catch (Exception ex)
         {
-            ex.Message.ToString();
+            lblErrorMsg.Text = ex.Message.ToString();
         }
     }
 
@@ -39,6 +41,10 @@ public partial class AddPost : System.Web.UI.Page
                 db.AddParameter("@postid", e.CommandArgument);
                 db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
                 Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString()+"&type=admin");
+            }
+            else if(e.CommandName=="EDT")
+            {
+                Response.Redirect("newpost.aspx?postid="+e.CommandArgument.ToString());
             }
         }
         catch (Exception ex)

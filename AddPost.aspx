@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="AddPost.aspx.cs" Inherits="AddPost" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" ValidateRequest="false" AutoEventWireup="true" CodeFile="AddPost.aspx.cs" Inherits="AddPost" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -15,20 +15,28 @@
 
             <div class="row">
                 <div class="post-info">
-                    <asp:Repeater ID="rpPost" runat="server" OnItemCommand="rpPost_ItemCommand">
+                    <asp:Repeater ID="rpPost" runat="server" OnItemCommand="rpPost_ItemCommand" >
                         <ItemTemplate>
                             <div class="col-md-12 content-page">
                                 <!-- Blog Post Start -->
                                 <div class="col-md-12 blog-post">
                                     <div class="post-title">
-                                        <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read">
-                                        <h1><%# Eval("PostTitle")%></h1>
-                                        </asp:LinkButton>
+                                        <div class="row">
+                                            <div class="col-lg-11">
+                                                <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read">
+                                                <h1><%# Eval("PostTitle")%></h1>
+                                                </asp:LinkButton>
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <asp:LinkButton ID="lnkEdit" ToolTip="Edit Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="EDT"><i class="fa fa-edit"></i></asp:LinkButton>
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <div class="post-info">
                                         <span><%# Eval("CreatedOn","{0:MMMM dd,yyyy}")%> / by <a href="#" target="_blank"><%# Eval("createdbyemail")%></a></span>
                                     </div>
-                                    <p><%# (Eval("postdescription").ToString().Length > 300) ? (Eval("postdescription").ToString().Substring(0, 300)) : Eval("postdescription")%></p>
+                                    <p><%# (Eval("postdescription").ToString().Length > 500) ? (Eval("postdescription").ToString().Substring(0, 500)) : Eval("postdescription")%></p>
                                     <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
                                 </div>
                                 <!-- Blog Post End -->
@@ -45,10 +53,8 @@
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-
                 </div>
             </div>
-
         </div>
 
         <!-- Footer Start -->

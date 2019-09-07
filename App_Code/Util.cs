@@ -84,7 +84,7 @@ public class Util
         //587;
 
         MailMessage MailObj = new MailMessage();
-        MailObj.To.Add(new MailAddress("vidyesh.appeteria@gmail.com"));// toemail));
+        MailObj.To.Add(new MailAddress("suraj.appeteria@gmail.com"));// toemail));
 //        MailObj.Bcc.Add(new MailAddress("appeteria@gmail.com"));
         MailObj.From = new MailAddress(fromemail);
         MailObj.IsBodyHtml = true;

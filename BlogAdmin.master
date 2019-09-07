@@ -63,7 +63,7 @@
                                     <li><a href="post.aspx">Post</a></li>
                                 </ul>
                                 <ul class="social-icon">
-                                <li><button runat="server" id="btnLogout" onserverclick="btnLogout_ServerClick" class="facebook"><i class="fa fa-power-off"></i></button></li>
+                                <li><button runat="server" visible="false" id="btnLogout" onserverclick="btnLogout_ServerClick" class="facebook"><i class="fa fa-power-off"></i></button></li>
                                     </ul>
                             </div>
                         </div>

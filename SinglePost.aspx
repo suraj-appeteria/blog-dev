@@ -11,9 +11,9 @@
                 <div class="sub-title">
                     <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
 
-                    <a href="post.aspx" title="Go to Home Page">
+                    <%--<a href="post.aspx" title="Go to Home Page">
                         <h2>Back Home</h2>
-                    </a>
+                    </a>--%>
                     <h2><asp:LinkButton ID="btnBack" OnClick="btnBack_Click" Text="Back Home" runat="server" /></h2>
                     <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
                 </div>
@@ -286,6 +286,7 @@
                                             </div>
                                             <div class="c-padding">
                                                 <h3><%# Eval("username") %> <a style="color: #655c5c; font-size: 12px"><%# Eval("commentedon","{0:MMMM dd,yyyy}") %></a></h3>
+                                                <asp:LinkButton runat="server" ID="lnkDel" CommandArgument='<%# Eval("commentsid") %>' CommandName="DEL" Text="Remove" ></asp:LinkButton>
                                                 <h6><%# Eval("email") %></h6>
                                                 <h5><%# Eval("comments") %></h5>
                                             </div>

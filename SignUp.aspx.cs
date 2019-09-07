@@ -38,21 +38,32 @@ public partial class SignUp : System.Web.UI.Page
                     return;
                 }
             }
-            db.AddParameter("@userid", 0);
-            db.AddParameter("@mobile", txtMobile.Text);
-            db.AddParameter("@country_code", +91);
-            db.AddParameter("@FirstName", txtFirstName.Text);
-            db.AddParameter("@LastName", txtLastName.Text);
-            db.AddParameter("@Email", txtEmail.Text);
-            db.AddParameter("@password", txtConfPass.Text);
-            db.ExecuteDataSet("save_user_with_mobile", CommandType.StoredProcedure);
-            txtConfPass.Text = "";
-            txtEmail.Text = "";
-            txtFirstName.Text = "";
-            txtLastName.Text = "";
-            txtMobile.Text = "";
-            txtPass.Text = "";
-            Response.Redirect("Login.aspx");
+            db.AddParameter("@email", txtEmail.Text);
+            db.AddParameter("@otp", txtOtp.Text);
+            ds = db.ExecuteDataSet("ValidateOTP", CommandType.StoredProcedure);
+            if (ds.Tables[0].Rows[0]["validationstatus"].ToString() == "Y")
+            {
+
+                db.AddParameter("@userid", 0);
+                db.AddParameter("@mobile", txtMobile.Text);
+                db.AddParameter("@country_code", +91);
+                db.AddParameter("@FirstName", txtFirstName.Text);
+                db.AddParameter("@LastName", txtLastName.Text);
+                db.AddParameter("@Email", txtEmail.Text);
+                db.AddParameter("@password", txtConfPass.Text);
+                db.ExecuteDataSet("save_user_with_mobile", CommandType.StoredProcedure);
+                txtConfPass.Text = "";
+                txtEmail.Text = "";
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                txtMobile.Text = "";
+                txtPass.Text = "";
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                lblErrorMsg.Text = ds.Tables[0].Rows[0]["validationotp"].ToString();
+            }
 
         }
         catch (Exception ex)
@@ -61,4 +72,18 @@ public partial class SignUp : System.Web.UI.Page
         }
     }
 
+
+    protected void btnOtp_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            db.AddParameter("email", txtEmail.Text);
+            DataSet ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
+            Util.SendEmail(txtEmail.Text, "OTP To Varify Your Account", "Your 4 Digit OTP for account varification is "+ds.Tables[0].Rows[0]["OTP"]+" And Valid Till "+ ds.Tables[0].Rows[0]["valid_till"]);
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
 }

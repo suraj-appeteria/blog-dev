@@ -36,7 +36,12 @@ public partial class Login : System.Web.UI.Page
                 }
                 else
                 {
+                        
+                        Session["email"] = txtmail.Text;
+                        Session["password"] = txtPassword.Text;
                     Response.Redirect("Post.aspx");
+
+
                 }
             }
             else

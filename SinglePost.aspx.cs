@@ -61,6 +61,11 @@ public partial class SinglePost : System.Web.UI.Page
     {
         try
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             db.AddParameter("@commentsid", 0);
             db.AddParameter("@postid", Convert.ToInt32(Request.QueryString["postid"]));
             db.AddParameter("@userid",1);

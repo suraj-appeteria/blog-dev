@@ -11,21 +11,29 @@ using DAL.SQLDataAccess;
 public partial class Post : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
+     
     protected void Page_Load(object sender, EventArgs e)
     {
-        FillRp();
+        if (!IsPostBack)
+        {
+            FillRp();
+        }
     }
     protected void FillRp()
     {
         try
         {
+            int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
+            hdnPageNo.Value = counter.ToString();
+            db.AddParameter("@page_no", 5);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
+
         }
         catch (Exception ex)
         {
-            ex.Message.ToString();
+            lblErrorMsg.Text = ex.Message.ToString();
         }
     }
 
@@ -44,5 +52,12 @@ public partial class Post : System.Web.UI.Page
         {
            lblErrorMsg.Text = ex.Message.ToString();
         }
+    }
+
+
+
+    protected void btnLoad_ServerClick(object sender, EventArgs e)
+    {
+        FillRp();
     }
 }

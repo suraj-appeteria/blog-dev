@@ -16,7 +16,26 @@ public partial class NewPost : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lblErrorMsg.Text = "";
-        ddlFill();
+        if (!IsPostBack)
+        {
+            ddlFill();
+            hdnPostId.Value = "0";
+            if (Request.QueryString["postid"] != null)
+            {
+                try
+                {
+                    DataSet ds = db.ExecuteDataSet("select * from posts where postid=" + Request.QueryString["postid"].ToString());
+                    txtTitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString();
+                    txtDescription.Text = ds.Tables[0].Rows[0]["postdescription"].ToString();
+                    ds = db.ExecuteDataSet("select * from PostCategory where postid=" + Request.QueryString["postid"].ToString());
+                    hdnPostId.Value = Request.QueryString["postid"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    lblErrorMsg.Text = ex.Message.ToString();
+                }
+            }
+        }
     }
 
     protected void ddlFill()
@@ -39,13 +58,13 @@ public partial class NewPost : System.Web.UI.Page
         try
         {
             string st = txtDescription.Text;
-            hdnPostId.Value = "30";
             db.AddParameter("@postid",hdnPostId.Value);
             db.AddParameter("@postTitle", txtTitle.Text);
             db.AddParameter("@postdescription", st);
             db.AddParameter("@ImageUrl", DBNull.Value);
             db.AddParameter("@VideoUrl", DBNull.Value);
             db.AddParameter("@CreatedBy", 1);
+            db.AddParameter("@tags", "Test");
             db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@CreatedByEmail", "sg@gmail.com");
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
@@ -70,6 +89,9 @@ public partial class NewPost : System.Web.UI.Page
                 }
             }
             lblErrorMsg.Text = "Post Shared...";
+            txtDescription.Text = "";
+            txtTitle.Text = "";
+            Response.Redirect("addpost.aspx");
             
         }
         catch (Exception ex)
