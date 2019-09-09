@@ -78,7 +78,21 @@
                                     <div class="post-title">
                                         <asp:Label runat="server" Text="Post Title"></asp:Label>
                                         <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" placeholder="Write Post Title..."></asp:TextBox>
-                                    </div>
+                                    </div><br />
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="post-title">
+                                                <asp:Label runat="server" Text="Tags"></asp:Label>
+                                                <asp:TextBox ID="txtTags" runat="server" CssClass="form-control" placeholder="Tag"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="post-title">
+                                                <asp:Label runat="server" Text="Image Url"></asp:Label>
+                                                <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" />
+                                            </div>
+                                        </div>
+                                    </div><br />
                                     <div class="post-info">
                                         <asp:Label runat="server" Text="Description"></asp:Label>
                                         <span>
@@ -125,6 +139,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <asp:HiddenField runat="server" ID="hdnPostId" />
 
                                 </div>
@@ -155,6 +170,7 @@
                         </div>
                         <div class="col-md-1">
                         </div>
+                        <asp:HiddenField runat="server" ID="hdnFileUpload" />
                 </form>
             </div>
         </div>

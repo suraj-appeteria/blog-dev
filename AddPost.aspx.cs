@@ -20,7 +20,9 @@ public partial class AddPost : System.Web.UI.Page
     {
         try
         {
-            db.AddParameter("@page_no", 5);
+            int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
+            hdnPageNo.Value = counter.ToString();
+            db.AddParameter("@page_no", counter);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
@@ -38,8 +40,8 @@ public partial class AddPost : System.Web.UI.Page
         {
             if (e.CommandName == "Read")
             {
-                db.AddParameter("@postid", e.CommandArgument);
-                db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
+                //db.AddParameter("@postid", e.CommandArgument);
+                //db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
                 Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString()+"&type=admin");
             }
             else if(e.CommandName=="EDT")
@@ -51,5 +53,10 @@ public partial class AddPost : System.Web.UI.Page
         {
             lblErrorMsg.Text = ex.Message.ToString();
         }
+    }
+
+    protected void btnLoad_ServerClick(object sender, EventArgs e)
+    {
+        FillRp();
     }
 }

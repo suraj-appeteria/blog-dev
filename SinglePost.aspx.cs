@@ -68,7 +68,7 @@ public partial class SinglePost : System.Web.UI.Page
 
             db.AddParameter("@commentsid", 0);
             db.AddParameter("@postid", Convert.ToInt32(Request.QueryString["postid"]));
-            db.AddParameter("@userid",1);
+            db.AddParameter("@userid",Session["userid"].ToString());
             db.AddParameter("@comments", txtComment.Text);
             db.ExecuteNonQuery("save_comments", CommandType.StoredProcedure);
             txtComment.Text = "";

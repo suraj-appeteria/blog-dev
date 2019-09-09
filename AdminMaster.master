@@ -54,6 +54,7 @@
                             <div id="menu" class="collapse">
                                 <ul class="menu-link">
                                     <li><a href="Category.aspx">Category</a></li>
+                                    <li><a href="AddWork.aspx">Works</a></li>
                                     <li><a href="addpost.aspx">My Post</a></li>
                                 </ul>
                             </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" ValidateRequest="false" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -15,26 +15,28 @@
                 </div>
             </div>
             <div class="row">
-                <asp:Repeater ID="rpPost" runat="server" OnItemCommand="rpPost_ItemCommand">
+                <asp:repeater id="rpPost" runat="server" onitemcommand="rpPost_ItemCommand">
                     <ItemTemplate>
                         <div class="row">
                             <div class="col-md-12 content-page">
-                                <!-- Blog Post Start -->
-                                <div class="col-md-12 blog-post">
+                                <!-- Blog Post Start blog-post -->
+                                <div class="col-md-12 ">
                                     <div class="post-title">
                                         <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read">
                                         <h1><%# Eval("PostTitle")%></h1>
                                         </asp:LinkButton>
                                     </div>
                                     <div class="post-info">
+                                        <h5><%# Eval("tags") %></h5>
                                         <span><%# Eval("CreatedOn","{0:MMMM dd,yyyy}")%> / by <a href="#" target="_blank"><%# Eval("createdbyemail")%></a></span>
                                     </div>
-                                    <p><%# (Eval("postdescription").ToString().Length > 500) ? (Eval("postdescription").ToString().Substring(0, 500)) : Eval("postdescription")%></p>
-
-                                    <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
-                                </div>
+                                    <p><%# (Eval("postdescription").ToString().Length > 500) ? (Eval("postdescription").ToString().Substring(0, 500)) : Eval("postdescription")%></p>                                                               
+                                    </div>
+                                   <div class="col-md-12">
+                                       <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
+                                   </div>
                                 <!-- Blog Post End -->
-<%--                                <div class="col-md-12 page-body margin-top-50 footer">
+                                <div class="col-md-12 page-body margin-top-50 footer">
                                     <ul class="knowledge">
                                         <li class="bg-color-2"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
                                         <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# " " +  Eval("likescount") %> </li>
@@ -43,11 +45,11 @@
                                         </a>
                                         <li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>
                                     </ul>
-                                </div>--%>
+                                </div>
                             </div>
                         </div>
                     </ItemTemplate>
-                </asp:Repeater>
+                </asp:repeater>
             </div>
             <br />
             <div class="row">

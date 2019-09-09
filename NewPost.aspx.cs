@@ -27,6 +27,7 @@ public partial class NewPost : System.Web.UI.Page
                     DataSet ds = db.ExecuteDataSet("select * from posts where postid=" + Request.QueryString["postid"].ToString());
                     txtTitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString();
                     txtDescription.Text = ds.Tables[0].Rows[0]["postdescription"].ToString();
+                    txtTags.Text = ds.Tables[0].Rows[0]["tags"].ToString();
                     ds = db.ExecuteDataSet("select * from PostCategory where postid=" + Request.QueryString["postid"].ToString());
                     hdnPostId.Value = Request.QueryString["postid"].ToString();
                 }
@@ -61,10 +62,10 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@postid",hdnPostId.Value);
             db.AddParameter("@postTitle", txtTitle.Text);
             db.AddParameter("@postdescription", st);
-            db.AddParameter("@ImageUrl", DBNull.Value);
+            db.AddParameter("@ImageUrl", hdnFileUpload.Value);
             db.AddParameter("@VideoUrl", DBNull.Value);
             db.AddParameter("@CreatedBy", 1);
-            db.AddParameter("@tags", "Test");
+            db.AddParameter("@tags", txtTags.Text);
             db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@CreatedByEmail", "sg@gmail.com");
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
@@ -100,4 +101,34 @@ public partial class NewPost : System.Web.UI.Page
         }
     }
 
+
+    protected void fuImage_PreRender(object sender, EventArgs e)
+    {
+        try
+        {
+            if (fuImage.HasFile)
+            {
+                if (IsPostBack && fuImage.PostedFile != null)
+                {
+                    string file_name = string.Empty, extension = string.Empty;
+                    file_name = fuImage.FileName;
+                    extension = file_name.Substring(file_name.LastIndexOf("."));
+                    if (extension.ToLower().Equals(".png") || extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg"))
+                    {                       
+                            hdnFileUpload.Value = file_name;
+                            fuImage.SaveAs(Server.MapPath("images/PostImage/" + file_name));
+                    }
+                    else
+                    {
+                        lblErrorMsg.Text = "Please select .Png, .Jpg or jpeg file only";
+                        return;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
 }

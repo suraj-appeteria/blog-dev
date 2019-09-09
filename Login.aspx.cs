@@ -36,12 +36,20 @@ public partial class Login : System.Web.UI.Page
                 }
                 else
                 {
-                        
+                    if (ds.Tables[0].Rows[0]["user_type"].ToString()=="writer")
+                    {
+                        Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
                         Session["email"] = txtmail.Text;
                         Session["password"] = txtPassword.Text;
-                    Response.Redirect("Post.aspx");
-
-
+                        Response.Redirect("addpost.aspx");
+                    }
+                    else
+                    {
+                        Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
+                        Session["email"] = txtmail.Text;
+                        Session["password"] = txtPassword.Text;
+                        Response.Redirect("Post.aspx");
+                    }                                 
                 }
             }
             else
