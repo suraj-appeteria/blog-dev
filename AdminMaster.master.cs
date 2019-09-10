@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using DAL.SQLDataAccess;
 
 public partial class AdminMaster : System.Web.UI.MasterPage
 {
+    DatabaseHelper db = new DatabaseHelper();
     public string username
     {
         get { return lblUser.InnerText; }
@@ -20,6 +23,8 @@ public partial class AdminMaster : System.Web.UI.MasterPage
             {
                 Response.Redirect("Login.aspx");
             }
+            DataSet ds = db.ExecuteDataSet("select * from PostComments where active=2");
+            lblReq.Text = "Comment (" +ds.Tables[0].Rows.Count.ToString() + ")";
         }
         catch (Exception)
         {

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true" CodeFile="AddPost.aspx.cs" Inherits="AddPost" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Blog Post (Right Sidebar) Start -->
@@ -48,9 +49,7 @@
                                     <ul class="knowledge">
                                         <li class="bg-color-2"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
                                         <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# " " +  Eval("likescount") %> </li>
-                                        <a href="SinglePost.aspx">
-                                            <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
-                                        </a>
+                                        <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
                                         <li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>
                                     </ul>
                                 </div>
@@ -94,5 +93,6 @@
     </div>
     <asp:HiddenField ID="hdnPageNo" Value="0" runat="server" />
     <!-- Blog Post (Right Sidebar) End -->
+
 </asp:Content>
 

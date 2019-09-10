@@ -13,10 +13,29 @@ public partial class SinglePost : System.Web.UI.Page
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         if (!IsPostBack)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                Session["userid"] = "0";
+            }
+            else
+            {
+                db.AddParameter("@userid", Session["userid"]);
+                db.AddParameter("@postid", Request.QueryString["postid"]);
+                DataSet ds = db.ExecuteDataSet("select * from PostReactions where userid=@userid and postid=@postid", CommandType.Text);
+                if(ds.Tables[0].Rows.Count>0)
+                {
+                    lnkLike.Text = "<i class='fa fa-heart'></i>";
+                    lnkLike.ForeColor = System.Drawing.Color.Red;
+                    lnkLike.TabIndex = 1;
+                    lnkLike.ToolTip = "Unlike";
+                }
+            }
             FillRp();
             comment();
+            
         }
     }
 
@@ -65,7 +84,7 @@ public partial class SinglePost : System.Web.UI.Page
             {
                 Response.Redirect("Login.aspx");
             }
-
+           
             db.AddParameter("@commentsid", 0);
             db.AddParameter("@postid", Convert.ToInt32(Request.QueryString["postid"]));
             db.AddParameter("@userid",Session["userid"].ToString());
@@ -73,6 +92,7 @@ public partial class SinglePost : System.Web.UI.Page
             db.ExecuteNonQuery("save_comments", CommandType.StoredProcedure);
             txtComment.Text = "";
             comment();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Your Comment Will s');", true); //run script
         }
         catch(Exception ex)
         {
@@ -97,5 +117,53 @@ public partial class SinglePost : System.Web.UI.Page
         {
             lblErrorMsg.Text = ex.Message.ToString();
         }
+    }
+
+    protected void rpComment_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "DEL")
+            {
+                db.ExecuteNonQuery("update PostComments set active=0 where commentsid=" + e.CommandArgument.ToString());
+                FillRp();
+                comment();
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
+
+    protected void lnkLike_Click(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+        {
+            Response.Redirect("Login.aspx");
+            return;
+        }
+        if (lnkLike.TabIndex.ToString() == "0")
+        {
+            lnkLike.Text = "<i class='fa fa-heart'></i>";
+            lnkLike.ForeColor = System.Drawing.Color.Red;
+            lnkLike.TabIndex = 1;
+            lnkLike.ToolTip = "Unlike";
+            lblErrorMsg.Text = "Post Liked";
+            
+        }
+        else if(lnkLike.TabIndex.ToString() == "1")
+        {
+            lnkLike.Text = "<i class='fa fa-heart-o'></i>";
+            lnkLike.ForeColor = System.Drawing.Color.Red;
+            lnkLike.TabIndex = 0;
+            lnkLike.ToolTip = "Like";
+            lblErrorMsg.Text = "Post Unliked";
+        }
+        db.AddParameter("@reactionid", 1);
+        db.AddParameter("@Postid", Request.QueryString["postid"]);
+        db.AddParameter("@userid", Session["userid"]);
+        db.AddParameter("@reactiontypeid", 1);
+        db.ExecuteDataSet("save_reaction", CommandType.StoredProcedure);
     }
 }

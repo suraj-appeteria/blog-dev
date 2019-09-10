@@ -9,7 +9,7 @@
         <div class="col-md-12 page-body">
             <div class="row">
                 <div class="sub-title">
-                    <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
+                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
 
                     <%--<a href="post.aspx" title="Go to Home Page">
                         <h2>Back Home</h2>
@@ -29,11 +29,11 @@
                                 <a class="a2a_button_linkedin"></a>
                                 <a class="a2a_button_whatsapp"></a>
                                 <a class="a2a_button_google_gmail"></a>
-                                <a class="a2a_button_sms"></a>
                                 <a class="a2a_button_yahoo_mail"></a>
                             </div>
                             <script async src="https://static.addtoany.com/menu/page.js"></script>
                             <!-- AddToAny END -->
+                            <asp:LinkButton ID="lnkLike" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="Red" ><i class="fa fa-heart-o"></i></asp:LinkButton>
                         </div>
 
 
@@ -278,19 +278,28 @@
                             <h3>Discuss about post</h3>
                             <br />
                             <div class="row">
-                                <asp:Repeater runat="server" ID="rpComment">
+                                <asp:Repeater runat="server" ID="rpComment" OnItemCommand="rpComment_ItemCommand">
                                     <ItemTemplate>
+                                        
                                         <div class="about-author">
                                             <div class="picture">
                                                 <img src="images/baby.jpg" class="img-responsive" alt="">
                                             </div>
                                             <div class="c-padding">
                                                 <h3><%# Eval("username") %> <a style="color: #655c5c; font-size: 12px"><%# Eval("commentedon","{0:MMMM dd,yyyy}") %></a></h3>
-                                                <asp:LinkButton runat="server" ID="lnkDel" CommandArgument='<%# Eval("commentsid") %>' CommandName="DEL" Text="Remove" ></asp:LinkButton>
-                                                <h6><%# Eval("email") %></h6>
-                                                <h5><%# Eval("comments") %></h5>
+                                                <div class="row">
+                                                    <div class="col-lg-11">
+                                                        <h6><%# Eval("email") %></h6>
+                                                        <h5><%# Eval("comments") %></h5>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <asp:LinkButton runat="server" ID="lnkDel" Visible='<%# Convert.ToString(Eval("userid"))==Session["userid"].ToString() %>' CommandArgument='<%# Eval("commentsid") %>' Font-Size="18" CommandName="DEL" OnClientClick="return confirm('Are you sure want to delete comment ?')"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
+                                        
                                         <br />
                                     </ItemTemplate>
                                 </asp:Repeater>

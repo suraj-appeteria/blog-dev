@@ -11,7 +11,7 @@
                 <div class="sub-title">
                     <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
                     <h2>Blogs</h2>
-                    <a href="contact.html"><i class="icon-envelope"></i></a>
+                    <a href="contact.aspx"><i class="icon-envelope"></i></a>
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@
                         <input id="mc-email" type="email" placeholder="Email Address" class="text-input">
                         <button class="submit-btn" type="submit">Submit</button>
                     </div>
-                    <p>Subscribe to my weekly newsletter</p>
+                    <p>Subscribe for new post notification</p>
                     <label for="mc-email" class="mc-label"></label>
                 </form>
 
