@@ -41,6 +41,7 @@ public partial class Login : System.Web.UI.Page
                         Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
                         Session["email"] = txtmail.Text;
                         Session["password"] = txtPassword.Text;
+                        Session["type"] = ds.Tables[0].Rows[0]["user_type"].ToString();
                         Response.Redirect("addpost.aspx");
                     }
                     else
@@ -48,6 +49,7 @@ public partial class Login : System.Web.UI.Page
                         Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
                         Session["email"] = txtmail.Text;
                         Session["password"] = txtPassword.Text;
+                        Session["type"] = ds.Tables[0].Rows[0]["user_type"].ToString();
                         Response.Redirect("Post.aspx");
                     }                                 
                 }

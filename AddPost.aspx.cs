@@ -48,6 +48,19 @@ public partial class AddPost : System.Web.UI.Page
             {
                 Response.Redirect("newpost.aspx?postid="+e.CommandArgument.ToString());
             }
+            else if (e.CommandName == "DEL")
+            {
+                db.AddParameter("@postid", e.CommandArgument.ToString());
+                db.ExecuteNonQuery("update posts set active=0 where postid=@postid", CommandType.Text);
+                FillRp();
+            }
+            else if (e.CommandName == "UNPublish")
+            {
+                db.AddParameter("@postid", e.CommandArgument.ToString());
+                db.ExecuteNonQuery("update posts set active=3 where postid=@postid", CommandType.Text);
+                FillRp();
+            }
+
         }
         catch (Exception ex)
         {

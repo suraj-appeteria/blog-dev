@@ -31,7 +31,8 @@
                                 <a class="a2a_button_google_gmail"></a>
                                 <a class="a2a_button_yahoo_mail"></a>
                             </div>
-                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                            <%--<script async src="https://static.addtoany.com/menu/page.js"></script>--%>
+                            <script src="js/Share.js"></script>
                             <!-- AddToAny END -->
                             <asp:LinkButton ID="lnkLike" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="Red" ><i class="fa fa-heart-o"></i></asp:LinkButton>
                         </div>
@@ -283,13 +284,13 @@
                                         
                                         <div class="about-author">
                                             <div class="picture">
+                                                <asp:Image ID="imgComment" runat="server" ImageUrl='<%# Eval("picture_url") %>' />
                                                 <img src="images/baby.jpg" class="img-responsive" alt="">
                                             </div>
                                             <div class="c-padding">
                                                 <h3><%# Eval("username") %> <a style="color: #655c5c; font-size: 12px"><%# Eval("commentedon","{0:MMMM dd,yyyy}") %></a></h3>
                                                 <div class="row">
-                                                    <div class="col-lg-11">
-                                                        <h6><%# Eval("email") %></h6>
+                                                    <div class="col-lg-11">                                                        
                                                         <h5><%# Eval("comments") %></h5>
                                                     </div>
                                                     <div class="col-lg-1">

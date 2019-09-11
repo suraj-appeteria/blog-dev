@@ -133,9 +133,17 @@
 
                                             <br />
                                             <div class="col-md-12 text-center">
-                                                
-                                                <asp:Button ID="loadmorepost" OnClick="loadmorepost_Click" runat="server" CssClass="load-more-button" Text="Share" />
-                                                <asp:LinkButton ID="lnkCancel" runat="server" CssClass="load-more-button" Text="Cancel" PostBackUrl="~/AddPost.aspx"></asp:LinkButton>
+                                                    <div class="col-lg-3"></div>
+                                                <div class="col-lg-2">
+                                                    <asp:Button ID="btnSave" OnClick="btnSave_Click" runat="server" CssClass="load-more-button" Text="Save" />
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <asp:Button ID="btnPublish" OnClick="loadmorepost_Click" runat="server" CssClass="load-more-button" Text="Publish" />
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="load-more-button" Text="Cancel" PostBackUrl="~/AddPost.aspx"></asp:LinkButton>
+                                                </div>
+                                                <div class="col-lg-3"></div>
                                             </div>
                                         </div>
                                     </div>

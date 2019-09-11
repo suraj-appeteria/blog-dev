@@ -23,13 +23,15 @@
                                 <div class="col-md-12 ">
                                     <div class="post-title">
                                         <div class="row">
-                                            <div class="col-lg-11">
+                                            <div class="col-lg-10">
                                                 <asp:LinkButton runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read">
                                                 <h1><%# Eval("PostTitle")%></h1>
                                                 </asp:LinkButton>
                                             </div>
-                                            <div class="col-lg-1">
+                                            <div class="col-lg-2">
                                                 <asp:LinkButton ID="lnkEdit" ToolTip="Edit Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="EDT"><i class="fa fa-edit"></i></asp:LinkButton>
+                                                <asp:LinkButton ID="lnkDel" ToolTip="Delete Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="DEL"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                            <asp:LinkButton ID="lnkUnpublish" ToolTip="Unpublish Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="15" CommandName="UNPublish">Un-Publish</asp:LinkButton>
                                             </div>
                                         </div>
                                     </div>
@@ -47,10 +49,11 @@
                                 <!-- Blog Post End -->
                                 <div class="col-md-12 page-body margin-top-10 footer">
                                     <ul class="knowledge">
-                                        <li class="bg-color-2"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
+                                        <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
                                         <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# " " +  Eval("likescount") %> </li>
                                         <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
-                                        <li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>
+                                        
+                                        <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>--%>
                                     </ul>
                                 </div>
                             </div>

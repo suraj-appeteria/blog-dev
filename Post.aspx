@@ -38,12 +38,10 @@
                                 <!-- Blog Post End -->
                                 <div class="col-md-12 page-body margin-top-50 footer">
                                     <ul class="knowledge">
-                                        <li class="bg-color-2"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
+                                        <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
                                         <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# " " +  Eval("likescount") %> </li>
-                                        <a href="SinglePost.aspx">
-                                            <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
-                                        </a>
-                                        <li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>
+                                        <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
+                                        <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>--%>
                                     </ul>
                                 </div>
                             </div>

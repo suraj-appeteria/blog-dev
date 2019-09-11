@@ -70,6 +70,7 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@CreatedByEmail", "sg@gmail.com");
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@mobile", DBNull.Value);
+            db.AddParameter("@active", 1);
             int id = Convert.ToInt32(db.ExecuteScalar("Save_posts", CommandType.StoredProcedure));
 
             string[] arry = (Request.Form["required"]).ToString().Split(',');
@@ -125,6 +126,54 @@ public partial class NewPost : System.Web.UI.Page
                     }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
+
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string st = txtDescription.Text;
+            db.AddParameter("@postid", hdnPostId.Value);
+            db.AddParameter("@postTitle", txtTitle.Text);
+            db.AddParameter("@postdescription", st);
+            db.AddParameter("@ImageUrl", hdnFileUpload.Value);
+            db.AddParameter("@VideoUrl", DBNull.Value);
+            db.AddParameter("@CreatedBy", 1);
+            db.AddParameter("@tags", txtTags.Text);
+            db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
+            db.AddParameter("@CreatedByEmail", "sg@gmail.com");
+            db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
+            db.AddParameter("@mobile", DBNull.Value);
+            db.AddParameter("@active", 3);
+            int id = Convert.ToInt32(db.ExecuteScalar("Save_posts", CommandType.StoredProcedure));
+
+            string[] arry = (Request.Form["required"]).ToString().Split(',');
+            db.ExecuteNonQuery("delete from PostCategory where postid=" + hdnPostId.Value, CommandType.Text);
+            for (int i = 0; i < arry.Length; i++)
+            {
+                if (hdnPostId.Value == "0")
+                {
+                    db.AddParameter("@categoryid", arry[i]);
+                    db.AddParameter("@postid", id);
+                    db.ExecuteNonQuery("save_postCategory", CommandType.StoredProcedure);
+                }
+                else
+                {
+                    db.AddParameter("@categoryid", arry[i]);
+                    db.AddParameter("@postid", hdnPostId.Value);
+                    db.ExecuteNonQuery("save_postCategory", CommandType.StoredProcedure);
+                }
+            }
+            lblErrorMsg.Text = "Post Save In Draft...";
+            txtDescription.Text = "";
+            txtTitle.Text = "";
+            Response.Redirect("addpost.aspx");
+
         }
         catch (Exception ex)
         {
