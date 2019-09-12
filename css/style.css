@@ -342,7 +342,7 @@ button {
 }
 
 .my-detail .white-spacing {
-    padding: 23px 0;
+    padding:5px 0;
     border-bottom: 1px dashed #cccccc;
 }
 
@@ -352,7 +352,7 @@ button {
 }
 
 .my-detail span {
-    color: #c1c1c1;
+    color: #464242;
     font-weight: 400;
     line-height: 30px;
     font-size: 16px;
@@ -1041,7 +1041,7 @@ blockquote {
 
 .social-icon {
   list-style: none;
-  padding: 20px;
+  padding: 5px;
   margin: 0;
   text-align: center;
 }

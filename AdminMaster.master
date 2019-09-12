@@ -45,11 +45,13 @@
         <div class="container">
             <div class="row">
                 <!-- About Me (Left Sidebar) Start -->
+                <form id="form1" runat="server">
                 <div class="col-md-3">
                     <div class="about-fixed">
 
                         <div class="my-pic">
-                            <img src="images/pic/my-pic.png" alt="">
+                            <%--<img src="images/pic/my-pic.png" alt="">--%>
+                            <asp:Image ID="imgProfile" runat="server" ImageUrl="~/images/Profile/default.png" Height="229" Width="280" />
                             <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>
                             <div id="menu" class="collapse">
                                 <ul class="menu-link">
@@ -57,15 +59,18 @@
                                     <li><a href="AddWork.aspx">Works</a></li>
                                     <li><a href="addpost.aspx">My Post</a></li>
                                     <li><a href="Draft.aspx"><asp:Label runat="server" ID="lblDraft"></asp:Label></a></li>
-                                    <li><a href="addpost.aspx"><asp:Label runat="server" ID="lblReq"></asp:Label></a></li>
+                                    <li><a href="comments.aspx"><asp:Label runat="server" ID="lblReq"></asp:Label></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="my-detail">
 
                             <div class="white-spacing">
-                                <h1 runat="server" id="lblUser"></h1>
+                                <h1>
+                                    <asp:LinkButton runat="server" ID="lnkName"></asp:LinkButton></h1>
                                 <span>Web Developer</span>
+                                <br />
+                                <asp:LinkButton runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
                             </div>
 
                             <ul class="social-icon">
@@ -79,7 +84,7 @@
                     </div>
                 </div>
                 <!-- About Me (Left Sidebar) End -->
-                <form id="form1" runat="server">
+                
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </form>

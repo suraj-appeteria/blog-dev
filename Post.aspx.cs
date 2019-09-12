@@ -9,9 +9,21 @@ public partial class Post : System.Web.UI.Page
      
     protected void Page_Load(object sender, EventArgs e)
     {
+        lblError.Text = "";
+        lblErrorMsg.Text = "";
         if (!IsPostBack)
         {
-            FillRp();
+            lblError.Text = "";
+            lblErrorMsg.Text = "";
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                dvSubscribe.Visible = true;
+            }
+            else
+            {
+                dvSubscribe.Visible = false;
+            }
+                FillRp();
         }
     }
     protected void FillRp()
@@ -21,9 +33,11 @@ public partial class Post : System.Web.UI.Page
             int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
             hdnPageNo.Value = counter.ToString();
             db.AddParameter("@page_no", counter);
+            db.AddParameter("@active", 1);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
+           
 
         }
         catch (Exception ex)
@@ -49,10 +63,31 @@ public partial class Post : System.Web.UI.Page
         }
     }
 
-
-
     protected void btnLoad_ServerClick(object sender, EventArgs e)
     {
         FillRp();
+    }
+
+    protected void btnSubscribe_ServerClick(object sender, EventArgs e)
+    {
+        try
+        {
+            DataSet ds = db.ExecuteDataSet("select * from usermaster", CommandType.Text);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
+                {
+                    lblError.Text = txtEmail.Text + " id is already subscribed";
+                    return;
+                }
+            }
+            db.AddParameter("@Email_id", txtEmail.Text);
+            db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
+            lblError.Text = "congratulations you are now subscribed.";
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
     }
 }

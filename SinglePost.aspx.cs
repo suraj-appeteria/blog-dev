@@ -19,6 +19,7 @@ public partial class SinglePost : System.Web.UI.Page
             if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
             {
                 Session["userid"] = "0";
+                
             }
             else
             {
@@ -43,16 +44,17 @@ public partial class SinglePost : System.Web.UI.Page
     {
         try
         {
-            Int32 postid = Convert.ToInt32(Request.QueryString["postid"]);
+            string postid = Request.QueryString["postid"];
             db.AddParameter("@postid",postid);
+            db.AddParameter("@active", 1);
             DataSet ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             lblposttitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString(); 
             lblCreatedOn.Text = ds.Tables[0].Rows[0]["CreatedOn"].ToString();
             lblcreatedbyemail.Text = ds.Tables[0].Rows[0]["createdbyemail"].ToString();
             lblPostDescription.Text = ds.Tables[0].Rows[0]["PostDescription"].ToString();
 
-            db.AddParameter("@postid", postid);
-            ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
+            //db.AddParameter("@postid", postid);
+            //ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             rpInner.DataSource = ds.Tables[1];
             rpInner.DataBind();            
         }

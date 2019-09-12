@@ -55,22 +55,25 @@
                     <%--<a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
                     <div id="post-end-message"></div>--%>
                     <button id="btnLoad" runat="server" onserverclick="btnLoad_ServerClick" class="load-more-button"><span>Load</span> </button>
+                <br />
                 </div>
+                
             </div>
 
-
+            
 
 
             <!-- Subscribe Form Start -->
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
                 <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
 
                     <div class="subscribe-form margin-top-20">
-                        <input id="mc-email" type="email" placeholder="Email Address" class="text-input">
-                        <button class="submit-btn" type="submit">Submit</button>
+                        <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
+                        <button class="submit-btn" id="btnSubscribe" runat="server" onserverclick="btnSubscribe_ServerClick" type="submit">Subscribe Now</button>
                     </div>
                     <p>Subscribe for new post notification</p>
-                    <label for="mc-email" class="mc-label"></label>
+                    <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+                    <br />
                 </form>
 
             </div>

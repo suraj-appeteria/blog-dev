@@ -6,22 +6,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class AdminMaster : System.Web.UI.MasterPage
 {
     DatabaseHelper db = new DatabaseHelper();
-    public string username
-    {
-        get { return lblUser.InnerText; }
-        set { lblUser.InnerText = value; }
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         try
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("post.aspx");
             }
             if (Session["type"].ToString() != "writer")
             {
@@ -29,6 +25,15 @@ public partial class AdminMaster : System.Web.UI.MasterPage
             }
             else
             {
+                lnkName.Text = Session["name"].ToString();
+                if (Session["url"].ToString() != null)
+                {
+                    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                }
+                else
+                {
+                    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                }
                 DataSet ds = db.ExecuteDataSet("select * from PostComments where active=2");
                 lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
                 ds = db.ExecuteDataSet("select * from posts where active=3");
@@ -45,5 +50,12 @@ public partial class AdminMaster : System.Web.UI.MasterPage
     public void DisableCriticalJavaScriptFiles()
     {
         head.Visible = false;
+    }
+
+    protected void lnkLogout_Click(object sender, EventArgs e)
+    {
+        Session.Clear();
+        System.Web.Security.FormsAuthentication.SignOut();
+        Response.Redirect("~/post.aspx");
     }
 }

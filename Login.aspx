@@ -60,7 +60,6 @@
                     <button onserverclick="btnLogin_Click" runat="server">
                         <span>Login</span>
                     </button>
-
                 </form>
 				<img src="Login/images/image-2.png" alt="" class="image-2">
 			</div>

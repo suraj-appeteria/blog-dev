@@ -23,6 +23,7 @@ public partial class AddPost : System.Web.UI.Page
             int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
             hdnPageNo.Value = counter.ToString();
             db.AddParameter("@page_no", counter);
+            db.AddParameter("@active", 1);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();

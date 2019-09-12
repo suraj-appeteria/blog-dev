@@ -34,7 +34,6 @@ public partial class SignUp : System.Web.UI.Page
             db.AddParameter("@password", txtConfPass.Text);
             db.ExecuteDataSet("save_user_with_mobile", CommandType.StoredProcedure);
             txtConfPass.Text = "";
-            txtEmail.Text = "";
             txtFirstName.Text = "";
             txtLastName.Text = "";
             txtMobile.Text = "";
@@ -124,8 +123,8 @@ public partial class SignUp : System.Web.UI.Page
                     if (extension.ToLower().Equals(".png") || extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg"))
                     {
                         hdnFileName.Value = file_name;
-                        fuImg.SaveAs(Server.MapPath("images/userprofile/" + file_name));
-                        imgProfile.ImageUrl = "images/userprofile/" + file_name;
+                        fuImg.SaveAs(Server.MapPath("images/profile/" + file_name));
+                        imgProfile.ImageUrl = "images/profile/" + file_name;
                     }
                     else
                     {
@@ -147,10 +146,16 @@ public partial class SignUp : System.Web.UI.Page
         {
             pnlemail.Visible = true;
             pnlInfo.Visible = true;
-            fuImg.SaveAs(Server.MapPath("images/Profile/" + hdnFileName.Value));
             db.AddParameter("@url", hdnFileName.Value);
             db.AddParameter("@email", txtEmail.Text);
-            db.ExecuteDataSet("update usermaster set pic_url=@url where email=@email", CommandType.Text);
+            if (hdnFileName.Value != null)
+            {
+                db.ExecuteNonQuery("update usermaster set pic_url=@url where email=@email", CommandType.Text);
+            }
+            else
+            {
+                db.ExecuteNonQuery("update usermaster set pic_url=default.png where email=@email", CommandType.Text);
+            }
             Response.Redirect("login.aspx");
         }
         catch(Exception ex)

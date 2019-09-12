@@ -36,20 +36,19 @@ public partial class Login : System.Web.UI.Page
                 }
                 else
                 {
+                    Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
+                    Session["email"] = txtmail.Text;
+                    Session["contact"] = ds.Tables[0].Rows[0]["mobile"].ToString();
+                    Session["name"] = ds.Tables[0].Rows[0]["firstName"].ToString() +" "+ ds.Tables[0].Rows[0]["lastName"].ToString();
+                    Session["url"] = ds.Tables[0].Rows[0]["pic_url"].ToString();
+                    Session["password"] = txtPassword.Text;
+                    Session["type"] = ds.Tables[0].Rows[0]["user_type"].ToString();
                     if (ds.Tables[0].Rows[0]["user_type"].ToString()=="writer")
                     {
-                        Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
-                        Session["email"] = txtmail.Text;
-                        Session["password"] = txtPassword.Text;
-                        Session["type"] = ds.Tables[0].Rows[0]["user_type"].ToString();
                         Response.Redirect("addpost.aspx");
                     }
                     else
-                    {
-                        Session["userid"] = ds.Tables[0].Rows[0]["userid"].ToString();
-                        Session["email"] = txtmail.Text;
-                        Session["password"] = txtPassword.Text;
-                        Session["type"] = ds.Tables[0].Rows[0]["user_type"].ToString();
+                    {                       
                         Response.Redirect("Post.aspx");
                     }                                 
                 }
