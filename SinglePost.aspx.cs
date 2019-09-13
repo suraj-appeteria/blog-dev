@@ -28,14 +28,49 @@ public partial class SinglePost : System.Web.UI.Page
                 DataSet ds = db.ExecuteDataSet("select * from PostReactions where userid=@userid and postid=@postid", CommandType.Text);
                 if(ds.Tables[0].Rows.Count>0)
                 {
-                    lnkLike.Text = "<i class='fa fa-heart'></i>";
-                    lnkLike.ForeColor = System.Drawing.Color.Red;
-                    lnkLike.TabIndex = 1;
-                    lnkLike.ToolTip = "Unlike";
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        if (ds.Tables[0].Rows[i]["reactiontypeid"].ToString() == "2" || ds.Tables[0].Rows[i]["reactiontypeid"].ToString() == "1")
+                        {
+                            lnkLike.Text = "<i class='fa fa-heart'></i>";
+                            lnkLike.ForeColor = System.Drawing.Color.Red;
+                            lnkLike.TabIndex = 1;
+                            lnkLike.ToolTip = "Unlike";
+
+                            lnkFav.Text = "<i class='fa fa-star'></i>";
+                            lnkFav.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFD700");
+                            lnkFav.TabIndex = 1;
+                            lnkFav.ToolTip = "Add To Favorite";
+                            FillRp();
+                            comment();
+                            return;
+                        }
+                        else if (ds.Tables[0].Rows[i]["reactiontypeid"].ToString() == "1")
+                        {
+                            lnkLike.Text = "<i class='fa fa-heart'></i>";
+                            lnkLike.ForeColor = System.Drawing.Color.Red;
+                            lnkLike.TabIndex = 1;
+                            lnkLike.ToolTip = "Unlike";
+                            FillRp();
+                            comment();
+                            return;
+                        }
+                        else if (ds.Tables[0].Rows[i]["reactiontypeid"].ToString() == "2")
+                        {
+                            lnkFav.Text = "<i class='fa fa-star'></i>";
+                            lnkFav.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFD700");
+                            lnkFav.TabIndex = 1;
+                            lnkFav.ToolTip = "Unlike";
+                            FillRp();
+                            comment();
+                            return;
+                        }
+                    }
+                    
                 }
+                
             }
-            FillRp();
-            comment();
+            
             
         }
     }
@@ -140,32 +175,75 @@ public partial class SinglePost : System.Web.UI.Page
 
     protected void lnkLike_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+        try
         {
-            Response.Redirect("Login.aspx");
-            return;
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+            if (lnkLike.TabIndex.ToString() == "0")
+            {
+                lnkLike.Text = "<i class='fa fa-heart'></i>";
+                lnkLike.ForeColor = System.Drawing.Color.Red;
+                lnkLike.TabIndex = 1;
+                lnkLike.ToolTip = "Unlike";
+                lblErrorMsg.Text = "Post Liked";
+            }
+            else if (lnkLike.TabIndex.ToString() == "1")
+            {
+                lnkLike.Text = "<i class='fa fa-heart-o'></i>";
+                lnkLike.ForeColor = System.Drawing.Color.Red;
+                lnkLike.TabIndex = 0;
+                lnkLike.ToolTip = "Like";
+                lblErrorMsg.Text = "Post Unliked";
+            }
+            db.AddParameter("@reactionid", 0);
+            db.AddParameter("@Postid", Request.QueryString["postid"]);
+            db.AddParameter("@userid", Session["userid"]);
+            db.AddParameter("@reactiontypeid", 1);
+            DataSet ds = db.ExecuteDataSet("save_reaction", CommandType.StoredProcedure);
         }
-        if (lnkLike.TabIndex.ToString() == "0")
+        catch(Exception ex)
         {
-            lnkLike.Text = "<i class='fa fa-heart'></i>";
-            lnkLike.ForeColor = System.Drawing.Color.Red;
-            lnkLike.TabIndex = 1;
-            lnkLike.ToolTip = "Unlike";
-            lblErrorMsg.Text = "Post Liked";
-            
+            lblErrorMsg.Text = ex.Message.ToString();
         }
-        else if(lnkLike.TabIndex.ToString() == "1")
+    }
+
+    protected void lnkFav_Click(object sender, EventArgs e)
+    {
+        try
         {
-            lnkLike.Text = "<i class='fa fa-heart-o'></i>";
-            lnkLike.ForeColor = System.Drawing.Color.Red;
-            lnkLike.TabIndex = 0;
-            lnkLike.ToolTip = "Like";
-            lblErrorMsg.Text = "Post Unliked";
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+            if (lnkLike.TabIndex.ToString() == "0")
+            {
+                lnkFav.Text = "<i class='fa fa-star'></i>";
+                lnkFav.ForeColor = System.Drawing.Color.Red;
+                lnkFav.TabIndex = 1;
+                lnkFav.ToolTip = "Add To Favorite";
+                lblErrorMsg.Text = "Post Added To Favorite List";
+            }
+            else if (lnkLike.TabIndex.ToString() == "1")
+            {
+                lnkFav.Text = "<i class='fa fa-heart-o'></i>";
+                lnkFav.ForeColor = System.Drawing.Color.Red;
+                lnkFav.TabIndex = 0;
+                lnkFav.ToolTip = "Remove From Favorite";
+                lblErrorMsg.Text = "Post Removed From Favorite List";
+            }
+            db.AddParameter("@reactionid", 0);
+            db.AddParameter("@Postid", Request.QueryString["postid"]);
+            db.AddParameter("@userid", Session["userid"]);
+            db.AddParameter("@reactiontypeid",2);
+            DataSet ds = db.ExecuteDataSet("save_reaction", CommandType.StoredProcedure);
         }
-        db.AddParameter("@reactionid", 1);
-        db.AddParameter("@Postid", Request.QueryString["postid"]);
-        db.AddParameter("@userid", Session["userid"]);
-        db.AddParameter("@reactiontypeid", 1);
-        db.ExecuteDataSet("save_reaction", CommandType.StoredProcedure);
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
     }
 }

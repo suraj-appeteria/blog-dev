@@ -54,7 +54,8 @@ public partial class SignUp : System.Web.UI.Page
     {
         try
         {
-            DataSet ds = db.ExecuteDataSet("select * from usermaster", CommandType.Text);
+            
+            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)

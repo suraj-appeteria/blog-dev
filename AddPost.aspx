@@ -31,7 +31,7 @@
                                             <div class="col-lg-2">
                                                 <asp:LinkButton ID="lnkEdit" ToolTip="Edit Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="EDT"><i class="fa fa-edit"></i></asp:LinkButton>
                                                 <asp:LinkButton ID="lnkDel" ToolTip="Delete Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="DEL"><i class="fa fa-trash-o"></i></asp:LinkButton>
-                                            
+                                            <asp:LinkButton ID="lnkUnpublish" ToolTip="Unpublish Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="UNPublish"><i class="fa fa-eye-slash"></i></asp:LinkButton>
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
                                         
                                         <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>--%>
                                     </ul>
-                                    <asp:LinkButton ID="lnkUnpublish" ToolTip="Unpublish Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="12" CommandName="UNPublish">Un-Publish</asp:LinkButton>
+                                    
                                 <asp:Label runat="server" ID="lblCateggory" Text="Historical"></asp:Label>
                                 </div>
                             </div>

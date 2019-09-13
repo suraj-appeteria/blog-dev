@@ -35,6 +35,7 @@
                             <script src="js/Share.js"></script>
                             <!-- AddToAny END -->
                             <asp:LinkButton ID="lnkLike" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="Red" ><i class="fa fa-heart-o"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkFav" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#FFD700" ><i style="padding-left:0.3em" class="fa fa-star-o"></i></asp:LinkButton>
                         </div>
 
 
@@ -305,6 +306,7 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
+
                             <div id="disqus_thread" class="row">
                                 <div class="col-lg-2">
                                     <center>
@@ -338,24 +340,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <!-- Subscribe Form Start -->
-            <div class="col-md-8 col-md-offset-2">
-                
-                    <div class="subscribe-form margin-top-10">
-                        <asp:TextBox runat="server" ID="TextBox1" placeholder="Write a comment" CssClass="text-input"></asp:TextBox>
-                        <button id="Button1" onserverclick="btnComment_ServerClick" runat="server" class="submit-btn" type="submit">Submit</button>
-                    </div>
-                    <p>Subscribe to my weekly newsletter</p>
-                    <label for="mc-email" class="mc-label"></label>
-                
-
-            </div>
-            <!-- Subscribe Form End -->
-
-
         </div>
 
 

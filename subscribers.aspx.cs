@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
 
-public partial class Comments : System.Web.UI.Page
+public partial class subscribers : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
@@ -23,12 +23,12 @@ public partial class Comments : System.Web.UI.Page
     {
         try
         {
-            db.AddParameter("@active", 2);
-            DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
-            rpComments.DataSource = ds;
-            rpComments.DataBind();
+            db.AddParameter("@user_type", "reader");
+            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+            rpSubscriber.DataSource = ds;
+            rpSubscriber.DataBind();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             lblErrorMsg.Text = ex.Message.ToString();
         }

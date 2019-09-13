@@ -58,6 +58,7 @@
                                     <li><a href="Category.aspx">Category</a></li>
                                     <li><a href="AddWork.aspx">Works</a></li>
                                     <li><a href="addpost.aspx">My Post</a></li>
+                                    <li><a href="Subscribers.aspx">Subscribers</a></li>
                                     <li><a href="Draft.aspx"><asp:Label runat="server" ID="lblDraft"></asp:Label></a></li>
                                     <li><a href="comments.aspx"><asp:Label runat="server" ID="lblReq"></asp:Label></a></li>
                                 </ul>

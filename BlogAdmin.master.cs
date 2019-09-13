@@ -13,22 +13,25 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
         {
             ulLogin.Visible = true;
             disqus_thread.Visible = false;
-            DataSet ds = db.ExecuteDataSet("select * from usermaster where user_type='writer'", CommandType.Text);
-            lnkName.Text = Convert.ToString(ds.Tables[0].Rows[0]["firstName"] + " " + ds.Tables[0].Rows[0]["lastName"]);
+            db.AddParameter("user_type", "writer");
+            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+            lnkName.Text = Convert.ToString(ds.Tables[0].Rows[0]["username"] );
             imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
         }
         else
         {
+            if (Session["type"].ToString() == "writer")
+            {
+                Response.Redirect("addpost.aspx");
+            }
             ulLogin.Visible = false;
             disqus_thread.Visible = true;
             imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
-            lblName.Text = Session["name"].ToString();
-            lblEmail.Text = Session["email"].ToString();
+            lblName.Text = Session["name"].ToString();            
             lblNo.Text = Session["contact"].ToString();
         }
     }

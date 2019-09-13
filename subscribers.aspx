@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="Comments.aspx.cs" Inherits="Comments" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="subscribers.aspx.cs" Inherits="subscribers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -11,7 +11,7 @@
 
                 <div class="sub-title">
                     <asp:label id="lblErrorMsg" runat="server" forecolor="Red"></asp:label>
-                    <h2>Comments Requests</h2>
+                    <h2>Subscribers</h2>
                 </div>
 
 
@@ -27,36 +27,24 @@
                                             <tbody>
                                                 <tr>
                                                     <th class="text-center">
-                                                        <asp:Label ID="Label2" runat="server" Text="Post"></asp:Label>
+                                                        <asp:label id="Label2" runat="server" text="User Name"></asp:label>
                                                     </th>
                                                     <th class="text-center">
-                                                        <asp:Label ID="Label3" runat="server" Text="Comments"></asp:Label>
+                                                        <asp:label id="Label3" runat="server" text="email"></asp:label>
                                                     </th>
                                                     <th class="text-center">
-                                                        <asp:Label ID="Label4" runat="server" Text="User"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="Label5" runat="server" Text="Email"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="Label6" runat="server" Text="Commented On"></asp:Label>
-                                                    </th>
-                                                    <th class="text-center">
-                                                        <asp:Label ID="Label1" runat="server" Text="Action"></asp:Label>
+                                                        <asp:label id="Label4" runat="server" text="mobile"></asp:label>
                                                     </th>
                                                 </tr>
-                                                <asp:Repeater ID="rpComments" runat="server">
+                                                <asp:repeater id="rpSubscriber" runat="server">
                                                     <ItemTemplate>
                                                         <tr>
-                                                            <td><%# Eval("posttitle") %></td>
-                                                            <td><%# Eval("comments") %></td>
-                                                            <td><%# Eval("username") %></td>                                                            
+                                                            <td><%# Eval("username") %></td>
                                                             <td><%# Eval("email") %></td>
-                                                            <td><%# Eval("commentedon","{0:dd/MM/yyyy}") %></td>
-                                                            <td><asp:LinkButton runat="server" CommandName="Accept" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Publish Comment"> <i class="fa fa-check"></i></asp:LinkButton></td>
-                                                        </tr>
+                                                            <td><%# Eval("mobile") %></td>                                                            
+                                                            </tr>
                                                     </ItemTemplate>
-                                                </asp:Repeater>
+                                                </asp:repeater>
                                             </tbody>
                                         </table>
 
