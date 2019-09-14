@@ -25,8 +25,8 @@ public partial class CategoryMaster : System.Web.UI.Page
         try
         {
             DataSet ds = db.ExecuteDataSet("getAllCategories", CommandType.StoredProcedure);
-            gvCategory.DataSource = ds;
-            gvCategory.DataBind();
+            rpCategory.DataSource = ds;
+            rpCategory.DataBind();
         }
         catch(Exception ex)
         {

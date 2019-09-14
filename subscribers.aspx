@@ -76,12 +76,12 @@
         <!-- Footer Start -->
         <div class="col-md-12 page-body margin-top-50 footer">
             <footer>
-                <ul class="menu-link">
+                <%--<ul class="menu-link">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="work.html">Work</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                </ul>
+                </ul>--%>
 
                 <p>© Copyright 2016 DevBlog. All rights reserved</p>
 

@@ -85,8 +85,7 @@
                                         </div>
                                         <div class="col-lg-9 ">
                                             <h4><asp:LinkButton ID="lblName" runat="server" PostBackUrl="Profile.aspx">Jitu Das</asp:LinkButton></h4>
-                                            <a>liked Post</a>
-                                            <a>Favorite</a>
+                                            <%--<a>Favorite</a>--%>
                                             <h6><asp:Label ID="lblNo" runat="server" Font-Size="15px" Text="9892362914"></asp:Label></h6>
                                         </div>
                                     </div>

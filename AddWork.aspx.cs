@@ -17,6 +17,20 @@ public partial class AddWork : System.Web.UI.Page
         if(!IsPostBack)
         {
             lblErrorMsg.Text = "";
+            FillRp();
+        }
+    }
+    protected void FillRp()
+    {
+        try
+        {
+            DataSet ds = db.ExecuteDataSet("get_works", CommandType.StoredProcedure);
+            rpWorks.DataSource = ds;
+            rpWorks.DataBind();
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
         }
     }
 

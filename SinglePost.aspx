@@ -58,183 +58,12 @@
                             <p>
                                 <asp:Label ID="lblPostDescription" runat="server"></asp:Label>
                             </p>
+                            <div class="you-may-also-like">
+                            <h3>Do you like this post ?  
+                                
+                                </h3>
+                                </div>
                         </div>
-                        <asp:Panel ID="pnlHtml" runat="server" Visible="false">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. <b>Cras vel tempus velit</b>, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodales. Sed posuere nisi ipsum, eget dignissim nunc dapibus eget. Aenean elementum <b><a href="javascript:void(0)" data-toggle="popover" data-placement="top" data-content="You can write any text here">Click me</a></b> sollicitudin sapien ut sapien fermentum aliquet mollis. Curabitur ac quam orci sodales quam ut tempor. <b data-toggle="tooltip" data-placement="top" title="You can write any text here.">Hover me</b> suspendisse, gravida in augue in, interdum bibendum dui. Suspendisse sit amet justo sit amet diam fringilla commodo. Praesent ac magna at metus malesuada tincidunt non ac arcu. Nunc gravida eu felis vel elementum. Vestibulum sodales quam ut tempor tempor. Donec sollicitudin sapien ut sapien fermentum, non ultricies nulla gravida.</p>
-
-
-                            <!-- Post Image Start -->
-                            <div class="post-image margin-top-40 margin-bottom-40">
-                                <img src="images/blog/1.jpg" alt="">
-                                <p>Image source from <a href="#" target="_blank">Link</a></p>
-                            </div>
-                            <!-- Post Image End -->
-
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
-
-
-
-                            <!-- Post Video Tutorial Start -->
-                            <div class="video-box margin-top-40 margin-bottom-40">
-                                <div class="video-tutorial">
-                                    <a class="video-popup" href="https://www.youtube.com/watch?v=O2Bsw3lrhvs" title="Video Tutorial">
-                                        <img src="images/blog/4.jpg" alt="">
-                                    </a>
-                                </div>
-                                <p>Integrate video on magnific popup for fast page load.</p>
-                            </div>
-                            <!-- Post Video Tutorial End -->
-
-
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
-
-
-
-                            <!-- Post Blockquote Start -->
-                            <div class="post-quote margin-top-40 margin-bottom-40">
-                                <blockquote>Design is not just what is look like, Design is how it's work.</blockquote>
-                            </div>
-                            <!-- Post Blockquote End -->
-
-
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
-
-
-
-                            <!-- Post Coding (SyntaxHighlighter) Start -->
-                            <div class="margin-top-40 margin-bottom-40">
-                                <pre class="brush: js">
-                                   /* Smooth Scroll */
-
-                                    $('a.smoth-scroll').on("click", function (e) {
-                                      var anchor = $(this);
-                                      $('html, body').stop().animate({
-                                      scrollTop: $(anchor.attr('href')).offset().top - 50
-                                      }, 1000);
-                                      e.preventDefault();
-                                     });
-				 
-                                   /* Scroll To Top */
-		
-                                   $(window).scroll(function(){
-                                     if ($(this).scrollTop() >= 500) {
-                                     $('.scroll-to-top').fadeIn();
-                                     } else {
-                                     $('.scroll-to-top').fadeOut();
-                                     }
-                                     });
-	
-	                               $('.scroll-to-top').click(function(){
-                                   $('html, body').animate({scrollTop : 0},800);
-                                   return false;
-                                    });
-                                  </pre>
-                            </div>
-                            <!-- Post Coding (SyntaxHighlighter) End -->
-
-
-
-                            <div class="post-title">
-                                <h2>How to implement?</h2>
-                            </div>
-
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
-
-
-
-
-                            <!-- Post Image Gallery Start -->
-                            <div class="row margin-top-40 margin-bottom-40">
-
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <a href="images/blog/7.jpg" class="image-popup" title="image Title">
-                                        <img src="images/blog/7.jpg" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <a href="images/blog/5.jpg" class="image-popup" title="image Title">
-                                        <img src="images/blog/5.jpg" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <a href="images/blog/6.jpg" class="image-popup" title="image Title">
-                                        <img src="images/blog/6.jpg" class="img-responsive" alt="">
-                                    </a>
-                                </div>
-
-                            </div>
-                            <!-- Post Image Gallery End -->
-
-
-
-                            <div class="post-title">
-                                <h2>Make it more awesome</h2>
-                            </div>
-
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est.</p>
-
-
-
-                            <!-- Post Blockquote (Italic Style) Start -->
-                            <blockquote class="margin-top-40 margin-bottom-40">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. Cras vel tempus velit, <b>et accumsan nisi</b>. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
-                            </blockquote>
-                            <!-- Post Blockquote (Italic Style) End -->
-
-
-
-
-                            <div class="post-title">
-                                <h2>Learn to check all the features</h2>
-                            </div>
-
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est.</p>
-
-
-
-                            <!-- Post List Style Start -->
-                            <div class="list">
-                                <ul>
-                                    <li>Ready to use Blog Template</li>
-                                    <li>It have all the necessary features which you need to run blog</li>
-                                    <li>Neat and Clean Typography</li>
-                                    <li>Speed Optimization</li>
-                                </ul>
-                            </div>
-
-
-
-                            <div class="list list-style margin-top-40">
-                                <ul>
-                                    <li>Ready to use Blog Template</li>
-                                    <li>It have all the necessary features which you need to run blog</li>
-                                    <li>Neat and Clean Typography</li>
-                                    <li>Speed Optimization</li>
-                                </ul>
-                            </div>
-
-
-                            <div class="list list-style-2 margin-top-40">
-                                <ul>
-                                    <li>Ready to use Blog Template</li>
-                                    <li>It have all the necessary features which you need to run blog</li>
-                                    <li>Neat and Clean Typography</li>
-                                    <li>Speed Optimization</li>
-                                </ul>
-                            </div>
-                            <!-- Post List Style End -->
-                        </asp:Panel>
-
-
-
                         <!-- Post Author Bio Box Start -->
                         <div class="about-author margin-top-70 margin-bottom-50">
 
@@ -310,7 +139,7 @@
                             <div id="disqus_thread" class="row">
                                 <div class="col-lg-2">
                                     <center>
-                                            <asp:Image CssClass="load-more-button" runat="server" ImageUrl="~/images/baby.jpg" /></center>
+                                            <asp:Image ID="imgComment" CssClass="load-more-button" runat="server" ImageUrl="~/images/Profile/default.png" /></center>
                                 </div>
                                 <div class="col-lg-10 ">
                                     <div class="subscribe-form margin-top-10">
@@ -348,10 +177,10 @@
         <div class="col-md-12 page-body margin-top-50 footer">
             <footer>
                 <ul class="menu-link">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="work.html">Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="post.aspx">Home</a></li>
+                    <li><a href="about.aspx">About</a></li>
+                    <li><a href="work.work">Work</a></li>
+                    <li><a href="contact.aspx">Contact</a></li>
                 </ul>
 
                 <p>© Copyright 2016 DevBlog. All rights reserved</p>

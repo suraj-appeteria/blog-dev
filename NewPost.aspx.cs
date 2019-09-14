@@ -67,7 +67,7 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@CreatedBy", 1);
             db.AddParameter("@tags", txtTags.Text);
             db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
-            db.AddParameter("@CreatedByEmail", "sg@gmail.com");
+            db.AddParameter("@CreatedByEmail", Session["email"].ToString());
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@mobile", DBNull.Value);
             db.AddParameter("@active", 1);
@@ -146,7 +146,7 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@CreatedBy", 1);
             db.AddParameter("@tags", txtTags.Text);
             db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
-            db.AddParameter("@CreatedByEmail", "sg@gmail.com");
+            db.AddParameter("@CreatedByEmail", Session["email"].ToString());
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@mobile", DBNull.Value);
             db.AddParameter("@active", 3);

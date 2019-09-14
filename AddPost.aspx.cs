@@ -13,7 +13,11 @@ public partial class AddPost : System.Web.UI.Page
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
-        FillRp();
+        if (!IsPostBack)
+        {
+            FillRp();
+            FillTrashGrid(true, false);
+        }
     }
 
     protected void FillRp()
@@ -27,7 +31,7 @@ public partial class AddPost : System.Web.UI.Page
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
-
+            
         }
         catch (Exception ex)
         {
@@ -54,12 +58,22 @@ public partial class AddPost : System.Web.UI.Page
                 db.AddParameter("@postid", e.CommandArgument.ToString());
                 db.ExecuteNonQuery("update posts set active=0 where postid=@postid", CommandType.Text);
                 FillRp();
+                lblErrorMsg.Text = "Post Deleted Successfully.";
             }
             else if (e.CommandName == "UNPublish")
             {
                 db.AddParameter("@postid", e.CommandArgument.ToString());
                 db.ExecuteNonQuery("update posts set active=3 where postid=@postid", CommandType.Text);
                 FillRp();
+                lblErrorMsg.Text = "Post Unpublished Successfully.";
+            }
+            else if (e.CommandName == "Active")
+            {
+                db.AddParameter("@postid", e.CommandArgument.ToString());
+                db.ExecuteNonQuery("update posts set active=1 where postid=@postid", CommandType.Text);
+                FillTrashGrid(false, true);             
+                FillRp();
+                lblErrorMsg.Text = "Post Publish Successfully.";
             }
 
         }
@@ -73,4 +87,72 @@ public partial class AddPost : System.Web.UI.Page
     {
         FillRp();
     }
+
+    protected void lnkDraft_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            DatabaseHelper db = new DatabaseHelper();
+            if (lnkDraft.Text == "Close")
+            {
+                pnlPost.Visible = true;
+                FillTrashGrid(true, false);
+                rpDraft.DataSource = null;
+                rpDraft.DataBind();
+                FillRp();
+
+
+            }
+            else
+            {
+                lnkDraft.Text = "Close";
+                lnkDraft.CssClass = "";
+                pnlPost.Visible = false;
+                FillTrashGrid(false, true);
+                FillRp();
+                
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
+
+    private void FillTrashGrid(bool showCount, bool showGrid)
+    {
+        try
+        {
+
+            db.AddParameter("@active", 0);
+            DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (showCount)
+                {
+                    lnkDraft.Visible = true;
+                    lnkDraft.Text = " Trash (" + ds.Tables[0].Rows.Count + ")";
+                }
+
+            }
+            else
+            {
+                lnkDraft.Visible = false;
+                pnlPost.Visible = true;
+            }
+            pnlDraft.Visible = false;
+            if (showGrid)
+            {
+                rpDraft.DataSource = ds;
+                rpDraft.DataBind();
+                pnlDraft.Visible = rpDraft.Items.Count > 0;
+            }
+           
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
+
 }

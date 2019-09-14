@@ -33,4 +33,38 @@ public partial class Comments : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
+
+    protected void rpComments_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        try
+        {
+            if(e.CommandName== "Accept")
+            {
+                db.AddParameter("@commentid",e.CommandArgument.ToString());
+                db.AddParameter("@active", 2);
+                DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    db.ExecuteNonQuery("update PostComments set active=1 where commentsid=" + e.CommandArgument.ToString());
+                    Util.SendEmail("suraj.appeteria@gmail.com", "Comment Approved", "Hi " + ds.Tables[0].Rows[0]["username"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
+                    FillGrid();
+                    lblErrorMsg.Text = "Comment Approved";
+                }
+            }
+            //else if (e.CommandName == "Reject")
+            //{
+            //    db.ExecuteNonQuery("update PostComments set active=1 where commentsid=" + e.CommandArgument.ToString());
+            //    FillGrid();
+            //    db.AddParameter("@active", 2);
+            //    db.AddParameter("@commentid", e.CommandArgument.ToString());
+            //    DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
+            //    Util.SendEmail("suraj.appeteria@gmail.com", "Comment Approved", "Hi " + ds.Tables[0].Rows[0]["username"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
+            //    lblErrorMsg.Text = "Comment Approved";
+            //}
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
 }

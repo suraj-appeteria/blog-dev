@@ -11,7 +11,7 @@
                             
                             <div class="sub-title">
                            		<h2>About Me</h2>
-                                <a href="contact.html"><i class="icon-envelope"></i></a>
+                                <a href="contact.aspx"><i class="icon-envelope"></i></a>
                              </div>
                             
                             
@@ -106,10 +106,10 @@
                        <div class="col-md-12 page-body margin-top-50 footer">
                           <footer>
                           <ul class="menu-link">
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="work.html">Work</a></li>
-                               <li><a href="contact.html">Contact</a></li>
+                               <li><a href="post.aspx">Home</a></li>
+                    <li><a href="about.aspx">About</a></li>
+                    <li><a href="work.work">Work</a></li>
+                    <li><a href="contact.aspx">Contact</a></li>
                             </ul>
                             
                           <p>© Copyright 2016 DevBlog. All rights reserved</p>

@@ -29,7 +29,7 @@
 
                         <!-- Portfolio Start -->
                         <div>
-                            
+
                             <!-- Portfolio Detail Start -->
                             <div class="row portfolio">
                                 <div class="col-sm-12 custom-pad-2">
@@ -40,18 +40,20 @@
                                                 <tr>
                                                     <td><b>Title</b></td>
                                                     <td>
-                                                     <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control"></asp:TextBox>
+                                                        <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control"></asp:TextBox>
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <td><b>Url</b></td>
-                                                    <td><asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox></td>
                                                 </tr>
 
                                                 <tr>
                                                     <td><b>About Work</b></td>
-                                                    <td><asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox></td>
+                                                    <td>
+                                                        <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Photo</b></td>
@@ -70,13 +72,71 @@
 
                         </div>
                         <!-- Portfolio End -->
+
+                        
                     </div>
 
                     <div class="col-md-12 text-center">
                         <%--<a href="javascript:void(0)" id="load-more-portfolio" class="load-more-button">Load</a>
                         <div id="portfolio-end-message"></div>--%>
                         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" CssClass="load-more-button" Text="Add" />
+                    <br /><br />
                     </div>
+                     <!-- Intro Start -->
+                        <div class="post-title margin-bottom-30">
+                            <h1> <span class="main-color">My Work</span></h1>
+                        </div>
+                        <!-- Intro End -->
+                    <div>
+                            <asp:Repeater ID="rpWorks" runat="server">
+                                <ItemTemplate>
+                                    <!-- Portfolio Detail Start images/portfolio/2.jpg portfolio-->
+
+                                    <div class="row">
+                                        <div class="col-sm-6 custom-pad-1">
+                                            <div class="image-carousel">
+                                                <img src="images/portfolio/2.jpg" class="img-responsive" alt="">
+                                               <%-- <asp:Image runat="server" ImageUrl='<%# "images/workimg/" + Eval("work_image_name") %>' CssClass="img-responsive" Width="500" Height="516" />--%>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6 custom-pad-2">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td><b>Title</b></td>
+                                                            <td><%# Eval("work_title") %></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td><b>Url</b></td>
+                                                            <td><a target="_blank" href='<%# Eval("work_url") %>' title="uipasta">Check Now</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td><b>About Work</b></td>
+                                                            <td><%# Eval("work_desc").ToString().Length > 150 ? Eval("work_desc").ToString().Substring(0,150) : Eval("work_desc").ToString() %>
+                                                                
+                                                                <asp:LinkButton runat="server" CommandArgument='<%# Eval("work_id") %>' CommandName="Read" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
+                                                            <%--<%# (Eval("work_desc").ToString().Length > 150) ? (Eval("work_desc").ToString().Substring(0, 150) + "...<a onclick='"+ String.Format("myFunction(\"{0}\");", Eval("work_desc"))+"' >read More</a>") : Eval("work_desc")%>--%>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br /><br />
+                                    <!-- Portfolio Detail End -->
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+                        </div>
 
                 </div>
 
@@ -89,12 +149,12 @@
         <!-- Footer Start -->
         <div class="col-md-12 page-body margin-top-50 footer">
             <footer>
-                <ul class="menu-link">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="work.html">Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+               <%-- <ul class="menu-link">
+                    <li><a href="addpost.aspx">Home</a></li>
+                    <li><a href="about.aspx">About</a></li>
+                    <li><a href="work.aspx">Work</a></li>
+                    <li><a href="contact.aspx">Contact</a></li>
+                </ul>--%>
 
                 <p>© Copyright 2016 DevBlog. All rights reserved</p>
 

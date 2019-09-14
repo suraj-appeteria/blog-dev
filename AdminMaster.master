@@ -55,7 +55,7 @@
                             <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>
                             <div id="menu" class="collapse">
                                 <ul class="menu-link">
-                                    <li><a href="Category.aspx">Category</a></li>
+                                    <li><a href="CategoryMaster.aspx">Category</a></li>
                                     <li><a href="AddWork.aspx">Works</a></li>
                                     <li><a href="addpost.aspx">My Post</a></li>
                                     <li><a href="Subscribers.aspx">Subscribers</a></li>
@@ -68,10 +68,10 @@
 
                             <div class="white-spacing">
                                 <h1>
-                                    <asp:LinkButton runat="server" ID="lnkName"></asp:LinkButton></h1>
+                                    <asp:LinkButton runat="server" ID="lnkName" CausesValidation="false"></asp:LinkButton></h1>
                                 <span>Web Developer</span>
                                 <br />
-                                <asp:LinkButton runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                                <asp:LinkButton CausesValidation="false" runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
                             </div>
 
                             <ul class="social-icon">

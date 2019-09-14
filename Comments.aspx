@@ -10,7 +10,8 @@
 
 
                 <div class="sub-title">
-                    <asp:label id="lblErrorMsg" runat="server" forecolor="Red"></asp:label>
+                    <center><asp:label id="lblErrorMsg" runat="server" forecolor="Red"></asp:label></center>
+
                     <h2>Comments Requests</h2>
                 </div>
 
@@ -45,7 +46,7 @@
                                                         <asp:Label ID="Label1" runat="server" Text="Action"></asp:Label>
                                                     </th>
                                                 </tr>
-                                                <asp:Repeater ID="rpComments" runat="server">
+                                                <asp:Repeater ID="rpComments" runat="server" OnItemCommand="rpComments_ItemCommand">
                                                     <ItemTemplate>
                                                         <tr>
                                                             <td><%# Eval("posttitle") %></td>
@@ -53,7 +54,11 @@
                                                             <td><%# Eval("username") %></td>                                                            
                                                             <td><%# Eval("email") %></td>
                                                             <td><%# Eval("commentedon","{0:dd/MM/yyyy}") %></td>
-                                                            <td><asp:LinkButton runat="server" CommandName="Accept" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Publish Comment"> <i class="fa fa-check"></i></asp:LinkButton></td>
+                                                            <td>
+                                                                <div class="col-lg-1"><asp:LinkButton runat="server" CommandName="Accept" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Publish Comment"> <i class="fa fa-check"></i></asp:LinkButton>
+                                                                </div>
+                                                                <div class="col-lg-1"><asp:LinkButton runat="server" Visible="false" CommandName="Reject" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Reject Comment"> <i class="fa fa-close"></i></asp:LinkButton></div>
+                                                            </td>
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
@@ -65,6 +70,7 @@
                             </div>
                             <br />
                             <br />
+                            
                             <!-- Portfolio Detail End -->
 
 
@@ -88,12 +94,12 @@
         <!-- Footer Start -->
         <div class="col-md-12 page-body margin-top-50 footer">
             <footer>
-                <ul class="menu-link">
+                <%--<ul class="menu-link">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="work.html">Work</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                </ul>
+                </ul>--%>
 
                 <p>© Copyright 2016 DevBlog. All rights reserved</p>
 

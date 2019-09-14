@@ -15,30 +15,35 @@ public partial class AdminMaster : System.Web.UI.MasterPage
     {
         try
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
-            {
-                Response.Redirect("post.aspx");
-            }
-            if (Session["type"].ToString() != "writer")
-            {
-                Response.Redirect("login.aspx");
-            }
-            else
-            {
-                lnkName.Text = Session["name"].ToString();
-                if (Session["url"].ToString() != null)
+          
+                if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
                 {
-                    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                    Response.Redirect("post.aspx");
+                }
+                if (Session["type"].ToString() != "writer")
+                {
+                    Response.Redirect("login.aspx");
                 }
                 else
                 {
-                    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                    lnkName.Text = Session["name"].ToString();
+                    if (Session["url"].ToString() != null)
+                    {
+                        imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                    }
+                    else
+                    {
+                        imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                    }
+                    db.AddParameter("@active", 2);
+                    DataSet ds = db.ExecuteDataSet("get_comments",CommandType.StoredProcedure);
+                    lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
+
+                    db.AddParameter("@active", 3);
+                    ds = db.ExecuteDataSet("select * from posts where active=@active", CommandType.Text);
+                    lblDraft.Text = "Drafts (" + ds.Tables[0].Rows.Count.ToString() + ")";
                 }
-                DataSet ds = db.ExecuteDataSet("select * from PostComments where active=2");
-                lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
-                ds = db.ExecuteDataSet("select * from posts where active=3");
-                lblDraft.Text = "Drafts (" + ds.Tables[0].Rows.Count.ToString() + ")";
-            }
+            
         }
         catch (Exception)
         {
