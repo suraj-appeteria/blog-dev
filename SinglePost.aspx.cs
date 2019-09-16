@@ -12,36 +12,57 @@ using System.Configuration;
 
 public partial class SinglePost : System.Web.UI.Page
 {
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Session["type"].ToString() == "writer")
+            {
+                this.MasterPageFile = "~/AdminMaster.master";
+            }
+            else
+            {
+                this.MasterPageFile = "~/BlogAdmin.master";
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();            
+        }
+    }
     DatabaseHelper db = new DatabaseHelper();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
         if (!IsPostBack)
         {
+           
             if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
             {
                 Session["userid"] = "0";
                 FillRp();
                 comment();
-            }
+                imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
+            }           
             else
             {
+                imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
                 FillRp();
                 comment();
                 db.AddParameter("@userid", Session["userid"]);
                 db.AddParameter("@postid", Request.QueryString["postid"]);                
                 DataSet ds = db.ExecuteDataSet("get_likes", CommandType.StoredProcedure);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables[0].Rows.Count > 0 && ds.Tables[1].Rows.Count>0)
                 {
                     if (ds.Tables[0].Rows[0]["reactiontypeid"].ToString() == "1" && ds.Tables[1].Rows[0]["reactiontypeid"].ToString() == "2")
                     {
                         lnkLike.Text = "<i class='fa fa-heart'></i>";
-                        lnkLike.ForeColor = System.Drawing.Color.Red;
+                        lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                         lnkLike.TabIndex = 1;
                         lnkLike.ToolTip = "Unlike";
 
                         lnkFav.Text = "<i class='fa fa-star'></i>";
-                        lnkFav.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFD700");
+                        lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                         lnkFav.TabIndex = 1;
                         lnkFav.ToolTip = "Remove From Favorite";
 
@@ -49,14 +70,14 @@ public partial class SinglePost : System.Web.UI.Page
                     else if (ds.Tables[0].Rows[0]["reactiontypeid"].ToString() == "1")
                     {
                         lnkLike.Text = "<i class='fa fa-heart'></i>";
-                        lnkLike.ForeColor = System.Drawing.Color.Red;
+                        lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                         lnkLike.TabIndex = 1;
                         lnkLike.ToolTip = "Unlike";
                     }
                     else if (ds.Tables[1].Rows[1]["reactiontypeid"].ToString() == "2")
                     {
                         lnkFav.Text = "<i class='fa fa-star'></i>";
-                        lnkFav.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFD700");
+                        lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                         lnkFav.TabIndex = 1;
                         lnkFav.ToolTip = "Remove From Favorite";
                     }
@@ -71,13 +92,20 @@ public partial class SinglePost : System.Web.UI.Page
         {
             string postid = Request.QueryString["postid"];
             db.AddParameter("@postid",postid);
-            db.AddParameter("@active", 1);
+            if (Request.QueryString["type"] == "Draft")
+            {
+                db.AddParameter("@active", 3);
+            }
+            else
+            {
+                db.AddParameter("@active", 1);
+            }            
             DataSet ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             lblposttitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString(); 
             lblCreatedOn.Text = ds.Tables[0].Rows[0]["CreatedOn"].ToString();
             lblcreatedbyemail.Text = ds.Tables[0].Rows[0]["createdbyemail"].ToString();
             lblPostDescription.Text = ds.Tables[0].Rows[0]["PostDescription"].ToString();
-            imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+            
 
             //db.AddParameter("@postid", postid);
             //ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
@@ -104,6 +132,7 @@ public partial class SinglePost : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
+
     protected void btnComment_ServerClick(object sender, EventArgs e)
     {
         try
@@ -135,6 +164,10 @@ public partial class SinglePost : System.Web.UI.Page
             if(Request.QueryString["type"]=="admin")
             {
                 Response.Redirect("addpost.aspx");
+            }
+            else if (Request.QueryString["type"] == "Draft")
+            {
+                Response.Redirect("Draft.aspx");
             }
             else
             {
@@ -176,7 +209,7 @@ public partial class SinglePost : System.Web.UI.Page
             if (lnkLike.TabIndex.ToString() == "0")
             {
                 lnkLike.Text = "<i class='fa fa-heart'></i>";
-                lnkLike.ForeColor = System.Drawing.Color.Red;
+                lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkLike.TabIndex = 1;
                 lnkLike.ToolTip = "Unlike";
                 lblErrorMsg.Text = "Post Liked";
@@ -184,7 +217,7 @@ public partial class SinglePost : System.Web.UI.Page
             else if (lnkLike.TabIndex.ToString() == "1")
             {
                 lnkLike.Text = "<i class='fa fa-heart-o'></i>";
-                lnkLike.ForeColor = System.Drawing.Color.Red;
+                lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkLike.TabIndex = 0;
                 lnkLike.ToolTip = "Like";
                 lblErrorMsg.Text = "Post Unliked";
@@ -213,7 +246,7 @@ public partial class SinglePost : System.Web.UI.Page
             if (lnkFav.TabIndex.ToString() == "0")
             {
                 lnkFav.Text = "<i class='fa fa-star'></i>";
-                lnkFav.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFD700");
+                lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkFav.TabIndex = 1;
                 lnkFav.ToolTip = "Remove From Favorite";
                 lblErrorMsg.Text = "Post Added To Favorite List";
@@ -221,7 +254,7 @@ public partial class SinglePost : System.Web.UI.Page
             else if (lnkFav.TabIndex.ToString() == "1")
             {
                 lnkFav.Text = "<i class='fa fa-star-o'></i>";
-                lnkFav.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FFD700");
+                lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkFav.TabIndex = 0;
                 lnkFav.ToolTip = "Add To Favorite";
                 lblErrorMsg.Text = "Post Removed From Favorite List";
@@ -237,4 +270,6 @@ public partial class SinglePost : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
+
 }
+

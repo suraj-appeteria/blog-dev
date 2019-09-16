@@ -40,7 +40,7 @@
             <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="White" Text=""></asp:Label></center>
 
             <br />
-            <img src="Login/images/image-1.png" alt="" class="image-1">
+            <%--<img src="Login/images/image-1.png" alt="" class="image-1">--%>
             <form runat="server" action="">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>
                 <asp:Panel runat="server" ID="pnlemail" Visible="true">
@@ -55,7 +55,7 @@
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Enter Valid Email Id" Display="None" ControlToValidate="txtEmail" CssClass="auto-style1" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                                 </td>
                                 <td>
-                                    <asp:LinkButton runat="server" ID="btnOtp" TabIndex="0" Font-Bold="true" ForeColor="#134575" Text="Get OTP" OnClick="btnOtp_Click" CausesValidation="false"></asp:LinkButton>
+                                    <asp:LinkButton runat="server" ID="btnOtp" TabIndex="0" Font-Bold="true" ForeColor="#450c3a" Text="Get OTP" OnClick="btnOtp_Click" CausesValidation="false" Font-Size="16px"></asp:LinkButton>
 
                                 </td>
                             </tr>
@@ -69,14 +69,14 @@
                     </div>
                 </div>
                    <br />
-                <asp:LinkButton ID="lnkResend" Font-Bold="true" ForeColor="#134575" runat="server" Text="Resend OTP" OnClick="btnOtp_Click"> </asp:LinkButton>
+                <asp:LinkButton ID="lnkResend" Font-Bold="true" ForeColor="#450c3a" runat="server" Text="Resend OTP" OnClick="btnOtp_Click" Font-Size="16px"> </asp:LinkButton>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Please Enter OTP" ControlToValidate="partitioned" Display="None"></asp:RequiredFieldValidator>
                 </center>
                     <button runat="server" id="btnNext" onserverclick="btnNext_ServerClick">
                         <span>Verify Otp</span>
                     </button>
                     <br />
-                    <asp:LinkButton ID="LinkButton1" Font-Bold="true" ForeColor="#134575" runat="server" Text="Sign in instead" PostBackUrl="~/Login.aspx" CausesValidation="false"> </asp:LinkButton>
+                    <center><asp:LinkButton ID="LinkButton1" Font-Bold="true" ForeColor="#450c3a" runat="server" Text="Sign in instead" PostBackUrl="~/Login.aspx" CausesValidation="false" Font-Size="18px"> </asp:LinkButton></center>
                 </asp:Panel>
                 <asp:Panel ID="pnlInfo" runat="server" Visible="false">
                     <h3>Create New Account ?</h3>
@@ -131,7 +131,7 @@
                     <center>
                     <div class="my-pic">
                         
-                        <asp:Image ID="imgProfile" runat="server" CssClass="avatar" ImageUrl="images/userProfile/user-icon.png"/>
+                        <asp:Image ID="imgProfile" runat="server" CssClass="avatar" ImageUrl="~/images/Profile/default.png"/>
                         <br /><br />
                         <asp:FileUpload runat="server" ID="fuImg" OnPreRender="fuImg_PreRender" ClientIDMode="Static" onchange="this.form.submit()"/>
 
@@ -143,7 +143,7 @@
                     <asp:HiddenField id="hdnFileName" runat="server"/>
                 </asp:Panel>
             </form>
-            <img src="Login/images/image-2.png" alt="" class="image-2">
+           <%-- <img src="Login/images/image-2.png" alt="" class="image-2">--%>
         </div>
 
     </div>

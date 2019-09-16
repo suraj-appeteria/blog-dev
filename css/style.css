@@ -72,7 +72,7 @@ html {
 
 a {
     text-decoration: none !important;
-    color: #1abc9c;
+    color: #450c3a;
 }
 
 a:hover,
@@ -80,12 +80,12 @@ a:focus,
 a:active {
     text-decoration: none;
     outline: none;
-    color: #333333;
+    color: #b9974e;
 }
 
 b {
     font-weight: 600;
-    color: #333333;
+    color: #450c3a;
 }
 
 p {
@@ -106,7 +106,7 @@ button {
 }
 
 .main-color {
-    color: #1abc9c;
+    color: #450c3a;
 }
 
 .page-body {
@@ -133,8 +133,8 @@ button {
 }
 
 .content-page {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-top: 1px dashed #dedede;
     border-bottom: 1px dashed #dedede;
 }
@@ -187,7 +187,7 @@ button {
 }
 
 .button-style {
-    color: #1abc9c;
+    color: #450c3a;
     overflow: hidden;
 }
 
@@ -195,7 +195,7 @@ button {
     position: absolute;
     font-size: 27px;
     line-height: 38px;
-    color: #1abc9c;
+    color: #b9974e;
    -webkit-transition: all 0.3s;
    -moz-transition: all 0.3s;
     transition: all 0.3s;
@@ -238,8 +238,8 @@ button {
     left: 50%;
     margin: -26px 0 0 -26px;
     font-size: 10px;
-    border-right: 5px solid #333333;
-    border-left: 5px solid #1abc9c;
+    border-right: 5px solid #450c3a;
+    border-left: 5px solid #b9974e;
     border-radius: 50%;
     -webkit-animation: spinner 700ms infinite linear;
     animation: spinner 700ms infinite linear;
@@ -278,7 +278,7 @@ button {
     top: 0px;
     font-size: 20px;
     color: #fff;
-    background: #1abc9c;
+    background: #450c3a;
     padding: 12px;
 }
 
@@ -306,14 +306,14 @@ button {
 
 .menu-link li a {
     display: block;
-    color: #333333;
+    color: #450c3a;
     text-align: center;
-    font-size: 13px;
+    font-size: 15px;
     transition: all 0.3s ease-in-out;
 }
 
 .menu-link li a:hover {
-    color: #1abc9c;
+    color: #b9974e;
 }
 
 
@@ -435,7 +435,7 @@ tr > td:nth-child(1){
     background-color: #ffffff;
     font-weight: 500;
     font-size: 13px;
-    color: #888888;
+    color: #450c3a;
     width: 140px;
 }
 
@@ -614,7 +614,7 @@ div.blog-post {
 }
 
 .blog-post .post-title h1 {
-    color: #333333;
+    color: #450c3a;
     font-size: 35px;
     line-height: 45px;
     font-weight: 700;
@@ -639,7 +639,7 @@ div.blog-post {
 .blog-post p {
     font-size: 16px;
     line-height: 30px;
-    color: #696868;
+    color: #450c3a;
     font-weight: 300;
     letter-spacing: 0.8px;
     font-family: "Poppins", sans-serif;
@@ -852,7 +852,7 @@ blockquote {
     font-size: 25px;
     line-height: 35px;
     font-weight: 600;
-    color: #1abc9c;
+    color: #450c3a;
     margin-bottom: 25px;
     letter-spacing: 0.5px;
 }
@@ -878,7 +878,7 @@ blockquote {
     font-size: 25px;
     line-height: 35px;
     font-weight: 600;
-    color: #1abc9c;
+    color: #450c3a;
     margin-bottom: 0px;
     letter-spacing: 0.5px;
 }
@@ -891,7 +891,7 @@ blockquote {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 2px dashed #1abc9c;
+    border: 2px dashed #b9974e;
     line-height: 90px;
     display: block;
     font-size: 16px;
@@ -902,9 +902,9 @@ blockquote {
 }
 
 .load-more-button:hover {
-    background-color: #1abc9c;
+    background-color: #450c3a;
     color: #ffffff;
-    box-shadow: 0px 7px 9px #696969;
+    box-shadow: 0px 7px 9px #b9974e;
 }
 
 .end {
@@ -941,8 +941,8 @@ blockquote {
 .subscribe-form .text-input {
 	padding: 20px;
 	border-radius: 50px;
-	border: solid 7px #1abc9c;
-	background: #333333;
+	border: solid 7px #b9974e;
+	background: #450c3ae8;
 	color: #ffffff;
 	width: 100%;
 	font-size: 15px;
@@ -991,18 +991,34 @@ blockquote {
 
 .subscribe-form .submit-btn {
 	position: absolute;
-	font-size: 16px;
-	letter-spacing: 0.7px;
-	color: #FFF;
-	background: #1abc9c;
-	border: none;
-	top: 5px;
-	right: 5px;
-	bottom: 5px;
-	border-radius: 50px;
-	width: 150px;
-	text-align: center;
-	outline: none;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #ffffff;
+    background: #450c3a;
+    border: none;
+    top: 7px;
+    right: 5px;
+    bottom: 7px;
+    border-radius: 64px;
+    width: 150px;
+    text-align: center;
+    outline: none;
+}
+
+.subscribe-form .submit-btn1 {
+	position: absolute;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #ffffff;
+    background: #450c3a;
+    border: none;
+    top: 7px;
+    right: 5px;
+    bottom: 12px;
+    border-radius: 64px;
+    width: 150px;
+    text-align: center;
+    outline: none;
 }
 
 .subscribe-form .submit-btn:active {
@@ -1022,7 +1038,7 @@ blockquote {
 }
 
 .footer p {
-    color: #797878;
+    color: #450c3a;
     font-size: 13px;
     line-height: 25px;
     padding: 0px 15px;
@@ -1158,7 +1174,7 @@ blockquote {
 .scroll-to-top {
     display: none;
     font-size: 40px;
-    color: #1abc9c;
+    color: #450c3a;
     position: fixed;
     right: 20px;
     bottom: 50px;
@@ -1168,7 +1184,7 @@ blockquote {
 
 .scroll-to-top:hover,
 .scroll-to-top:focus {
-    color: #333333;
+    color: #b9974e;
 }
 
 
@@ -1729,27 +1745,27 @@ blockquote {
 /* Background Color */
 
 .bg-color-1 {
-	background-color: #f306a0;
+	background-color: #450c3a;
 }
 
 .bg-color-2 {
-	background-color: #d60bfb;
+	background-color: #450c3a;
 }
 
 .bg-color-3 {
-	background-color: #d8be10;
+	background-color: #450c3a;
 }
 
 .bg-color-4 {
-	background-color: #0fd28a;
+	background-color: #450c3a;
 }
 
 .bg-color-5 {
-	background-color: #f97400;
+	background-color: #450c3a;
 }
 
 .bg-color-6 {
-	background-color: #08a6f3;
+	background-color: #450c3a;
 }
 
 
@@ -1792,7 +1808,7 @@ blockquote {
 /* UiPasta Credit */
 
 .uipasta-credit {
-    color: #333333;
+    color: #450c3a;
     text-align: center;
     margin-top: 20px;
 }

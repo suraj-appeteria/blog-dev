@@ -10,18 +10,25 @@ using DAL.SQLDataAccess;
 
 public partial class BlogAdmin : System.Web.UI.MasterPage
 {
+
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
+        db.AddParameter("user_type", "writer");
+        DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+        lnkName.Text = Convert.ToString(ds.Tables[0].Rows[0]["username"]);
+        imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
+
         if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
         {
             ulLogin.Visible = true;
             disqus_thread.Visible = false;
-            db.AddParameter("user_type", "writer");
-            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-            lnkName.Text = Convert.ToString(ds.Tables[0].Rows[0]["username"] );
-            imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
         }
+        //else if(Session["type"].ToString()=="writer")
+        //{
+        //    ulLogin.Visible = false;
+        //    disqus_thread.Visible = false;
+        //}
         else
         {
             if (Session["type"].ToString() == "writer")
@@ -31,7 +38,7 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
             ulLogin.Visible = false;
             disqus_thread.Visible = true;
             imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
-            lblName.Text = Session["name"].ToString();            
+            lblName.Text = Session["name"].ToString();
             lblNo.Text = Session["contact"].ToString();
         }
     }

@@ -9,7 +9,7 @@
         <div class="col-md-12 page-body">
             <div class="row">
                 <div class="sub-title">
-                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
+                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
                     <center><h2><asp:LinkButton ID="btnAdd" runat="server" Text="Write New Post" PostBackUrl="~/NewPost.aspx"></asp:LinkButton></h2></center>
                    <h4 class="text-right"><asp:LinkButton ID="lnkDraft" runat="server" CausesValidation="False" OnClick="lnkDraft_Click" Visible="False">Draft</asp:LinkButton></h4>
                 </div>
@@ -30,9 +30,9 @@
                                                     </asp:LinkButton>
                                                 </div>
                                                 <div class="col-lg-2">
-                                                    <asp:LinkButton ID="lnkEdit" ToolTip="Edit Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="EDT"><i class="fa fa-edit"></i></asp:LinkButton>
-                                                    <asp:LinkButton ID="lnkDel" ToolTip="Delete Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="DEL"><i class="fa fa-trash-o"></i></asp:LinkButton>
-                                                    <asp:LinkButton ID="lnkUnpublish" ToolTip="Unpublish Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="25" CommandName="UNPublish"><i class="fa fa-eye-slash"></i></asp:LinkButton>
+                                                    <asp:LinkButton ID="lnkEdit" ToolTip="Edit Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="20" CommandName="EDT"><i class="fa fa-edit"></i></asp:LinkButton>
+                                                    <asp:LinkButton ID="lnkDel" ToolTip="Delete Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="20" CommandName="DEL"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                                    <asp:LinkButton ID="lnkUnpublish" ToolTip="Unpublish Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="20" CommandName="UNPublish"><i class="fa fa-eye-slash"></i></asp:LinkButton>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,12 +50,11 @@
                                     <!-- Blog Post End -->
                                     <div class="col-md-12 page-body margin-top-10 footer">
                                         <ul class="knowledge">
-                                            <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
-                                            <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# " " +  Eval("likescount") %> </li>
-                                            <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
-
-                                            <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>--%>
-                                        </ul>
+                                        <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") + "  Views" %> </li>
+                                        <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </li>
+                                        <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </li>
+                                        <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
+                                    </ul>
 
                                         <asp:Label runat="server" ID="lblCateggory" Text="Historical"></asp:Label>
                                     </div>
@@ -108,12 +107,11 @@
                                     <!-- Blog Post End -->
                                     <div class="col-md-12 page-body margin-top-10 footer">
                                         <ul class="knowledge">
-                                            <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# " " +  Eval("viewscount") + "  Views" %> </li>
-                                            <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# " " +  Eval("likescount") %> </li>
-                                            <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# " " +  Eval("commentscount") %> </li>
-
-                                            <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# " " +  Eval("sharecount") %> </li>--%>
-                                        </ul>
+                                        <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") + "  Views" %> </li>
+                                        <li class="bg-color-4"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </li>
+                                        <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </li>
+                                        <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
+                                    </ul>
 
                                         <asp:Label runat="server" ID="lblCateggory" Text="Historical"></asp:Label>
                                     </div>

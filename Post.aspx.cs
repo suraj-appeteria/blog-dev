@@ -6,7 +6,6 @@ using DAL.SQLDataAccess;
 public partial class Post : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
-     
     protected void Page_Load(object sender, EventArgs e)
     {
         lblError.Text = "";
@@ -30,6 +29,7 @@ public partial class Post : System.Web.UI.Page
     {
         try
         {
+            Session["type"] = "";
             int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
             hdnPageNo.Value = counter.ToString();
             db.AddParameter("@page_no", counter);

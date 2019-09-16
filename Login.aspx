@@ -29,7 +29,7 @@
 
 		<div class="wrapper">
 			<div class="inner">
-                <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="White" Text=""></asp:Label></center>
+                <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
                 <br />
 				<%--<img src="Login/images/image-1.png" alt="" class="image-1">--%>
                 
@@ -51,10 +51,10 @@
                     <br />
                     <div class="form-holder">
                         <div>
-                            <span class="lnr lnr-user"><a style="color: #134575; font-size: 15px;" href="SignUp.aspx" ><b> New User ?</b></a></span>
+                            <span class="lnr lnr-user"><a style="color: #450c3a; font-size: 15px;" href="SignUp.aspx" ><b> New User ?</b></a></span>
                         </div>
                         <div class="form-holder" style="left: 180px">
-                            <span class="lnr lnr-lock"><a style="color: #134575; font-size: 15px;" href="ForgotPassword.aspx"><b> Forgot Password ?</b></a></span>
+                            <span class="lnr lnr-lock"><a style="color: #450c3a; font-size: 15px;" href="ForgotPassword.aspx"><b> Forgot Password ?</b></a></span>
                         </div>
                     </div>
                     <button onserverclick="btnLogin_Click" runat="server">

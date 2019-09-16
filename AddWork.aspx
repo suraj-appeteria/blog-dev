@@ -11,7 +11,7 @@
 
 
                 <div class="sub-title">
-                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
+                   <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
                     <h2>Add New Work</h2>
                     <a href="contact.html"><i class="icon-envelope"></i></a>
                 </div>

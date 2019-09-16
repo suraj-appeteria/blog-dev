@@ -9,6 +9,24 @@ using DAL.SQLDataAccess;
 
 public partial class Draft : System.Web.UI.Page
 {
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Session["type"].ToString() == "writer")
+            {
+                this.MasterPageFile = "~/AdminMaster.master";
+            }
+            else
+            {
+                this.MasterPageFile = "~/BlogAdmin.master";
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -53,6 +71,10 @@ public partial class Draft : System.Web.UI.Page
                 db.ExecuteNonQuery("update posts set active=1 where postid=@postid", CommandType.Text);
                 lblErrorMsg.Text = "Post Published";
                 FillRp();
+            }
+            else if (e.CommandName == "Read")
+            {
+                Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString() + "&type=Draft");
             }
 
         }

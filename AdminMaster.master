@@ -51,7 +51,7 @@
 
                         <div class="my-pic">
                             <%--<img src="images/pic/my-pic.png" alt="">--%>
-                            <asp:Image ID="imgProfile" runat="server" ImageUrl="~/images/Profile/default.png" Height="229" Width="280" />
+                            <asp:Image ID="imgProfile" runat="server" ImageUrl="~/images/Profile/default.png" Height="229"  />
                             <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>
                             <div id="menu" class="collapse">
                                 <ul class="menu-link">
@@ -71,7 +71,7 @@
                                     <asp:LinkButton runat="server" ID="lnkName" CausesValidation="false"></asp:LinkButton></h1>
                                 <span>Web Developer</span>
                                 <br />
-                                <asp:LinkButton CausesValidation="false" runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                                <asp:LinkButton CausesValidation="false" runat="server" ID="lnkLogout" OnClick="lnkLogout_Click" >Logout</asp:LinkButton>
                             </div>
 
                             <ul class="social-icon">

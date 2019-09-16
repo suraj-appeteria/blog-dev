@@ -34,8 +34,8 @@
                             <%--<script async src="https://static.addtoany.com/menu/page.js"></script>--%>
                             <script src="js/Share.js"></script>
                             <!-- AddToAny END -->
-                            <asp:LinkButton ID="lnkLike" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="Red" ><i class="fa fa-heart-o"></i></asp:LinkButton>
-                            <asp:LinkButton ID="lnkFav" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#FFD700" ><i style="padding-left:0.3em" class="fa fa-star-o"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkLike" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="#450c3a" ><i class="fa fa-heart-o"></i></asp:LinkButton>
+                            <asp:LinkButton ID="lnkFav" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#450c3a" ><i style="padding-left:0.3em" class="fa fa-star-o"></i></asp:LinkButton>
                         </div>
 
 
@@ -144,7 +144,7 @@
                                 <div class="col-lg-10 ">
                                     <div class="subscribe-form margin-top-10">
                                         <asp:TextBox runat="server" ID="txtComment" TextMode="MultiLine" placeholder="Write a comment" CssClass="text-input"></asp:TextBox>
-                                        <button id="btnComment" onserverclick="btnComment_ServerClick" runat="server" class="submit-btn" type="submit">Submit</button>
+                                        <button id="btnComment" onserverclick="btnComment_ServerClick" runat="server" class="submit-btn1" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </div>
