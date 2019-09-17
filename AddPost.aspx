@@ -5,7 +5,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Blog Post (Right Sidebar) Start -->
-    <div class="col-md-9">
         <div class="col-md-12 page-body">
             <div class="row">
                 <div class="sub-title">
@@ -68,7 +67,7 @@
                     <div class="col-md-12 text-center">
                         <%--<a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
                     <div id="post-end-message"></div>--%>
-                        <button id="btnLoad" runat="server" onserverclick="btnLoad_ServerClick" class="load-more-button"><span>Load</span> </button>
+                        <button id="btnLoad" runat="server" onserverclick="btnLoad_ServerClick" class="load-more-button"><span>More</span> </button>
                     </div>
                 </div>
                 <br />
@@ -126,29 +125,6 @@
 
 
         </div>
-
-        <!-- Footer Start -->
-        <div class="col-md-12 page-body margin-top-50 footer">
-            <footer>
-                <%--<ul class="menu-link">
-                    <li><a href="addpost.aspx">Home</a></li>
-                    <li><a href="about.aspx">About</a></li>
-                    <li><a href="work.aspx">Work</a></li>
-                    <li><a href="contact.aspx">Contact</a></li>
-                </ul>--%>
-
-                <p>© Copyright 2016 DevBlog. All rights reserved</p>
-
-
-                <!-- UiPasta Credit Start -->
-                <div class="uipasta-credit">Design By <a href="http://www.uipasta.com" target="_blank">UiPasta</a></div>
-                <!-- UiPasta Credit End -->
-
-
-            </footer>
-        </div>
-        <!-- Footer End -->
-    </div>
     <asp:HiddenField ID="hdnPageNo" Value="0" runat="server" />
     <!-- Blog Post (Right Sidebar) End -->
 

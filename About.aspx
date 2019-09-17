@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <!-- About Me (Right Sidebar) Start -->
-                 <div class="col-md-9">
                     <div class="col-md-12 page-body">
                     	<div class="row">
                     		
@@ -99,33 +98,7 @@
                            
                            
                          </div>
-                     
-                     
-                       
-                       <!-- Footer Start -->
-                       <div class="col-md-12 page-body margin-top-50 footer">
-                          <footer>
-                          <ul class="menu-link">
-                               <li><a href="post.aspx">Home</a></li>
-                    <li><a href="about.aspx">About</a></li>
-                    <li><a href="work.work">Work</a></li>
-                    <li><a href="contact.aspx">Contact</a></li>
-                            </ul>
-                            
-                          <p>© Copyright 2016 DevBlog. All rights reserved</p>
-						  
-						  
-						  <!-- UiPasta Credit Start -->
-                          <div class="uipasta-credit">Design By <a href="http://www.uipasta.com" target="_blank">UiPasta</a></div>
-                          <!-- UiPasta Credit End -->
-						  
-                           
-                         </footer>
-                       </div>
-                       <!-- Footer End -->
-                     
-                     
-                  </div>
+  
                   <!-- About Me (Right Sidebar) End -->
 </asp:Content>
 

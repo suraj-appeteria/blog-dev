@@ -33,7 +33,7 @@ public partial class AdminMaster : System.Web.UI.MasterPage
                     }
                     else
                     {
-                        imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
                     }
                     db.AddParameter("@active", 2);
                     DataSet ds = db.ExecuteDataSet("get_comments",CommandType.StoredProcedure);

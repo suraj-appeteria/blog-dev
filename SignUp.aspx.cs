@@ -68,7 +68,8 @@ public partial class SignUp : System.Web.UI.Page
             db.AddParameter("email", txtEmail.Text);
             ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
             Util.SendEmail(txtEmail.Text, "OTP To Varify Your Account", "Your 4 Digit OTP for account varification is "+ds.Tables[0].Rows[0]["OTP"]+" And Valid Till "+ ds.Tables[0].Rows[0]["valid_till"]);
-            lblErrorMsg.Text = "OTP sent to "+txtEmail.Text;
+            //lblErrorMsg.Text = "OTP sent to "+txtEmail.Text;
+            lblErrorMsg.Text = "Your Otp Is : " + ds.Tables[0].Rows[0]["OTP"].ToString();
         }
         catch (Exception ex)
         {

@@ -131,7 +131,7 @@
                     <center>
                     <div class="my-pic">
                         
-                        <asp:Image ID="imgProfile" runat="server" CssClass="avatar" ImageUrl="~/images/Profile/default.png"/>
+                        <asp:Image ID="imgProfile" runat="server" CssClass="avatar" ImageUrl="~/images/Profile/default.png" alt="" />
                         <br /><br />
                         <asp:FileUpload runat="server" ID="fuImg" OnPreRender="fuImg_PreRender" ClientIDMode="Static" onchange="this.form.submit()"/>
 

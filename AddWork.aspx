@@ -3,9 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <!-- Portfolio (Right Sidebar) Start -->
-    <div class="col-md-9">
-       
+     <!-- Portfolio (Right Sidebar) Start -->       
         <div class="col-md-12 page-body">
             <div class="row">
 
@@ -94,10 +92,10 @@
 
                                     <div class="row">
                                         <div class="col-sm-6 custom-pad-1">
-                                            <div class="image-carousel">
-                                                <img src="images/portfolio/2.jpg" class="img-responsive" alt="">
-                                               <%-- <asp:Image runat="server" ImageUrl='<%# "images/workimg/" + Eval("work_image_name") %>' CssClass="img-responsive" Width="500" Height="516" />--%>
-                                            </div>
+                                           <%-- <div class="image-carousel">--%>
+                                                <%--<img src="images/portfolio/2.jpg" class="img-responsive" alt="">--%>
+                                                <asp:Image runat="server" ImageUrl='<%# Eval("work_image_name").ToString() == "" ? ConfigurationManager.AppSettings["workurl"] + "writing.jpg" : ConfigurationManager.AppSettings["workurl"] + Eval("work_image_name") %>' CssClass="img-responsive" alt="" />                                                
+                                           <%-- </div>--%>
                                         </div>
 
 
@@ -143,33 +141,6 @@
             </div>
 
         </div>
-
-
-
-        <!-- Footer Start -->
-        <div class="col-md-12 page-body margin-top-50 footer">
-            <footer>
-               <%-- <ul class="menu-link">
-                    <li><a href="addpost.aspx">Home</a></li>
-                    <li><a href="about.aspx">About</a></li>
-                    <li><a href="work.aspx">Work</a></li>
-                    <li><a href="contact.aspx">Contact</a></li>
-                </ul>--%>
-
-                <p>© Copyright 2016 DevBlog. All rights reserved</p>
-
-
-                <!-- UiPasta Credit Start -->
-                <div class="uipasta-credit">Design By <a href="http://www.uipasta.com" target="_blank">UiPasta</a></div>
-                <!-- UiPasta Credit End -->
-
-
-            </footer>
-        </div>
-        <!-- Footer End -->
-
-
-    </div>
     <!-- Portfolio (Right Sidebar) End -->
 
 </asp:Content>

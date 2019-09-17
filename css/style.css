@@ -322,7 +322,7 @@ button {
 
 .about-fixed {
     position: fixed;
-    width: 20.8%;
+    width: 20.8%;    
 }
 
 .my-pic {
@@ -510,7 +510,8 @@ tr > td:nth-child(2) {
 .form-control {
 	border: 2px aliceblue transparent;
 	height: 50px;
-	border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px;
+	color:#450c3a;
+    border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px;
 	-webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 	   -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 	    -ms-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
@@ -523,6 +524,7 @@ tr > td:nth-child(2) {
 		    transition:all 150ms ease-in-out 0s;
 }
 .form-control:focus {
+    
 	border-color: #171717;
 	-webkit-box-shadow: none;
 	   -moz-box-shadow: none;
@@ -532,7 +534,7 @@ tr > td:nth-child(2) {
 }
 
 .form-control:focus {
-    border-color: #1abc9c;
+    border-color: #450c3a;
     border-width: 2px;
 }
 

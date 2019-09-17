@@ -22,7 +22,7 @@
             <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="White" Text=""></asp:Label></center>
               
             <br />
-            <img src="Login/images/image-1.png" alt="" class="image-1">
+          <%--  <img src="Login/images/image-1.png" alt="" class="image-1">--%>
             <form runat="server" action="">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>  
                 <center>
@@ -85,7 +85,7 @@
                 </button>
                 </asp:Panel>
             </form>
-            <img src="Login/images/image-2.png" alt="" class="image-2">
+           <%-- <img src="Login/images/image-2.png" alt="" class="image-2">--%>
         </div>
 
     </div>

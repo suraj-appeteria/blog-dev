@@ -78,7 +78,8 @@
                                     <div class="post-title">
                                         <asp:Label runat="server" Text="Post Title"></asp:Label>
                                         <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" placeholder="Write Post Title..."></asp:TextBox>
-                                    </div><br />
+                                    </div>
+                                    <br />
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="post-title">
@@ -92,7 +93,8 @@
                                                 <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" />
                                             </div>
                                         </div>
-                                    </div><br />
+                                    </div>
+                                    <br />
                                     <div class="post-info">
                                         <asp:Label runat="server" Text="Description"></asp:Label>
                                         <span>
@@ -133,7 +135,7 @@
 
                                             <br />
                                             <div class="col-md-12 text-center">
-                                                    <div class="col-lg-3"></div>
+                                                <div class="col-lg-3"></div>
                                                 <div class="col-lg-2">
                                                     <asp:Button ID="btnSave" OnClick="btnSave_Click" runat="server" CssClass="load-more-button" Text="Save" />
                                                 </div>
@@ -147,7 +149,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <asp:HiddenField runat="server" ID="hdnPostId" />
 
                                 </div>
