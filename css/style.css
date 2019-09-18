@@ -61,7 +61,7 @@ html {
 }
 
 ::selection {
-    background-color: #1abc9c;
+    background-color: #450c3a;
     color: #ffffff;
 }
 
@@ -352,7 +352,7 @@ button {
 }
 
 .my-detail span {
-    color: #464242;
+    color: #450c3a;
     font-weight: 400;
     line-height: 30px;
     font-size: 16px;
@@ -944,8 +944,8 @@ blockquote {
 	padding: 20px;
 	border-radius: 50px;
 	border: solid 7px #b9974e;
-	background: #450c3ae8;
-	color: #ffffff;
+	background: #ffffff;
+	color: #450c3a;
 	width: 100%;
 	font-size: 15px;
 	outline: none;
@@ -956,22 +956,22 @@ blockquote {
 }
 
 .subscribe-form .text-input::-webkit-input-placeholder {
-	color: #ffffff;
+	color: #450c3a;
 	opacity: 1;
 }
 
 .subscribe-form .text-input:-moz-placeholder {
-	color: #ffffff;
+	color: #450c3a;
 	opacity: 1;
 }
 
 .subscribe-form .text-input::-moz-placeholder {
-	color: #ffffff;
+	color: #450c3a;
 	opacity: 1;
 }
 
 .subscribe-form .text-input:-ms-input-placeholder {
-	color: #ffffff;
+	color: #450c3a;
 	opacity: 1;
 }
 

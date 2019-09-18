@@ -70,7 +70,7 @@
 
                                 <div class="white-spacing">
                                     <h1>
-                                        <asp:LinkButton runat="server" ID="lnkName" CausesValidation="false"></asp:LinkButton></h1>
+                                        <asp:LinkButton runat="server" ID="lnkName" CausesValidation="false" OnClick="lnkName_Click"></asp:LinkButton></h1>
                                     <span>Web Developer</span>
                                     <br />
                                     <asp:LinkButton CausesValidation="false" runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>

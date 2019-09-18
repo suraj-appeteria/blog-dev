@@ -58,6 +58,7 @@ public partial class AddPost : System.Web.UI.Page
                 db.AddParameter("@postid", e.CommandArgument.ToString());
                 db.ExecuteNonQuery("update posts set active=0 where postid=@postid", CommandType.Text);
                 FillRp();
+                FillTrashGrid(true, false);
                 lblErrorMsg.Text = "Post Deleted Successfully.";
             }
             else if (e.CommandName == "UNPublish")
@@ -65,6 +66,9 @@ public partial class AddPost : System.Web.UI.Page
                 db.AddParameter("@postid", e.CommandArgument.ToString());
                 db.ExecuteNonQuery("update posts set active=3 where postid=@postid", CommandType.Text);
                 FillRp();
+                FillTrashGrid(true, false);
+                AdminMaster admin = Master as AdminMaster;
+                admin.AdminSide();
                 lblErrorMsg.Text = "Post Unpublished Successfully.";
             }
             else if (e.CommandName == "Active")

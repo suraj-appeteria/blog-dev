@@ -34,55 +34,62 @@ public partial class SinglePost : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        try
         {
-           
-            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            if (!IsPostBack)
             {
-                Session["userid"] = "0";
-                FillRp();
-                comment();
-                imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
-            }           
-            else
-            {
-                imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
-                FillRp();
-                comment();
-                db.AddParameter("@userid", Session["userid"]);
-                db.AddParameter("@postid", Request.QueryString["postid"]);                
-                DataSet ds = db.ExecuteDataSet("get_likes", CommandType.StoredProcedure);
-                if (ds.Tables[0].Rows.Count > 0 && ds.Tables[1].Rows.Count>0)
+
+                if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
                 {
-                    if (ds.Tables[0].Rows[0]["reactiontypeid"].ToString() == "1" && ds.Tables[1].Rows[0]["reactiontypeid"].ToString() == "2")
+                    Session["userid"] = "0";
+                    FillRp();
+                    comment();
+                    imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
+                }
+                else
+                {
+                    imgComment.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
+                    FillRp();
+                    comment();
+                    db.AddParameter("@userid", Session["userid"]);
+                    db.AddParameter("@postid", Request.QueryString["postid"]);
+                    DataSet ds = db.ExecuteDataSet("get_likes", CommandType.StoredProcedure);
+                    if (ds.Tables[0].Rows.Count > 0 || ds.Tables[1].Rows.Count > 0)
                     {
-                        lnkLike.Text = "<i class='fa fa-heart'></i>";
-                        lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
-                        lnkLike.TabIndex = 1;
-                        lnkLike.ToolTip = "Unlike";
+                        if (ds.Tables[0].Rows.Count > 0 && ds.Tables[1].Rows.Count > 0)
+                        {
+                            lnkLike.Text = "<i class='fa fa-heart'></i>";
+                            lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
+                            lnkLike.TabIndex = 1;
+                            lnkLike.ToolTip = "Unlike";
 
-                        lnkFav.Text = "<i class='fa fa-star'></i>";
-                        lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
-                        lnkFav.TabIndex = 1;
-                        lnkFav.ToolTip = "Remove From Favorite";
+                            lnkFav.Text = "<i class='fa fa-star'></i>";
+                            lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
+                            lnkFav.TabIndex = 1;
+                            lnkFav.ToolTip = "Remove From Favorite";
 
-                    }
-                    else if (ds.Tables[0].Rows[0]["reactiontypeid"].ToString() == "1")
-                    {
-                        lnkLike.Text = "<i class='fa fa-heart'></i>";
-                        lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
-                        lnkLike.TabIndex = 1;
-                        lnkLike.ToolTip = "Unlike";
-                    }
-                    else if (ds.Tables[1].Rows[1]["reactiontypeid"].ToString() == "2")
-                    {
-                        lnkFav.Text = "<i class='fa fa-star'></i>";
-                        lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
-                        lnkFav.TabIndex = 1;
-                        lnkFav.ToolTip = "Remove From Favorite";
+                        }
+                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["reactiontypeid"].ToString() == "1")
+                        {
+                            lnkLike.Text = "<i class='fa fa-heart'></i>";
+                            lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
+                            lnkLike.TabIndex = 1;
+                            lnkLike.ToolTip = "Unlike";
+                        }
+                        else if (ds.Tables[1].Rows.Count > 0 && ds.Tables[1].Rows[0]["reactiontypeid"].ToString() == "2")
+                        {
+                            lnkFav.Text = "<i class='fa fa-star'></i>";
+                            lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
+                            lnkFav.TabIndex = 1;
+                            lnkFav.ToolTip = "Remove From Favorite";
+                        }
                     }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
         }
     }
 
@@ -149,6 +156,7 @@ public partial class SinglePost : System.Web.UI.Page
             db.ExecuteNonQuery("save_comments", CommandType.StoredProcedure);
             txtComment.Text = "";
             comment();
+            //Util.SendEmail(Session["adminemail"].ToString(), "New Comments From "+Session["name"].ToString(), "Hi " + Session["adminName"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Your comment will appear after approval.');", true); //run script
         }
         catch(Exception ex)

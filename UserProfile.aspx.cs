@@ -10,7 +10,28 @@ using System.Configuration;
 
 public partial class UserProfile : System.Web.UI.Page
 {
+
+    protected void Page_PreInit(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Session["type"].ToString() == "writer")
+            {
+                this.MasterPageFile = "~/AdminMaster.master";                
+            }
+            else
+            {
+                this.MasterPageFile = "~/BlogAdmin.master";
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
+
     DatabaseHelper db = new DatabaseHelper();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         lblErrorMsg.Text = "";
@@ -20,13 +41,14 @@ public partial class UserProfile : System.Web.UI.Page
             FillDetails();
         }
     }
+
     protected void FillDetails()
     {
         try
         {
-            if (Request.QueryString["userid"] == null)
+            if (Request.QueryString["userid"] != null)
             {
-                db.AddParameter("@userid", 18);//Request.QueryString["userid"].ToString()
+                db.AddParameter("@userid", Request.QueryString["userid"].ToString());
                 DataSet ds = db.ExecuteDataSet("get_users",CommandType.StoredProcedure);
                 txtName.Text = ds.Tables[0].Rows[0]["firstname"].ToString();
                 txtLastName.Text = ds.Tables[0].Rows[0]["lastname"].ToString();
@@ -55,12 +77,22 @@ public partial class UserProfile : System.Web.UI.Page
             }
             else
             {
-                db.AddParameter("@userid", 18);
+                db.AddParameter("@userid", Request.QueryString["userid"].ToString());
                 db.AddParameter("@mobile", txtMobile.Text);                
                 db.AddParameter("@FirstName", txtName.Text);
-                db.AddParameter("@LastName", txtLastName.Text);                
-                db.AddParameter("@PicUrl", "cuteBaby.jpeg");            
+                db.AddParameter("@LastName", txtLastName.Text);                                
                 db.ExecuteNonQuery("save_user", CommandType.StoredProcedure);
+                if (Request.QueryString["type"].ToString() == "user")
+                {
+                    BlogAdmin blogmaster = Master as BlogAdmin;
+                    blogmaster.userSide();
+                }
+                else if(Request.QueryString["type"].ToString() == "admin")
+                {
+                    AdminMaster admin = Master as AdminMaster;
+                    admin.AdminSide();
+                }               
+               
                 lblErrorMsg.Text = "Profile Updated Successfully.";
                 btnUpdate.Text = "Edit";
                 btnUpdate.TabIndex = 0;                
@@ -77,7 +109,6 @@ public partial class UserProfile : System.Web.UI.Page
         }
     }
 
-
     protected void fuProfile_PreRender(object sender, EventArgs e)
     {
         try
@@ -93,10 +124,20 @@ public partial class UserProfile : System.Web.UI.Page
                     {
                         fuProfile.SaveAs(Server.MapPath("images/profile/" + file_name));
                         imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileurl"] + file_name;
-                        db.AddParameter("@userid", 18);                        
+                        db.AddParameter("@userid", Request.QueryString["userid"].ToString());                        
                         db.AddParameter("@PicUrl", file_name);
                         db.ExecuteNonQuery("update usermaster set pic_url=@picurl where userid=@userid", CommandType.Text);
                         lblErrorMsg.Text = "Profile Picture Change Successfully.";
+                        if (Request.QueryString["type"].ToString() == "user")
+                        {
+                            BlogAdmin blogmaster = Master as BlogAdmin;
+                            blogmaster.userSide();
+                        }
+                        else if (Request.QueryString["type"].ToString() == "admin")
+                        {
+                            AdminMaster admin = Master as AdminMaster;
+                            admin.AdminSide();
+                        }
                     }
                     else
                     {

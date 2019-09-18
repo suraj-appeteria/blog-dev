@@ -50,8 +50,8 @@
                                         <li class="bg-color-5"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </li>
                                         <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
                                     </ul>
-
-                                    <asp:Label runat="server" ID="lblCateggory" Text="Historical"></asp:Label>
+                                    <br />                                     
+                                        <asp:Label runat="server" ID="lblCateggory" Text='<%# Eval("categories") %>'></asp:Label>
                                 </div>
                             </div>
                         </ItemTemplate>

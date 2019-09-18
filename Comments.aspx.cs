@@ -46,8 +46,10 @@ public partial class Comments : System.Web.UI.Page
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     db.ExecuteNonQuery("update PostComments set active=1 where commentsid=" + e.CommandArgument.ToString());
-                    Util.SendEmail("suraj.appeteria@gmail.com", "Comment Approved", "Hi " + ds.Tables[0].Rows[0]["username"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
+                    Util.SendEmail(ds.Tables[0].Rows[0]["email"].ToString(), "Comment Approved", "Hi " + ds.Tables[0].Rows[0]["username"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
                     FillGrid();
+                    AdminMaster admin = Master as AdminMaster;
+                    admin.AdminSide();
                     lblErrorMsg.Text = "Comment Approved";
                 }
             }

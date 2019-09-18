@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="BlogAdmin.master.cs" Inherits="BlogAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="BlogAdmin.master.cs" Inherits="BlogAdmin"  %>
 
 <!DOCTYPE html>
 
@@ -69,7 +69,9 @@
                             <div class="my-detail">
                                 <div class="white-spacing">
                                     <h1>
-                                        <asp:LinkButton runat="server" ID="lnkName" Text=""></asp:LinkButton></h1>
+                                    <asp:LinkButton runat="server" ID="lnkName" Text=""></asp:LinkButton>
+
+                                    </h1>
                                     <span>Web Developer</span>
                                     <br />
                                     <ul class="social-icon" runat="server" visible="true">
@@ -88,8 +90,8 @@
                                         </div>
                                         <div class="col-lg-9 ">
                                             <h4>
-                                                <asp:LinkButton ID="lblName" runat="server" ></asp:LinkButton></h4>
-                                            <%--<a>Favorite</a>--%>
+                                                <asp:LinkButton ID="lblName" runat="server" Text="" OnClick="lblName_Click"></asp:LinkButton></h4>
+                                                <asp:LinkButton ID="LinkButton1" runat="server" Text="Favorite Post" OnClick="LinkButton1_Click"></asp:LinkButton>
                                             <h6>
                                                 <asp:Label ID="lblNo" runat="server" Font-Size="15px" Text=""></asp:Label></h6>
                                         </div>

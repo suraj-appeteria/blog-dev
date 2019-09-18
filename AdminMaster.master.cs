@@ -15,41 +15,49 @@ public partial class AdminMaster : System.Web.UI.MasterPage
     {
         try
         {
-          
-                if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
-                {
-                    Response.Redirect("post.aspx");
-                }
-                if (Session["type"].ToString() != "writer")
-                {
-                    Response.Redirect("login.aspx");
-                }
-                else
-                {
-                    lnkName.Text = Session["name"].ToString();
-                    if (Session["url"].ToString() != null)
-                    {
-                        imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + Session["url"].ToString();
-                    }
-                    else
-                    {
-                    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
-                    }
-                    db.AddParameter("@active", 2);
-                    DataSet ds = db.ExecuteDataSet("get_comments",CommandType.StoredProcedure);
-                    lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
 
-                    db.AddParameter("@active", 3);
-                    ds = db.ExecuteDataSet("select * from posts where active=@active", CommandType.Text);
-                    lblDraft.Text = "Drafts (" + ds.Tables[0].Rows.Count.ToString() + ")";
-                }
-            
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                Response.Redirect("post.aspx");
+            }
+            if (Session["type"].ToString() != "writer")
+            {
+                Response.Redirect("login.aspx");
+            }
+            else
+            {
+                AdminSide();
+            }
+
         }
         catch (Exception)
         {
             Response.Redirect("~/Login.aspx");
         }
 
+    }
+
+    public void AdminSide()
+    {
+        db.AddParameter("@userid", Session["userid"].ToString());
+        DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);        
+        lnkName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
+        
+        if (Session["url"].ToString() != null)
+        {
+            imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();            
+        }
+        else
+        {
+            imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
+        }
+        db.AddParameter("@active", 2);
+        ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
+        lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
+
+        db.AddParameter("@active", 3);
+        ds = db.ExecuteDataSet("select * from posts where active=@active", CommandType.Text);
+        lblDraft.Text = "Drafts (" + ds.Tables[0].Rows.Count.ToString() + ")";
     }
 
     public void DisableCriticalJavaScriptFiles()
@@ -63,4 +71,10 @@ public partial class AdminMaster : System.Web.UI.MasterPage
         System.Web.Security.FormsAuthentication.SignOut();
         Response.Redirect("~/post.aspx");
     }
+
+    protected void lnkName_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("userProfile.aspx?type=admin&userid=" + Session["userid"].ToString());
+    }
+    
 }
