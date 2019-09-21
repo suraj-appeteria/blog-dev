@@ -90,7 +90,7 @@
                                         <div class="col-lg-6">
                                             <div class="post-title">
                                                 <asp:Label runat="server" Text="Image Url"></asp:Label>
-                                                <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" />
+                                                <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" ClientIDMode="Static" onchange="this.form.submit()"/>
                                             </div>
                                         </div>
                                     </div>

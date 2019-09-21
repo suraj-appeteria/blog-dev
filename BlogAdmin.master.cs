@@ -13,8 +13,7 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
 
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
-    {
-           
+    {           
         db.AddParameter("user_type", "writer");
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
         //Session["adminemail"] = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
