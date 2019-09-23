@@ -14,7 +14,8 @@
 
 
             <div class="sub-title">
-                <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
+                <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
+                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>My Portfolio</h2>
                 <a href="contact.aspx"><i class="icon-envelope"></i></a>
             </div>
@@ -41,15 +42,15 @@
                                 <!-- Portfolio Detail Start images/portfolio/2.jpg portfolio-->
 
                                 <div class="row">
-                                    <div class="col-sm-6 custom-pad-1">
+                                    <div class="col-sm-5 custom-pad-1">
                                         <%-- <div class="image-carousel">--%>
                                         <%-- <img src="images/portfolio/2.jpg" class="img-responsive" alt="">--%>
-                                        <asp:Image runat="server" ImageUrl='<%# Eval("work_image_name").ToString() == "" ? ConfigurationManager.AppSettings["workurl"] + "writing.jpg" : ConfigurationManager.AppSettings["workurl"] + Eval("work_image_name") %>' CssClass="img-responsive" alt="" />
+                                        <asp:Image runat="server" ImageUrl='<%# Eval("work_image_name").ToString() == "" ? ConfigurationManager.AppSettings["workurl"] + "writing.jpg" : ConfigurationManager.AppSettings["workurl"] + Eval("work_image_name") %>' CssClass="img-responsive" Height="330px" Width="347px"/>
                                         <%--  </div>--%>
                                     </div>
 
 
-                                    <div class="col-sm-6 custom-pad-2">
+                                    <div class="col-sm-7 custom-pad-2">
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <tbody>
@@ -102,15 +103,18 @@
 
 
         <!-- Subscribe Form Start -->
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
             <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
 
                 <div class="subscribe-form margin-top-20">
-                    <input id="mc-email" type="email" placeholder="Email Address" class="text-input">
-                    <button class="submit-btn" type="submit">Submit</button>
+                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    <asp:Button class="submit-btn" id="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
                 </div>
-                <p>Subscribe to my weekly newsletter</p>
-                <label for="mc-email" class="mc-label"></label>
+                <center><p>Subscribe for new post notification</p>
+                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
+                <br />
             </form>
 
         </div>

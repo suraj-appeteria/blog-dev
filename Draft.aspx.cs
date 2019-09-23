@@ -71,6 +71,8 @@ public partial class Draft : System.Web.UI.Page
                 db.ExecuteNonQuery("update posts set active=1 where postid=@postid", CommandType.Text);
                 lblErrorMsg.Text = "Post Published";
                 FillRp();
+                AdminMaster master = Master as AdminMaster;
+                master.AdminSide();
             }
             else if (e.CommandName == "Read")
             {

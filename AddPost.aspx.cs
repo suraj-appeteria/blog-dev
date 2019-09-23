@@ -77,7 +77,7 @@ public partial class AddPost : System.Web.UI.Page
                 db.ExecuteNonQuery("update posts set active=1 where postid=@postid", CommandType.Text);
                 FillTrashGrid(false, true);             
                 FillRp();
-                lblErrorMsg.Text = "Post Publish Successfully.";
+                lblErrorMsg.Text = "Post Active Successfully.";
             }
 
         }

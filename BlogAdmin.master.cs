@@ -16,9 +16,9 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
     {           
         db.AddParameter("user_type", "writer");
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-        //Session["adminemail"] = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
-        //Session["adminName"] = Convert.ToString(ds.Tables[0].Rows[0]["firstname"]) + " " + Convert.ToString(ds.Tables[0].Rows[0]["lastname"]);
-        lnkName.Text = Convert.ToString(ds.Tables[0].Rows[0]["firstname"])+ " "+ ds.Tables[0].Rows[0]["lastname"].ToString();
+        Session["adminemail"] = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
+        Session["adminName"] = Convert.ToString(ds.Tables[0].Rows[0]["firstname"]) + " " + Convert.ToString(ds.Tables[0].Rows[0]["lastname"]);
+        lnkName.Text = Convert.ToString(ds.Tables[0].Rows[0]["firstname"]) + " " + ds.Tables[0].Rows[0]["lastname"].ToString();
         imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
 
         if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))

@@ -23,7 +23,7 @@ public partial class Comments : System.Web.UI.Page
     {
         try
         {
-            db.AddParameter("@active", 2);
+            db.AddParameter("@active", 1);
             DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
             rpComments.DataSource = ds;
             rpComments.DataBind();
@@ -38,19 +38,19 @@ public partial class Comments : System.Web.UI.Page
     {
         try
         {
-            if(e.CommandName== "Accept")
+            if(e.CommandName== "DEL")
             {
                 db.AddParameter("@commentid",e.CommandArgument.ToString());
-                db.AddParameter("@active", 2);
+                db.AddParameter("@active", 1);
                 DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    db.ExecuteNonQuery("update PostComments set active=1 where commentsid=" + e.CommandArgument.ToString());
-                    Util.SendEmail(ds.Tables[0].Rows[0]["email"].ToString(), "Comment Approved", "Hi " + ds.Tables[0].Rows[0]["username"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
+                    db.ExecuteNonQuery("update PostComments set active=0 where commentsid=" + e.CommandArgument.ToString());
+                    //Util.SendEmail(ds.Tables[0].Rows[0]["email"].ToString(), "Comment Approved", "Hi " + ds.Tables[0].Rows[0]["username"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
                     FillGrid();
                     AdminMaster admin = Master as AdminMaster;
                     admin.AdminSide();
-                    lblErrorMsg.Text = "Comment Approved";
+                    lblErrorMsg.Text = "Comment Delete Successfully.";
                 }
             }
             //else if (e.CommandName == "Reject")

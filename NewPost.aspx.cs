@@ -28,6 +28,7 @@ public partial class NewPost : System.Web.UI.Page
                     txtTitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString();
                     txtDescription.Text = ds.Tables[0].Rows[0]["postdescription"].ToString();
                     txtTags.Text = ds.Tables[0].Rows[0]["tags"].ToString();
+                    hdnFileUpload.Value = ds.Tables[0].Rows[0]["ImageUrl"].ToString();
                     ds = db.ExecuteDataSet("select * from PostCategory where postid=" + Request.QueryString["postid"].ToString());
                     hdnPostId.Value = Request.QueryString["postid"].ToString();
                 }
@@ -170,9 +171,8 @@ public partial class NewPost : System.Web.UI.Page
                 }
             }
             lblErrorMsg.Text = "Post Save In Draft...";
-            txtDescription.Text = "";
-            txtTitle.Text = "";
-            Response.Redirect("addpost.aspx");
+           
+            
 
         }
         catch (Exception ex)

@@ -47,8 +47,12 @@
 
 
 
-/* Global Style */
 
+
+
+
+
+/* Global Style */
 
 body {
     font-family: "Poppins", sans-serif;
@@ -322,7 +326,8 @@ button {
 
 .about-fixed {
     position: fixed;
-    width: 20.8%;    
+    width: 18.8%;   
+    /*left:50px;*/
 }
 
 .my-pic {
@@ -365,8 +370,9 @@ button {
 .knowledge {
     list-style: none;
     padding: 2px;
-    margin: 0;
+    margin: -6px;
     padding-left: 0px;
+    padding-top:20px;
 }
 
 .knowledge:before,
@@ -381,9 +387,8 @@ button {
 
 .knowledge li {
     display: inline-block;
-    color: #ffffff;
-    margin: 4px 4px;
-    padding: 10px 20px;
+    color: #450c3a;    
+    padding: 4px 10px;
     font-size: 12px;
     letter-spacing: 0.6px;
     margin-left: 0px;
@@ -634,7 +639,7 @@ div.blog-post {
     font-size: 14px;
     line-height: 30px;
     font-weight: 500;
-    padding: 10px 0;
+    /*padding: 10px 0;*/
     color: #8c8c8c;
 }
 
@@ -1747,27 +1752,27 @@ blockquote {
 /* Background Color */
 
 .bg-color-1 {
-	background-color: #450c3a;
+	background-color: #ffffff;
 }
 
 .bg-color-2 {
-	background-color: #450c3a;
+	background-color: #ffffff;
 }
 
 .bg-color-3 {
-	background-color: #450c3a;
+	background-color: #ffffff;
 }
 
 .bg-color-4 {
-	background-color: #450c3a;
+	background-color: #ffffff;
 }
 
 .bg-color-5 {
-	background-color: #450c3a;
+	background-color: #ffffff;
 }
 
 .bg-color-6 {
-	background-color: #450c3a;
+	background-color: #ffffff;
 }
 
 

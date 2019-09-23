@@ -55,7 +55,7 @@
                                                         <td><%# Eval("commentedon","{0:dd/MM/yyyy}") %></td>
                                                         <td>
                                                             <div class="col-lg-1">
-                                                                <asp:LinkButton runat="server" CommandName="Accept" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Publish Comment"> <i class="fa fa-check"></i></asp:LinkButton>
+                                                                <asp:LinkButton runat="server" OnClientClick="return confirm('Do you reall want to delete this comment ?')" CommandName="DEL" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Delete Comment"> <i class="fa fa-trash" ></i></asp:LinkButton>
                                                             </div>
                                                             <div class="col-lg-1">
                                                                 <asp:LinkButton runat="server" Visible="false" CommandName="Reject" CommandArgument='<%# Eval("commentsid") %>' Font-Size="18px" ToolTip="Reject Comment"> <i class="fa fa-close"></i></asp:LinkButton></div>

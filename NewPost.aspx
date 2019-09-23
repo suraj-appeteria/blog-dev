@@ -68,7 +68,7 @@
                         <div class="col-md-12 page-body">
                             <div class="row">
                                 <div class="sub-title" style="padding-top: 0px">
-                                    <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
+                                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                                 </div>
                                 <div class="post-title text-center">
                                     <h2>Add New Post</h2>
@@ -159,9 +159,9 @@
                                     <footer>
                                         <ul class="menu-link">
                                             <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="work.html">Work</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="about.aspx">About</a></li>
+                                            <li><a href="work.aspx">Work</a></li>
+                                            <li><a href="contact.aspx">Contact</a></li>
                                         </ul>
 
                                         <p>© Copyright 2016 DevBlog. All rights reserved</p>

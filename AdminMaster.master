@@ -62,7 +62,7 @@
                                         <li><a href="Draft.aspx">
                                             <asp:Label runat="server" ID="lblDraft"></asp:Label></a></li>
                                         <li><a href="comments.aspx">
-                                            <asp:Label runat="server" ID="lblReq"></asp:Label></a></li>
+                                            <asp:Label runat="server" ID="lblReq" Text="Comments"></asp:Label></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -77,10 +77,9 @@
                                 </div>
 
                                 <ul class="social-icon">
-                                    <li><a href="#" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#" target="_blank" class="github"><i class="fa fa-github"></i></a></li>
+                                    <li><a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/login" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
 
                             </div>

@@ -10,6 +10,7 @@ using DAL.SQLDataAccess;
 using System.Drawing;
 using System.Configuration;
 
+
 public partial class SinglePost : System.Web.UI.Page
 {
     protected void Page_PreInit(object sender, EventArgs e)
@@ -35,7 +36,7 @@ public partial class SinglePost : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         try
-        {
+        {            
             if (!IsPostBack)
             {
 
@@ -58,12 +59,12 @@ public partial class SinglePost : System.Web.UI.Page
                     {
                         if (ds.Tables[0].Rows.Count > 0 && ds.Tables[1].Rows.Count > 0)
                         {
-                            lnkLike.Text = "<i class='fa fa-heart'></i>";
+                            lnkLike.Text = "<i class='fa fa-thumbs-up'></i>";
                             lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                             lnkLike.TabIndex = 1;
                             lnkLike.ToolTip = "Unlike";
 
-                            lnkFav.Text = "<i class='fa fa-star'></i>";
+                            lnkFav.Text = "<i class='fa fa-heart'></i>";
                             lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                             lnkFav.TabIndex = 1;
                             lnkFav.ToolTip = "Remove From Favorite";
@@ -71,14 +72,14 @@ public partial class SinglePost : System.Web.UI.Page
                         }
                         else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["reactiontypeid"].ToString() == "1")
                         {
-                            lnkLike.Text = "<i class='fa fa-heart'></i>";
+                            lnkLike.Text = "<i class='fa fa-thumbs-up'></i>";
                             lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                             lnkLike.TabIndex = 1;
                             lnkLike.ToolTip = "Unlike";
                         }
                         else if (ds.Tables[1].Rows.Count > 0 && ds.Tables[1].Rows[0]["reactiontypeid"].ToString() == "2")
                         {
-                            lnkFav.Text = "<i class='fa fa-star'></i>";
+                            lnkFav.Text = "<i class='fa fa-heart'></i>";
                             lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                             lnkFav.TabIndex = 1;
                             lnkFav.ToolTip = "Remove From Favorite";
@@ -110,14 +111,12 @@ public partial class SinglePost : System.Web.UI.Page
             DataSet ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             lblposttitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString(); 
             lblCreatedOn.Text = ds.Tables[0].Rows[0]["CreatedOn"].ToString();
-            lblcreatedbyemail.Text = ds.Tables[0].Rows[0]["createdbyemail"].ToString();
+            //lblcreatedbyemail.Text = ds.Tables[0].Rows[0]["createdbyemail"].ToString();
             lblPostDescription.Text = ds.Tables[0].Rows[0]["PostDescription"].ToString();
             
-
-            //db.AddParameter("@postid", postid);
-            //ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             rpInner.DataSource = ds.Tables[1];
             rpInner.DataBind();            
+            
         }
         catch(Exception ex)
         {
@@ -156,10 +155,10 @@ public partial class SinglePost : System.Web.UI.Page
             db.ExecuteNonQuery("save_comments", CommandType.StoredProcedure);
             txtComment.Text = "";
             comment();
-            //Util.SendEmail(Session["adminemail"].ToString(), "New Comments From "+Session["name"].ToString(), "Hi " + Session["adminName"].ToString() + ", <br / >Thanks for your comment ! It have been approved. ");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Your comment will appear after approval.');", true); //run script
+            Util.SendEmail(Session["adminemail"].ToString(), "New Comments From "+Session["name"].ToString(), "Hi " + Session["adminName"].ToString() + ", <br / >You have new comments from "+ Session["name"].ToString() + "<br /> on yout post '"+ lblposttitle.Text+ "'. ");
+            //Session["adminemail"].ToString(),ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Your comment will appear after approval.');", true); //run script
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             lblErrorMsg.Text = ex.Message.ToString();
         }
@@ -216,7 +215,7 @@ public partial class SinglePost : System.Web.UI.Page
             }
             if (lnkLike.TabIndex.ToString() == "0")
             {
-                lnkLike.Text = "<i class='fa fa-heart'></i>";
+                lnkLike.Text = "<i class='fa fa-thumbs-up'></i>";
                 lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkLike.TabIndex = 1;
                 lnkLike.ToolTip = "Unlike";
@@ -224,7 +223,7 @@ public partial class SinglePost : System.Web.UI.Page
             }
             else if (lnkLike.TabIndex.ToString() == "1")
             {
-                lnkLike.Text = "<i class='fa fa-heart-o'></i>";
+                lnkLike.Text = "<i class='fa fa-thumbs-o-up'></i>";
                 lnkLike.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkLike.TabIndex = 0;
                 lnkLike.ToolTip = "Like";
@@ -253,7 +252,7 @@ public partial class SinglePost : System.Web.UI.Page
             }
             if (lnkFav.TabIndex.ToString() == "0")
             {
-                lnkFav.Text = "<i class='fa fa-star'></i>";
+                lnkFav.Text = "<i class='fa fa-heart'></i>";
                 lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkFav.TabIndex = 1;
                 lnkFav.ToolTip = "Remove From Favorite";
@@ -261,7 +260,7 @@ public partial class SinglePost : System.Web.UI.Page
             }
             else if (lnkFav.TabIndex.ToString() == "1")
             {
-                lnkFav.Text = "<i class='fa fa-star-o'></i>";
+                lnkFav.Text = "<i class='fa fa-heart-o'></i>";
                 lnkFav.ForeColor = ColorTranslator.FromHtml("#450c3a");
                 lnkFav.TabIndex = 0;
                 lnkFav.ToolTip = "Add To Favorite";

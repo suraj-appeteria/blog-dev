@@ -1,0 +1,80 @@
+﻿.promo-item2 {
+    display: table;
+    width: 99%;
+    float: left;
+    top: 10px;
+    margin-left: 0.25%;
+    margin-right: 0.25% !important;
+    height: 350px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0px;
+    position: relative;
+}
+
+.promo-overlay2 {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    position: absolute;
+    width: 80%;
+    margin-top: 60px;
+    margin-left: 10%;
+}
+
+    .promo-overlay2 h1 {
+        color: #000;
+        line-height: 1.5em;
+        padding: 20px 10px 25px 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        background: rgba(255, 255, 255, 0.87);
+        font-weight: 100;
+        text-transform: capitalize;
+        font-style: normal;
+        border: none;
+        margin-left: 0px;
+    }
+
+    .promo-overlay2 .cat {
+        font-size: 12px;
+        display: none !important;
+        font-weight: 300;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+.promomore {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: -40px !important;
+}
+
+    .promomore a {
+        background: #450c3a;
+        width: 90px;
+        padding: 9px;
+        color: #fff;
+        font-size: 12px;
+        margin: 0 auto;
+        z-index: 10000;
+        border: 1px solid #e5a2b0;
+        letter-spacing: 2px;
+    }
+
+        .promomore a:hover {
+            background: #b9974e;
+            border: 1px solid #000;
+            -o-transition: .25s;
+            -ms-transition: .25s;
+            -moz-transition: .25s;
+            -webkit-transition: .25s;
+            transition: .25s;
+        }

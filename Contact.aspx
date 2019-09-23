@@ -9,6 +9,8 @@
 
 
             <div class="sub-title">
+                <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
+                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>Contact Me</h2>
                 <a href="post.aspx"><i class="icon-home"></i></a>
             </div>
@@ -31,7 +33,7 @@
 
                     <!-- Testimonials Start -->
                     <div class="post-title margin-top-50">
-                        <h2>I hope you've checked <a href="work.html" data-toggle="tooltip" data-placement="top" title="Check out my work.">my work</a>, Let's take a look on what other clients said about my work.</h2>
+                        <h2>I hope you've checked <a href="work.aspx" data-toggle="tooltip" data-placement="top" title="Check out my work.">my work</a>, Let's take a look on what other clients said about my work.</h2>
                     </div>
 
 
@@ -196,15 +198,18 @@
 
 
         <!-- Subscribe Form Start -->
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
             <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
 
                 <div class="subscribe-form margin-top-20">
-                    <input id="mc-email" type="email" placeholder="Email Address" class="text-input">
-                    <button class="submit-btn" type="submit">Submit</button>
+                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    <asp:Button class="submit-btn" id="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
                 </div>
-                <p>Subscribe to my weekly newsletter</p>
-                <label for="mc-email" class="mc-label"></label>
+                <center><p>Subscribe for new post notification</p>
+                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
+                <br />
             </form>
 
         </div>

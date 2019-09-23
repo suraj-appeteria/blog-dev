@@ -51,9 +51,9 @@ public partial class AdminMaster : System.Web.UI.MasterPage
         {
             imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
         }
-        db.AddParameter("@active", 2);
-        ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
-        lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
+        //db.AddParameter("@active", 2);
+        //ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
+        //lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
 
         db.AddParameter("@active", 3);
         ds = db.ExecuteDataSet("select * from posts where active=@active", CommandType.Text);

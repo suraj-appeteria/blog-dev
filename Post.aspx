@@ -1,87 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style>
-.promo-item2 {
-display: table;
-width: 99%;
-float: left;
-top: 10px;
-margin-left: 0.25%;
-margin-right: 0.25%!important;
-height: 350px;
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center center;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
-padding: 0px;
-position: relative;
-}
-.promo-overlay2 {
-    height: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    position: absolute;
-    width: 80%;
-    margin-top: 100px;
-    margin-left: 10%;
-}
-.promo-overlay2 h1 {
-    color: #000;
-    line-height: 1.5em;
-    padding: 20px 10px 25px 10px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    background: rgba(255, 255, 255, 0.87);
-    font-weight: 100;
-    text-transform: capitalize;
-    font-style: normal;
-    border: none;
-    margin-left: 0px;
-}
-
-.promo-overlay2  .cat {font-size: 12px;
-display: none !important;
-font-weight: 300;
-font-family: 'Raleway', sans-serif;
-letter-spacing: 2px;
-text-transform: uppercase;}
-.promomore {
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    margin-top: -40px !important;
-}
-.promomore a {
-    background: #e5a2b0;
-    width: 90px;
-    padding: 9px;
-    color: #fff;
-    font-size: 10px;
-    margin: 0 auto;
-    z-index: 10000;
-    border: 1px solid #e5a2b0;
-    letter-spacing: 2px;}
-
-    .promomore a:hover {background: #000;
-border: 1px solid #000;
--o-transition: .25s;
-    -ms-transition: .25s;
-    -moz-transition: .25s;
-    -webkit-transition: .25s;
-    transition: .25s;
-}
-</style>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <link href="css/ForPost.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Blog Post (Right Sidebar) Start -->
     <div class="col-md-12 page-body">
         <div class="row">
             <div class="sub-title">
-                <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
+                <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>Blogs</h2>
                 <a href="contact.aspx"><i class="icon-envelope"></i></a>
@@ -124,24 +51,39 @@ border: 1px solid #000;
                     </div>
 
                     <div class="col-lg-4">
-                        <br />
-                        <div class="promo-area2"><%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
-                            <div class="posts_ids1"> 
-                                <div class="promo-item2" style="background-image: url('images/PostImage/Cover1.jpg')">
-                                    <div class="promo-overlay2">
-                                        <h1 class="cat_post_title">
-                                            <div class="cat"></div>
-                                            <%# Eval("posttitle") %>   </h1>
-                                        <div class="promomore">
+                        <div class="col-md-12 content-page">
+                            <br />
+                            <div class="promo-area2">
+                                <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
+                                <div class="posts_ids1">
+                                    <div class="promo-item2" style="background-image: url('<%# "images/PostImage/" + Eval("imageurl") %>')">
+                                        <div class="promo-overlay2">
+                                            <h1 class="cat_post_title">
+                                                <div class="cat"></div>
+                                                <%# Eval("posttitle") %>   </h1>
+                                            <div class="promomore">
+                                                <br />
+
+                                                <asp:LinkButton CausesValidation="false" runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" CssClass="promomore a"><span>VIEW POST</span></asp:LinkButton>
+                                                <%--<a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>--%>
+                                            </div>
                                             <br />
-                                            <a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>
+                                            <ul class="knowledge">
+                                                <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") + "  Views" %> </li>
+                                                <li class="bg-color-4"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=like"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </a></li>
+                                                <li class="bg-color-5"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=comment"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </a></li>
+                                                <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
+                                            </ul>
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
+                            <br />
                         </div>
-                        <br />
                     </div>
+
                 </ItemTemplate>
             </asp:Repeater>
         </div>
