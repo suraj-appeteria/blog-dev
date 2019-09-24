@@ -28,17 +28,18 @@
 }
 
     .promo-overlay2 h1 {
-        color: #000;
-        line-height: 1.5em;
-        padding: 20px 10px 25px 10px;
-        font-size: 16px;
-        letter-spacing: 1px;
-        background: rgba(255, 255, 255, 0.87);
-        font-weight: 100;
-        text-transform: capitalize;
-        font-style: normal;
-        border: none;
-        margin-left: 0px;
+            line-height: 1.5em;
+    padding: 20px 10px 25px 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #e7c9e3;
+    font-weight: 100;
+    text-transform: capitalize;
+    font-style: normal;
+    border: none;
+    margin-left: 0px;
+    font-weight: bold;
+    font-family: -webkit-body;
     }
 
     .promo-overlay2 .cat {

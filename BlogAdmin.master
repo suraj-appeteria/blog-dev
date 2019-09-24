@@ -72,8 +72,8 @@
                             </div>
                             <div class="my-detail">
                                 <div class="white-spacing">
-                                    <h1>
-                                        <asp:LinkButton runat="server" ID="lnkName" Text=""></asp:LinkButton>
+                                    <h1><a id="lnkName" runat="server"></a>
+                                        <%--<asp:LinkButton runat="server" ID="lnkName" Text="" CausesValidation="false"></asp:LinkButton>--%>
 
                                     </h1>
                                     <span>Web Developer</span>
@@ -93,14 +93,14 @@
                                         </div>
                                         <div class="col-lg-9 ">
                                             <h4>
-                                                <asp:LinkButton ID="lblName" runat="server" Text="" OnClick="lblName_Click"></asp:LinkButton></h4>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" Text="Favorite Post" OnClick="LinkButton1_Click"></asp:LinkButton>
+                                                <asp:LinkButton CausesValidation="false" ID="lblName" runat="server" Text="" OnClick="lblName_Click"></asp:LinkButton></h4>
+                                            <asp:LinkButton ID="LinkButton1" CausesValidation="false" runat="server" Text="Favorite Post" OnClick="LinkButton1_Click"></asp:LinkButton>
                                             <h6>
                                                 <asp:Label ID="lblNo" runat="server" Font-Size="15px" Text=""></asp:Label></h6>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <asp:LinkButton runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                                        <asp:LinkButton runat="server" CausesValidation="false" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
                                     </div>
                                     <br />
                                 </div>

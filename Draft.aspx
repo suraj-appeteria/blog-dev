@@ -23,7 +23,7 @@
                                     <div class="promo-area2">
                                         <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
                                         <div class="posts_ids1">
-                                            <div class="promo-item2" style="background-image: url('<%# ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
+                                            <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
                                                 <ul class="knowledge text-center">
                                                     <li class="bg-color-6">
                                                        <asp:LinkButton ID="LinkButton1" ToolTip="Edit Post" runat="server" Font-Bold="true" CommandArgument='<%# Eval("postid") %>' Font-Size="12" CommandName="Publish">Publish Now</asp:LinkButton>
@@ -43,7 +43,7 @@
                                                     </div>
                                                     <br />
                                                     <ul class="knowledge">
-                                                        <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") + "  Views" %> </li>
+                                                        <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") %> </li>
                                                         <li class="bg-color-4"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=like"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </a></li>
                                                         <li class="bg-color-5"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=comment"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </a></li>
                                                         <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
