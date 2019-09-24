@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="Contact" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+     <script src='https://www.google.com/recaptcha/api.js'></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Contact (Right Sidebar) Start -->
@@ -29,103 +30,34 @@
                     <p>I am in the website field since 2004 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. <b>I am a developer</b>, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodales. Sed posuere nisi ipsum, eget dignissim nunc dapibus eget. Aenean elementum sollicitudin sapien ut sapien fermentum aliquet mollis. Curabitur ac quam orci sodales quam ut tempor.</p>
                     <!-- Intro End -->
 
-
-
-                    <!-- Testimonials Start -->
-                    <div class="post-title margin-top-50">
-                        <h2>I hope you've checked <a href="work.aspx" data-toggle="tooltip" data-placement="top" title="Check out my work.">my work</a>, Let's take a look on what other clients said about my work.</h2>
-                    </div>
-
-
-                    <div class="row">
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="testimonial-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus.</p>
-                            </div>
-
-                            <div class="testimonial-client-info">
-
-                                <div class="testimonial-client client-thumb">
-                                    <img src="images/testimonial/1.png" alt="">
-                                </div>
-
-                                <div class="client-text">
-                                    <div class="client-name">Jhon Doe</div>
-                                    <span>Rolling LTD, Founder</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="testimonial-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus.</p>
-                            </div>
-
-                            <div class="testimonial-client-info">
-
-                                <div class="testimonial-client client-thumb">
-                                    <img src="images/testimonial/2.png" alt="">
-                                </div>
-
-                                <div class="client-text">
-                                    <div class="client-name">Jhon Doe</div>
-                                    <span>WebRes LTD, Founder</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="testimonial-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus.</p>
-                            </div>
-
-                            <div class="testimonial-client-info">
-
-                                <div class="testimonial-client client-thumb">
-                                    <img src="images/testimonial/3.png" alt="">
-                                </div>
-
-                                <div class="client-text">
-                                    <div class="client-name">Jhon Doe</div>
-                                    <span>WeSoon LTD, Founder</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Testimonials  End -->
-
-
-
-
                     <!-- Contact Me Start -->
-                    <div class="post-title margin-top-70">
+                    <%--<div class="post-title margin-top-70">
                         <h1>Contact <span class="main-color">Me</span></h1>
-                    </div>
+                        <span>Feel free to contact us for any help</span>
+                    </div>--%>
 
 
                     <div class="row">
 
                         <div class="col-md-4 col-sm-4">
-                            <div class="contact-us-detail">
+                            <%--<div class="contact-us-detail">
                                 <i class="icon-screen-smartphone color-6"></i>
-                                <p><a href="tel:+1234567890">+1234 567 890</a></p>
-                            </div>
+                                <p><a href="tel:+918080786228">+ 91 80 807 86 228</a></p>
+                            </div>--%>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
                             <div class="contact-us-detail">
                                 <i class="icon-envelope-open color-5"></i>
-                                <p><a href="mailto:name@domain.com">name@domain.com</a></p>
+                                <p><a href="mailto:kimaya.kolhe@appeteria.com">kimaya.kolhe@appeteria.com</a></p>
                             </div>
                         </div>
 
                         <div class="col-md-4 col-sm-4">
-                            <div class="contact-us-detail">
+                            <%--<div class="contact-us-detail">
                                 <i class="icon-clock color-3"></i>
                                 <p>Mon - Fri 09:00 – 18:00</p>
-                            </div>
+                            </div>--%>
                         </div>
 
                     </div>
@@ -139,49 +71,53 @@
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" id="name" class="form-control" placeholder="Your Name">
+                                            <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Your Name*"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Enter Name" ControlToValidate="txtName" Display="None"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="email" id="email" class="form-control" placeholder="Your Email">
+                                            <asp:TextBox ID="txtContactEmail" runat="server" CssClass="form-control" placeholder="Your Email*"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtContactEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtContactEmail" Display="None"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" id="website" class="form-control" placeholder="Your Website">
+                                            <asp:TextBox ID="txtPhn" runat="server" TextMode="Phone" MaxLength="10" CssClass="form-control" placeholder="Contact (Optional)"></asp:TextBox>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" id="address" class="form-control" placeholder="Where are You From?">
+                                            <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" placeholder="Where are You From ? (Optional)"></asp:TextBox>
+
                                         </div>
                                     </div>
 
                                     <div class="col-sm-12">
-                                        <select id="subject" class="form-group form-control">
-                                            <option value="" selected disabled>Subject</option>
-                                            <option>Website Design & Development</option>
-                                            <option>Wordpress Development</option>
-                                            <option>Search Engine Optimization</option>
-                                            <option>Mobile Website</option>
-                                            <option>I Want to General Talk</option>
-                                            <option>Other</option>
-                                        </select>
+                                        <asp:TextBox ID="txtSubject" runat="server" CssClass="form-group form-control" placeholder="Subject*"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter Subject" ControlToValidate="txtSubject" Display="None"></asp:RequiredFieldValidator>
                                     </div>
 
                                     <div class="col-sm-12">
                                         <div class="textarea-message form-group">
-                                            <textarea id="message" class="textarea-message form-control" placeholder="Your Message" rows="5"></textarea>
+                                            <asp:TextBox ID="txtMsg" runat="server" TextMode="MultiLine" CssClass="textarea-message form-control" placeholder="Your Message*" Rows="5"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Enter Message" ControlToValidate="txtMsg" Display="None"></asp:RequiredFieldValidator>
                                         </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="g-recaptcha" data-sitekey="6LfurrMUAAAAAFDMf8DxDKZdy_gJQJisgnQZ-zhV"></div>
+                                        <asp:Label ID="litMessage" runat="server" ForeColor="Red"></asp:Label>
+                                        <asp:Label ID="litDebug" runat="server" ForeColor="Red"></asp:Label>
                                     </div>
 
 
                                     <div class="text-center">
-                                        <button type="submit" class="load-more-button">Send</button>
+                                        <button type="submit" id="btnSubmit" class="load-more-button" runat="server" onserverclick="btnSubmit_ServerClick">Send</button>
                                     </div>
 
                                 </form>
@@ -202,10 +138,10 @@
             <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
 
                 <div class="subscribe-form margin-top-20">
-                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                    <asp:Button class="submit-btn" id="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
+                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input" ValidationGroup="first"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ValidationGroup="first" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" ValidationGroup="first" Display="None"></asp:RequiredFieldValidator>
+                    <asp:Button class="submit-btn" ID="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" ValidationGroup="first" />
                 </div>
                 <center><p>Subscribe for new post notification</p>
                 <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>

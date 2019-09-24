@@ -278,5 +278,22 @@ public partial class SinglePost : System.Web.UI.Page
         }
     }
 
+
+    protected void rpInner_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        try
+        {
+            if (e.CommandName == "Read")
+            {
+                db.AddParameter("@postid", e.CommandArgument);
+                db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
+                Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString());
+            }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
 }
 

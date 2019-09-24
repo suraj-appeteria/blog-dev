@@ -6,6 +6,7 @@
             alert(demo);
         }
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Portfolio (Right Sidebar) Start -->
@@ -69,10 +70,14 @@
                                                         <td><b>About Work</b></td>
                                                         <td><%# Eval("work_desc").ToString().Length > 150 ? Eval("work_desc").ToString().Substring(0,150) : Eval("work_desc").ToString() %>
 
-                                                            <asp:LinkButton runat="server" CommandArgument='<%# Eval("work_id") %>' CommandName="Read" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
+                                                            <asp:LinkButton runat="server" CommandArgument='<%# Eval("work_id") %>' CommandName="Read" CausesValidation="false" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
                                                             <%--<%# (Eval("work_desc").ToString().Length > 150) ? (Eval("work_desc").ToString().Substring(0, 150) + "...<a onclick='"+ String.Format("myFunction(\"{0}\");", Eval("work_desc"))+"' >read More</a>") : Eval("work_desc")%>--%>
                                                         </td>
 
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Testimonial</b></td>
+                                                        <td><a href='<%# "Testimonial.aspx?workId=" + Eval("work_id") %>' title="uipasta">What Our Client Says ?</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

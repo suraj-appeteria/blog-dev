@@ -56,7 +56,7 @@
                             <div class="promo-area2">
                                 <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
                                 <div class="posts_ids1">
-                                    <div class="promo-item2" style="background-image: url('<%# "images/PostImage/" + Eval("imageurl") %>')">
+                                    <div class="promo-item2" style="background-image: url('<%# ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
                                         <div class="promo-overlay2">
                                             <h1 class="cat_post_title">
                                                 <div class="cat"></div>

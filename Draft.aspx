@@ -63,7 +63,7 @@
                                     <div class="promo-area2">
                                         <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
                                         <div class="posts_ids1">
-                                            <div class="promo-item2" style="background-image: url('images/PostImage/Cover1.jpg')">
+                                            <div class="promo-item2" style="background-image: url('<%# ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
                                                 <ul class="knowledge text-center">
                                                     <li class="bg-color-6">
                                                        <asp:LinkButton ID="LinkButton1" ToolTip="Edit Post" runat="server" Font-Bold="true" CommandArgument='<%# Eval("postid") %>' Font-Size="12" CommandName="Publish">Publish Now</asp:LinkButton>

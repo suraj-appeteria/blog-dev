@@ -10,6 +10,7 @@
             });
         }
 </script>
+        <link href="css/ForPost.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Blog Post (Right Sidebar) Start -->
@@ -82,15 +83,40 @@
                     <div class="you-may-also-like margin-top-50 margin-bottom-50">
                         <h3>You may also like</h3>
                         <div class="row">
-                            <asp:Repeater runat="server" ID="rpInner">
+                            <asp:Repeater runat="server" ID="rpInner" OnItemCommand="rpInner_ItemCommand">
                                 <ItemTemplate>
 
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-md-4 col-sm-6 col-xs-12" runat="server" visible="false">
                                         <a href="singlepost.aspx?postid=<%# Eval("postid") %>">
                                             <p>
                                                 <%# Eval("posttitle") %>
                                             </p>
                                         </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="col-md-12 content-page">
+                                            <br />
+                                            <div class="promo-area2">
+                                                <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
+                                                <div class="posts_ids1">
+                                                    <div class="promo-item2" style="background-image: url('<%# ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
+                                                        <div class="promo-overlay2">
+                                                            <h1 class="cat_post_title">
+                                                                <div class="cat"></div>
+                                                                <%# Eval("posttitle") %>   </h1>
+                                                            <div class="promomore">
+                                                                <br />
+
+                                                                <asp:LinkButton CausesValidation="false" runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" CssClass="promomore a"><span>VIEW POST</span></asp:LinkButton>
+                                                                <%--<a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>--%>
+                                                            </div>                                                            
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                        </div>
                                     </div>
 
                                 </ItemTemplate>

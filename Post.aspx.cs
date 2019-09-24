@@ -7,7 +7,7 @@ public partial class Post : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
-    {
+    {        
         lblError.Text = "";
         lblErrorMsg.Text = "";
         if (!IsPostBack)
@@ -28,7 +28,7 @@ public partial class Post : System.Web.UI.Page
     protected void FillRp()
     {
         try
-        {
+        {   
             Session["type"] = "";
             int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
             hdnPageNo.Value = counter.ToString();
@@ -36,9 +36,7 @@ public partial class Post : System.Web.UI.Page
             db.AddParameter("@active", 1);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
-            rpPost.DataBind();
-           
-
+            rpPost.DataBind();           
         }
         catch (Exception ex)
         {

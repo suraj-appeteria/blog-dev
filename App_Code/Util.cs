@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Collections.Specialized;
 using DAL.SQLDataAccess;
+using System.IO;
 //using Newtonsoft.Json;
 
 public class Util
@@ -134,6 +135,19 @@ public class Util
             httpRes.Close();
         }
         return true;
+    }
+
+    public static void LogError(Exception ex)
+    {
+        string seperator = "------------------------------------------------------------------------";
+        string path = System.Web.HttpContext.Current.Server.MapPath("ErrorLog.txt");
+        if (ex == null) return;
+        string txt2add = string.Format("{0}\n\r{1} \n\r {2}{0}\n\r", seperator, DateTime.Now.ToString(), ex.ToString());
+
+        if (!File.Exists(path))
+            File.WriteAllText(path, txt2add);
+        else try { System.IO.File.AppendAllText(path, txt2add); }
+            catch { }
     }
 
 }

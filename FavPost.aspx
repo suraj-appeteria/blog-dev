@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" AutoEventWireup="true" CodeFile="FavPost.aspx.cs" Inherits="FavPost" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link href="css/ForPost.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!-- Blog Post (Right Sidebar) Start -->
@@ -16,7 +17,7 @@
         <div class="row">
             <asp:Repeater ID="rpFav" runat="server" OnItemCommand="rpPost_ItemCommand">
                 <ItemTemplate>
-                    <div class="row">
+                    <div class="row" runat="server" visible="false">
                         <div class="col-md-12 content-page">
                             <!-- Blog Post Start blog-post -->
                             <div class="col-md-12 ">
@@ -47,6 +48,40 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4">
+                        <div class="col-md-12 content-page">
+                            <br />
+                            <div class="promo-area2">
+                                <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
+                                <div class="posts_ids1">
+                                    <div class="promo-item2" style="background-image: url('<%# ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
+                                        <div class="promo-overlay2">
+                                            <h1 class="cat_post_title">
+                                                <div class="cat"></div>
+                                                <%# Eval("posttitle") %>   </h1>
+                                            <div class="promomore">
+                                                <br />
+
+                                                <asp:LinkButton CausesValidation="false" runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" CssClass="promomore a"><span>VIEW POST</span></asp:LinkButton>
+                                                <%--<a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>--%>
+                                            </div>
+                                            <br />
+                                            <ul class="knowledge">
+                                                <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") + "  Views" %> </li>
+                                                <li class="bg-color-4"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=like"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </a></li>
+                                                <li class="bg-color-5"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=comment"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </a></li>
+                                                <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+
                 </ItemTemplate>
             </asp:Repeater>
         </div>
