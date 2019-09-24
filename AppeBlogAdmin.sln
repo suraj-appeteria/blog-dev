@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AppeBlogAdmin", "..\..\WebSites\blog-dev\", "{8C5C2FD5-8A4A-46D3-B2FB-A7A1BBF14A2E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AppeBlogAdmin", "..\blog-dev\", "{8C5C2FD5-8A4A-46D3-B2FB-A7A1BBF14A2E}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50128"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\blog-dev\"
+		Debug.AspNetCompiler.PhysicalPath = "..\blog-dev\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50128\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_50128"
-		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\blog-dev\"
+		Release.AspNetCompiler.PhysicalPath = "..\blog-dev\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50128\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "50128"
-		SlnRelativePath = "..\..\WebSites\blog-dev\"
+		SlnRelativePath = "..\blog-dev\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

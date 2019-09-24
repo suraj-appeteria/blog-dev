@@ -68,4 +68,31 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
     {
         Response.Redirect("FavPost.aspx?type=user&userid=" + Session["userid"].ToString());
     }
+
+    protected void btnSubscribe_ServerClick(object sender, EventArgs e)
+    {
+        try
+        {
+
+            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
+                {
+                    lblError.Text = txtEmail.Text + " id is already subscribed";
+                    return;
+                }
+            }
+            db.AddParameter("@Email_id", txtEmail.Text);
+            db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
+            lblError.Text = "Congratulations!!.";
+            txtEmail.Text = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message.ToString();
+        }
+    }
+
+
 }

@@ -43,7 +43,8 @@ public partial class AdminMaster : System.Web.UI.MasterPage
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);        
         lnkName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
         
-        if (Session["url"].ToString() != null)
+        //if (Session["url"].ToString() != null)
+        if(string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[0]["pic_url"])))
         {
             imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();            
         }
@@ -54,8 +55,14 @@ public partial class AdminMaster : System.Web.UI.MasterPage
         //db.AddParameter("@active", 2);
         //ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
         //lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
-
-        db.AddParameter("@active", 3);
+        if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+        {
+            disqus_thread.Visible = false;
+        }
+        else {
+            disqus_thread.Visible =true;
+        }
+            db.AddParameter("@active", 3);
         ds = db.ExecuteDataSet("select * from posts where active=@active", CommandType.Text);
         lblDraft.Text = "Drafts (" + ds.Tables[0].Rows.Count.ToString() + ")";
     }

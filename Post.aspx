@@ -9,16 +9,27 @@
         <div class="row">
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
-                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
-                <h2>Blogs</h2>
-                <a href="contact.aspx"><i class="icon-envelope"></i></a>
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
+
+                <div>
+                    <asp:Panel runat="server" ScrollBars="Horizontal" Width="100%">
+                    <asp:Repeater ID="rpCategory" runat="server">
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server" Text='<%# Eval("category") %>' style="margin-top:3px"
+                                PostBackUrl='<%# "~/Post.aspx?c="+ Eval("categoryid") %>' CausesValidation="false" />
+                            
+                        </ItemTemplate>
+                    </asp:Repeater>
+                        </asp:Panel>
+                </div>
+
             </div>
         </div>
         <div class="row">
             <asp:Repeater ID="rpPost" runat="server" OnItemCommand="rpPost_ItemCommand">
                 <ItemTemplate>
 
-                  <%--  <div class="row" runat="server" visible="false">
+                    <%--  <div class="row" runat="server" visible="false">
                         <div class="col-md-12 content-page">
                           
                             <div class="col-md-12 ">
@@ -56,8 +67,8 @@
                             <div class="promo-area2">
                                 <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
                                 <div class="posts_ids1">
-                                    <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">                                                                              
-                                         <div class="promo-overlay2">
+                                    <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
+                                        <div class="promo-overlay2">
                                             <h1 class="cat_post_title">
                                                 <div class="cat"></div>
                                                 <%# Eval("posttitle") %>   </h1>
@@ -93,7 +104,7 @@
             <div class="col-md-12 text-center">
                 <%--<a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
                     <div id="post-end-message"></div>--%>
-                <button id="btnLoad" causesvalidation="false" runat="server" onserverclick="btnLoad_ServerClick" class="load-more-button" ><span>More</span> </button>
+                <button id="btnLoad" causesvalidation="false" runat="server" onserverclick="btnLoad_ServerClick" class="load-more-button"><span>More</span> </button>
                 <br />
             </div>
 
@@ -104,19 +115,17 @@
 
         <!-- Subscribe Form Start -->
         <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
-            <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
 
-                <div class="subscribe-form margin-top-20">
-                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                    <asp:Button class="submit-btn" id="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
-                </div>
-                <center><p>Subscribe for new post notification</p>
+
+            <div class="subscribe-form margin-top-20">
+                <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                <asp:Button class="submit-btn" ID="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
+            </div>
+            <center><p>Subscribe for new post notification</p>
                 <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
-                <br />
-            </form>
-
+            <br />
         </div>
         <!-- Subscribe Form End -->
     </div>

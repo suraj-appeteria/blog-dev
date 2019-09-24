@@ -34,28 +34,28 @@ public partial class Work : System.Web.UI.Page
         }
     }
 
-    protected void btnSubscribe_ServerClick(object sender, EventArgs e)
-    {
-        try
-        {
+    //protected void btnSubscribe_ServerClick(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
 
-            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
-                {
-                    lblError.Text = txtEmail.Text + " id is already subscribed";
-                    return;
-                }
-            }
-            db.AddParameter("@Email_id", txtEmail.Text);
-            db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
-            lblError.Text = "congratulations you are now subscribed.";
-        }
-        catch (Exception ex)
-        {
-            lblErrorMsg.Text = ex.Message.ToString();
-        }
-    }
+    //        DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+    //        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+    //        {
+    //            if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
+    //            {
+    //                lblError.Text = txtEmail.Text + " id is already subscribed";
+    //                return;
+    //            }
+    //        }
+    //        db.AddParameter("@Email_id", txtEmail.Text);
+    //        db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
+    //        lblError.Text = "congratulations you are now subscribed.";
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        lblErrorMsg.Text = ex.Message.ToString();
+    //    }
+    //}
 
 }

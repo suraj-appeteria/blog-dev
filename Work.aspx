@@ -63,7 +63,7 @@
 
                                                     <tr>
                                                         <td><b>Url</b></td>
-                                                        <td><a target="_blank" href='<%# Eval("work_url") %>' title="uipasta">Check Now</a></td>
+                                                        <td><a target="_blank" href='<%# Eval("work_url") %>' >Check Now</a></td>
                                                     </tr>
 
                                                     <tr>
@@ -77,7 +77,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><b>Testimonial</b></td>
-                                                        <td><a href='<%# "Testimonial.aspx?workId=" + Eval("work_id") %>' title="uipasta">What Our Client Says ?</a></td>
+                                                        <td><a href='<%# "Testimonial.aspx?workId=" + Eval("work_id") %>' >What Our Client Says ?</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -104,27 +104,6 @@
             </div>
 
         </div>
-
-
-
-        <!-- Subscribe Form Start -->
-        <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
-            <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
-
-                <div class="subscribe-form margin-top-20">
-                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                    <asp:Button class="submit-btn" id="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
-                </div>
-                <center><p>Subscribe for new post notification</p>
-                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
-                <br />
-            </form>
-
-        </div>
-        <!-- Subscribe Form End -->
-
 
     </div>
     <!-- Portfolio (Right Sidebar) End -->

@@ -7,7 +7,7 @@ public partial class Post : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
-    {        
+    {
         lblError.Text = "";
         lblErrorMsg.Text = "";
         if (!IsPostBack)
@@ -22,13 +22,22 @@ public partial class Post : System.Web.UI.Page
             {
                 dvSubscribe.Visible = false;
             }
-                FillRp();
+            FillCategories();
+            FillRp();
         }
     }
+
+    private void FillCategories()
+    {
+        DataSet ds = db.ExecuteDataSet("select distinct c.categoryid, c.category from CategoryMaster c inner join PostCategory p on c.categoryid = p.categoryid");
+        rpCategory.DataSource = ds;
+        rpCategory.DataBind();
+    }
+
     protected void FillRp()
     {
         try
-        {   
+        {
             Session["type"] = "";
             int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
             hdnPageNo.Value = counter.ToString();
@@ -38,13 +47,9 @@ public partial class Post : System.Web.UI.Page
             rpPost.DataSource = ds;
             rpPost.DataBind();
             DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1", CommandType.Text);
-            if(ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
+            if (ds.Tables[0].Rows.Count >= Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
             {
-                btnLoad.InnerText = "End";
-            }
-            else
-            {
-                btnLoad.InnerText = "More";
+                btnLoad.Visible = false;// "End";
             }
         }
         catch (Exception ex)
@@ -57,16 +62,16 @@ public partial class Post : System.Web.UI.Page
     {
         try
         {
-            if(e.CommandName=="Read")
+            if (e.CommandName == "Read")
             {
                 db.AddParameter("@postid", e.CommandArgument);
-                db.ExecuteNonQuery("save_PostView",CommandType.StoredProcedure);
+                db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
                 Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString());
             }
         }
         catch (Exception ex)
         {
-           lblErrorMsg.Text = ex.Message.ToString();
+            lblErrorMsg.Text = ex.Message.ToString();
         }
     }
 
@@ -79,7 +84,7 @@ public partial class Post : System.Web.UI.Page
     {
         try
         {
-            
+
             DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {

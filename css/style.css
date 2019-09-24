@@ -1,56 +1,3 @@
-/*
-   
-    Template Name : DevBlog - Personal Blog Template
-    Author : UiPasta Team
-    Website : http://www.uipasta.com/
-    Support : http://www.uipasta.com/support/
-	
-	
-*/
-
-
-
-/*
-   
-   Table Of Content
-   
-   1. Global Style
-   2. Preloader
-   3. Menu
-   4. About Me (Left Sidebar)
-   5. About Me Page
-   6. My Portfolio
-   7. Owl Carousel Navigation
-   8. Contact Me
-   9. Testimonials
-  10. Blog Post & Single Blog Page
-  11. Video Tutorials
-  12. Blockquote
-  13. List
-  14. Image Popup
-  15. End Box (Popup When Scroll Down)
-  16. About Author Box
-  17. You May Also Like
-  18. Comment
-  19. Load More Button
-  20. Subscribe Form
-  21. Footer
-  22. Socials Icons
-  23. Syntax Highlighter
-  24. Scroll To Top
-  25. Responsive
-  26. Useful Classes ( Such as : Margin, Padding, colors  "This classes will be helpful for you during designing/development time.")
-  27. UiPasta Credit
- 
-
-*/
-
-
-
-
-
-
-
 
 /* Global Style */
 
@@ -283,12 +230,12 @@ button {
     font-size: 20px;
     color: #fff;
     background: #450c3a;
-    padding: 12px;
+    padding: 9px;
 }
 
 .menu-link {
     list-style: none;
-    padding: 25px;
+    padding: 9px;
     margin: 0;
     text-align: center;
 }
@@ -994,6 +941,21 @@ blockquote {
 
 .subscribe-form .text-input:focus:-ms-input-placeholder {
 	opacity: .5;
+}
+
+.submit-btn {
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #ffffff;
+    background: #450c3a;
+    border: none;
+    top: 7px;
+    right: 5px;
+    bottom: 7px;
+    border-radius: 64px;
+    
+    text-align: center;
+    outline: none;
 }
 
 .subscribe-form .submit-btn {
@@ -1808,23 +1770,4 @@ blockquote {
 
 .tooltip-color .tooltip-inner {
     color: #fff;
-}
-
-
-
-/* UiPasta Credit */
-
-.uipasta-credit {
-    color: #450c3a;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.uipasta-credit a {
-    color: #1abc9c;
-    font-weight: 600;
-}
-
-.uipasta-credit a:hover {
-    color: #333333;
 }

@@ -109,7 +109,7 @@
 
                                                         <tr>
                                                             <td><b>Url</b></td>
-                                                            <td><a target="_blank" href='<%# Eval("work_url") %>' title="uipasta">Check Now</a></td>
+                                                            <td><a target="_blank" href='<%# Eval("work_url") %>' >Check Now</a></td>
                                                         </tr>
 
                                                         <tr>

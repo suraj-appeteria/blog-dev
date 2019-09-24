@@ -10,9 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- SEO -->
     <meta name="description" content="150 words" />
-    <meta name="author" content="uipasta" />
-    <meta name="url" content="http://www.yourdomainname.com" />
-    <meta name="copyright" content="company name" />
+    <meta name="author" content="appeteria" />
+    <meta name="url" content="http://www.appeteria.com" />
+    <meta name="copyright" content="Appeteria Technologies Pvt Ltd" />
     <meta name="robots" content="index,follow" />
     <title>Blog Admin</title>
 
@@ -50,7 +50,7 @@
     </script>
 
     <!--MultiSelect Text Box -->
-        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.common-material.min.css" />
     <%--<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.material.min.css" />--%>
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.material.mobile.min.css" />
     <link href="css/kendo.material.min.css" rel="stylesheet" />
@@ -90,7 +90,7 @@
                                         <div class="col-lg-6">
                                             <div class="post-title">
                                                 <asp:Label runat="server" Text="Image Url"></asp:Label>
-                                                <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" ClientIDMode="Static" onchange="this.form.submit()"/>
+                                                <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" ClientIDMode="Static" onchange="this.form.submit()" />
                                             </div>
                                         </div>
                                     </div>
@@ -163,14 +163,7 @@
                                             <li><a href="work.aspx">Work</a></li>
                                             <li><a href="contact.aspx">Contact</a></li>
                                         </ul>
-
-                                        <p>© Copyright 2016 DevBlog. All rights reserved</p>
-
-
-                                        <!-- UiPasta Credit Start -->
-                                        <div class="uipasta-credit">Design By <a href="http://www.uipasta.com" target="_blank">UiPasta</a></div>
-                                        <!-- UiPasta Credit End -->
-
+                                        <p>©2019 Developed By :<a href="http://appeteria.com" target="_blank"> Appeteria Technologies Pvt. Ltd.</a> All Rights Reserved.</p>
 
                                     </footer>
                                 </div>

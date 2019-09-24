@@ -135,9 +135,8 @@
 
         <!-- Subscribe Form Start -->
         <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
-            <form id="mc-form" method="post" action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
-
                 <div class="subscribe-form margin-top-20">
+                    <asp:ValidationSummary  ValidationGroup="first" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                     <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input" ValidationGroup="first"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ValidationGroup="first" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>                    
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" ValidationGroup="first" Display="None"></asp:RequiredFieldValidator>
@@ -146,8 +145,6 @@
                 <center><p>Subscribe for new post notification</p>
                 <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
                 <br />
-            </form>
-
         </div>
         <!-- Subscribe Form End -->
 
