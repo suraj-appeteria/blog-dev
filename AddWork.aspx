@@ -6,12 +6,10 @@
      <!-- Portfolio (Right Sidebar) Start -->       
         <div class="col-md-12 page-body">
             <div class="row">
-
-
                 <div class="sub-title">
                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
                     <h2>Add New Work</h2>
-                    <a href="contact.aspx"><i class="icon-envelope"></i></a>
+                    <a href="addpost.aspx"><i class="icon-home"></i></a>
                 </div>
 
 

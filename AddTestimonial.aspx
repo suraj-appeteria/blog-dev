@@ -10,7 +10,7 @@
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>Add New Testimonial</h2>
-                <a href="post.aspx"><i class="icon-home"></i></a>
+                <a href="addpost.aspx"><i class="icon-home"></i></a>
             </div>
             <div class="col-md-12 content-page">
                 <div class="col-md-12 blog-post">
