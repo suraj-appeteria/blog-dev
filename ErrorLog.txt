@@ -65,4 +65,12 @@ Parameter name: original
    at System.Web.UI.Control.OnLoad(EventArgs e)
    at System.Web.UI.Control.LoadRecursive()
    at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+24-Sep-19 7:19:06 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at Draft.Page_PreInit(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Draft.aspx.cs:line 27
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Page.OnPreInit(EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
 

@@ -28,6 +28,15 @@ public partial class FavPost : System.Web.UI.Page
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpFav.DataSource = ds;
             rpFav.DataBind();
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1", CommandType.Text);
+            if (ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
+            {
+                btnLoad.InnerText = "End";
+            }
+            else
+            {
+                btnLoad.InnerText = "More";
+            }
         }
         catch (Exception ex)
         {

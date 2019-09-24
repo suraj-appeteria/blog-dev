@@ -49,9 +49,20 @@ public partial class Draft : System.Web.UI.Page
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpDraft.DataSource = ds;
             rpDraft.DataBind();
+
             if(ds.Tables[0].Rows.Count<1)
             {
                 lblErrorMsg.Text = "You don't have any saved drafts.Saving a draft allows you to keep a message you aren't ready to send yet.";
+            }
+
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=3", CommandType.Text);
+            if (ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
+            {
+                btnLoad.InnerText = "End";
+            }
+            else
+            {
+                btnLoad.InnerText = "More";
             }
         }
         catch (Exception ex)

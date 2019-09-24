@@ -31,7 +31,16 @@ public partial class AddPost : System.Web.UI.Page
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
-            
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1", CommandType.Text);
+            if (ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
+            {
+                btnLoad.InnerText = "End";
+            }
+            else
+            {
+                btnLoad.InnerText = "More";
+            }
+
         }
         catch (Exception ex)
         {
@@ -130,6 +139,7 @@ public partial class AddPost : System.Web.UI.Page
 
             db.AddParameter("@active", 0);
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
+          
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 if (showCount)
