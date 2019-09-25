@@ -22,7 +22,7 @@
 
             <div class="col-md-12 content-page">
                 <div class="col-md-12 blog-post" style="padding:30px;" >
-                    <center><asp:Image id="imgProfile" runat="server" Width="450px" Height="450px" CssClass="img-circle" alt="" ImageUrl="~/images/Profile/profile.jpg"/></center>
+                    <center><asp:Image id="imgProfile" runat="server" Width="60%" Height="60%" CssClass="img-circle" alt="" ImageUrl="~/images/Profile/profile.jpg"/></center>
                     <br />
                     <!-- My Intro Start -->
                     <%--<div class="post-title margin-bottom-30 text-center">
