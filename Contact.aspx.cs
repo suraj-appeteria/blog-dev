@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
+
 public partial class Contact : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
@@ -13,32 +10,6 @@ public partial class Contact : System.Web.UI.Page
     {
 
     }
-
-    protected void btnSubscribe_ServerClick(object sender, EventArgs e)
-    {
-        try
-        {
-
-            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
-                {
-                    lblError.Text = txtEmail.Text + " id is already subscribed";
-                    return;
-                }
-            }
-            db.AddParameter("@Email_id", txtEmail.Text);
-            db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
-            txtEmail.Text = "";
-            lblError.Text = "congratulations you are now subscribed.";
-        }
-        catch (Exception ex)
-        {
-            lblErrorMsg.Text = ex.Message.ToString();
-        }
-    }
-
 
     protected void btnSubmit_ServerClick(object sender, EventArgs e)
     {
@@ -51,6 +22,7 @@ public partial class Contact : System.Web.UI.Page
             db.AddParameter("@subject", txtSubject.Text);
             db.AddParameter("@Msg", txtMsg.Text);
             db.AddParameter("@country", txtCity.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             db.ExecuteDataSet("save_contactMe", CommandType.StoredProcedure);
             txtCity.Text = "";
             txtContactEmail.Text = "";

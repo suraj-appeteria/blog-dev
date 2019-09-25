@@ -9403,6 +9403,7 @@ img.mfp-img {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color:#450c3a
 }
 .icon-user:before {
   content: "\e005";

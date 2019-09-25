@@ -19,7 +19,7 @@
         // Code that runs when an unhandled error occurs
        // Code that runs when an unhandled error occurs
         Exception ex = Server.GetLastError();        
-        Util.LogError((Exception)ex.InnerException);        
+        Util.LogError((Exception)ex.InnerException);                       
         Response.Redirect("Message.aspx?msg=Unexpected error occured. Please contact Administrator. Error Details" + ex.InnerException.ToString());
 
     }

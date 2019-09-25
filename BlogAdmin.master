@@ -63,11 +63,11 @@
                                         <li><a href="contact.aspx">Contact</a></li>
                                     </ul>
                                 <%--</div>--%>
-                                <asp:Image ID="imgAdmin" runat="server" ImageUrl="~/images/profile/kimayakolhe.png" alt="" />
+                                <asp:Image ID="imgAdmin" runat="server" ImageUrl="~/images/profile/kimayakolhe.png" alt="" Height="300px" />
                             </div>
                             <div class="my-detail">
                                 <div class="white-spacing">
-                                    <h1><a id="lnkName" runat="server"></a>
+                                    <h1 style="margin-top: 0px;margin-bottom: 0px;"><a id="lnkName" runat="server"></a>
                                         <%--<asp:LinkButton runat="server" ID="lnkName" Text="" CausesValidation="false"></asp:LinkButton>--%>
 
                                     </h1>
@@ -126,10 +126,10 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" Display="None"></asp:RequiredFieldValidator>
                                     </div>
                                     <center><p>Subscribe for new post notification</p>
-                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
-                                    
+                                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
+
                                 </div>
-                                
+
                                 <!-- Subscribe Form End -->
                                 <div class="col-md-12">
                                     <ul class="menu-link">

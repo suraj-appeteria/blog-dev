@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class subscribers : System.Web.UI.Page
 {
@@ -24,6 +20,7 @@ public partial class subscribers : System.Web.UI.Page
         try
         {
             db.AddParameter("@user_type", "reader");
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
             rpSubscriber.DataSource = ds;
             rpSubscriber.DataBind();

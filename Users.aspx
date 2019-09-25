@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="subscribers.aspx.cs" Inherits="subscribers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="Users.aspx.cs" Inherits="subscribers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -10,7 +10,8 @@
 
             <div class="sub-title">
                 <asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label>
-                <h2>Subscribers</h2>
+                <h2>Users</h2>
+                <a href="addpost.aspx"><i class="icon-home"></i></a>
             </div>
 
 

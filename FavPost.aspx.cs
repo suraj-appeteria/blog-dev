@@ -2,6 +2,7 @@
 using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class FavPost : System.Web.UI.Page
 {
@@ -24,18 +25,20 @@ public partial class FavPost : System.Web.UI.Page
             hdnPageNo.Value = counter.ToString();
             db.AddParameter("@page_no", counter);
             db.AddParameter("@active", 1);
-            db.AddParameter("@user_id", Request.QueryString["userid"].ToString());            
+            db.AddParameter("@user_id", Request.QueryString["userid"].ToString());
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpFav.DataSource = ds;
             rpFav.DataBind();
-            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1", CommandType.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1 and blog_id=@blog_id", CommandType.Text);
             if (ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
             {
-                btnLoad.InnerText = "End";
+                btnLoad.Visible = false;
             }
             else
             {
-                btnLoad.InnerText = "More";
+                btnLoad.Visible = true;
             }
         }
         catch (Exception ex)

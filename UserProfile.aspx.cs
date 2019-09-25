@@ -48,7 +48,9 @@ public partial class UserProfile : System.Web.UI.Page
         {
             if (Request.QueryString["userid"] != null)
             {
+                hdnUserId.Value = Request.QueryString["userid"].ToString();
                 db.AddParameter("@userid", Request.QueryString["userid"].ToString());
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
                 DataSet ds = db.ExecuteDataSet("get_users",CommandType.StoredProcedure);
                 txtName.Text = ds.Tables[0].Rows[0]["firstname"].ToString();
                 txtLastName.Text = ds.Tables[0].Rows[0]["lastname"].ToString();
@@ -80,7 +82,8 @@ public partial class UserProfile : System.Web.UI.Page
                 db.AddParameter("@userid", Request.QueryString["userid"].ToString());
                 db.AddParameter("@mobile", txtMobile.Text);                
                 db.AddParameter("@FirstName", txtName.Text);
-                db.AddParameter("@LastName", txtLastName.Text);                                
+                db.AddParameter("@LastName", txtLastName.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
                 db.ExecuteNonQuery("save_user", CommandType.StoredProcedure);
                 if (Request.QueryString["type"].ToString() == "user")
                 {
@@ -122,11 +125,13 @@ public partial class UserProfile : System.Web.UI.Page
                     extension = file_name.Substring(file_name.LastIndexOf("."));
                     if (extension.ToLower().Equals(".png") || extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg"))
                     {
-                        fuProfile.SaveAs(Server.MapPath("images/profile/" + file_name));
+                        file_name = file_name.Replace(file_name, hdnUserId.Value + extension);
+                        fuProfile.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["profileurl"] + file_name));
                         imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileurl"] + file_name;
                         db.AddParameter("@userid", Request.QueryString["userid"].ToString());                        
                         db.AddParameter("@PicUrl", file_name);
-                        db.ExecuteNonQuery("update usermaster set pic_url=@picurl where userid=@userid", CommandType.Text);
+                        db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                        db.ExecuteNonQuery("update usermaster set pic_url=@picurl where userid=@userid and blog_id=@blog_id", CommandType.Text);
                         lblErrorMsg.Text = "Profile Picture Change Successfully.";
                         if (Request.QueryString["type"].ToString() == "user")
                         {

@@ -110,6 +110,7 @@ public partial class SinglePost : System.Web.UI.Page
             }            
             DataSet ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             lblposttitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString(); 
+            lblTags.Text = ds.Tables[0].Rows[0]["tags"].ToString();
             lblCreatedOn.Text = ds.Tables[0].Rows[0]["CreatedOn"].ToString();
             //lblcreatedbyemail.Text = ds.Tables[0].Rows[0]["createdbyemail"].ToString();
             lblPostDescription.Text = ds.Tables[0].Rows[0]["PostDescription"].ToString();
@@ -277,7 +278,6 @@ public partial class SinglePost : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
-
 
     protected void rpInner_ItemCommand(object source, RepeaterCommandEventArgs e)
     {

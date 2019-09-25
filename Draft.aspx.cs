@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class Draft : System.Web.UI.Page
 {
@@ -46,6 +43,7 @@ public partial class Draft : System.Web.UI.Page
             hdnPageNo.Value = counter.ToString();
             db.AddParameter("@page_no", counter);
             db.AddParameter("@active", 3);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpDraft.DataSource = ds;
             rpDraft.DataBind();
@@ -55,14 +53,15 @@ public partial class Draft : System.Web.UI.Page
                 lblErrorMsg.Text = "You don't have any saved drafts.Saving a draft allows you to keep a message you aren't ready to send yet.";
             }
 
-            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=3", CommandType.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=3 and blog_id=@blog_id", CommandType.Text);
             if (ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
             {
-                btnLoad.InnerText = "End";
+                btnLoad.Visible = false;
             }
             else
             {
-                btnLoad.InnerText = "More";
+                btnLoad.Visible = true;
             }
         }
         catch (Exception ex)
@@ -79,7 +78,8 @@ public partial class Draft : System.Web.UI.Page
             if (e.CommandName == "Publish")
             {
                 db.AddParameter("@postid", e.CommandArgument.ToString());
-                db.ExecuteNonQuery("update posts set active=1 where postid=@postid", CommandType.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update posts set active=1 where postid=@postid and blog_id=@blog_id", CommandType.Text);
                 lblErrorMsg.Text = "Post Published";
                 FillRp();
                 AdminMaster master = Master as AdminMaster;

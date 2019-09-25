@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:HiddenField ID="hdnFileUpload" runat="server" />
     <!-- Contact (Right Sidebar) Start -->
     <div class="col-md-12 page-body">
         <div class="row">

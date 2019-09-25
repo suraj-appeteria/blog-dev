@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Data.SqlClient;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class NewPost : System.Web.UI.Page
 {
@@ -44,7 +37,8 @@ public partial class NewPost : System.Web.UI.Page
     {
         try
         {
-            DataSet ds = db.ExecuteDataSet("select * from categorymaster where isnull(parentid,0)=0", CommandType.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet ds = db.ExecuteDataSet("select * from categorymaster where blog_id=@blog_id and isnull(parentid,0)=0", CommandType.Text);
             required.DataTextField = "category";
             required.DataValueField = "categoryid";
             required.DataSource = ds;
@@ -59,11 +53,14 @@ public partial class NewPost : System.Web.UI.Page
     {
         try
         {
+            string file_name = string.Empty, extension = string.Empty;
+            file_name = hdnFileUpload.Value;
+
             string st = txtDescription.Text;
             db.AddParameter("@postid",hdnPostId.Value);
             db.AddParameter("@postTitle", txtTitle.Text);
             db.AddParameter("@postdescription", st);
-            db.AddParameter("@ImageUrl", hdnFileUpload.Value);
+            db.AddParameter("@ImageUrl", file_name);
             db.AddParameter("@VideoUrl", DBNull.Value);
             db.AddParameter("@CreatedBy", 1);
             db.AddParameter("@tags", txtTags.Text);
@@ -72,9 +69,22 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@mobile", DBNull.Value);
             db.AddParameter("@active", 1);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             int id = Convert.ToInt32(db.ExecuteScalar("Save_posts", CommandType.StoredProcedure));
 
+            if (file_name != string.Empty)
+            {
+                extension = file_name.Substring(file_name.LastIndexOf("."));
+                if (System.IO.File.Exists(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension)))
+                {
+                    System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
+                }
+                System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
+                db.ExecuteNonQuery("update posts set imageurl='" + id + extension + "' where postid='" + id + "'");
+            }
+
             string[] arry = (Request.Form["required"]).ToString().Split(',');
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             db.ExecuteNonQuery("delete from PostCategory where postid="+hdnPostId.Value, CommandType.Text);
             for (int i = 0; i < arry.Length; i++)
             {
@@ -151,6 +161,7 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@updated_on", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@mobile", DBNull.Value);
             db.AddParameter("@active", 3);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             int id = Convert.ToInt32(db.ExecuteScalar("Save_posts", CommandType.StoredProcedure));
 
             string[] arry = (Request.Form["required"]).ToString().Split(',');

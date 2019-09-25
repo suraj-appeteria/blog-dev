@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using DAL.SQLDataAccess;
 using System.IO;
+using System.Configuration;
 
 public partial class SignUp : System.Web.UI.Page
 {
@@ -32,7 +33,9 @@ public partial class SignUp : System.Web.UI.Page
             db.AddParameter("@LastName", txtLastName.Text);
             db.AddParameter("@Email", txtEmail.Text);
             db.AddParameter("@password", txtConfPass.Text);
-            db.ExecuteDataSet("save_user_with_mobile", CommandType.StoredProcedure);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            int UserId = Convert.ToInt32(db.ExecuteScalar("save_user_with_mobile", CommandType.StoredProcedure));
+            hdnUserID.Value = UserId.ToString();
             txtConfPass.Text = "";
             txtFirstName.Text = "";
             txtLastName.Text = "";
@@ -54,22 +57,24 @@ public partial class SignUp : System.Web.UI.Page
     {
         try
         {
-            
+
+            db.AddParameter("@email", txtEmail.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            if (ds.Tables[0].Rows[0]["value"].ToString() == "-1")
             {
-                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
-                {
-                    lblErrorMsg.Text = "Email Id already registerd";
-                    return;
-                }
+                lblErrorMsg.Text = ds.Tables[0].Rows[0]["Msg"].ToString();
             }
-            btnOtp.TabIndex = 1;
-            db.AddParameter("email", txtEmail.Text);
-            ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
-            Util.SendEmail(txtEmail.Text, "OTP To Varify Your Account", "Your 4 Digit OTP for account varification is "+ds.Tables[0].Rows[0]["OTP"]+" And Valid Till "+ ds.Tables[0].Rows[0]["valid_till"]);
-            //lblErrorMsg.Text = "OTP sent to "+txtEmail.Text;
-            lblErrorMsg.Text = "Your Otp Is : " + ds.Tables[0].Rows[0]["OTP"].ToString();
+            else
+            {
+                btnOtp.TabIndex = 1;
+                db.AddParameter("email", txtEmail.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
+                Util.SendEmail(txtEmail.Text, "OTP To Varify Your Account", "Your 4 Digit OTP for account varification is " + ds.Tables[0].Rows[0]["OTP"] + " And Valid Till " + ds.Tables[0].Rows[0]["valid_till"]);
+                //lblErrorMsg.Text = "OTP sent to "+txtEmail.Text;
+                lblErrorMsg.Text = "Your Otp Is : " + ds.Tables[0].Rows[0]["OTP"].ToString();
+            }
         }
         catch (Exception ex)
         {
@@ -86,6 +91,7 @@ public partial class SignUp : System.Web.UI.Page
             {
                 db.AddParameter("@email", txtEmail.Text);
                 db.AddParameter("@otp", partitioned.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
                 DataSet ds = db.ExecuteDataSet("ValidateOTP", CommandType.StoredProcedure);
                 if (ds.Tables[0].Rows[0]["validationstatus"].ToString() == "Y")
                 {
@@ -123,10 +129,11 @@ public partial class SignUp : System.Web.UI.Page
                     file_name = fuImg.FileName;
                     extension = file_name.Substring(file_name.LastIndexOf("."));
                     if (extension.ToLower().Equals(".png") || extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg"))
-                    {
+                    {                                                
+                        file_name = file_name.Replace(file_name, hdnUserID.Value + extension);
                         hdnFileName.Value = file_name;
                         fuImg.SaveAs(Server.MapPath("images/profile/" + file_name));
-                        imgProfile.ImageUrl = "images/profile/" + file_name;
+                        imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + file_name;
                     }
                     else
                     {
@@ -152,11 +159,13 @@ public partial class SignUp : System.Web.UI.Page
             db.AddParameter("@email", txtEmail.Text);
             if (hdnFileName.Value != null)
             {
-                db.ExecuteNonQuery("update usermaster set pic_url=@url where email=@email", CommandType.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update usermaster set pic_url=@url where email=@email and blog_id=@blog_id", CommandType.Text);
             }
             else
             {
-                db.ExecuteNonQuery("update usermaster set pic_url=default.png where email=@email", CommandType.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update usermaster set pic_url=default.png where email=@email and blog_id=@blog_id", CommandType.Text);
             }
             Response.Redirect("login.aspx");
         }

@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="AddWork.aspx.cs" Inherits="AddWork" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script>
+        function Test(msg) {
+            debugger;
+            alert(msg);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <!-- Portfolio (Right Sidebar) Start -->       
@@ -8,6 +14,7 @@
             <div class="row">
                 <div class="sub-title">
                    <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
+                    <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                     <h2>Add New Work</h2>
                     <a href="addpost.aspx"><i class="icon-home"></i></a>
                 </div>
@@ -37,6 +44,7 @@
                                                     <td><b>Title</b></td>
                                                     <td>
                                                         <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="rfv" runat="server" ControlToValidate="txtTitle" ErrorMessage="Enter Title" Display="None"></asp:RequiredFieldValidator>
                                                     </td>
                                                 </tr>
 
@@ -44,12 +52,14 @@
                                                     <td><b>Url</b></td>
                                                     <td>
                                                         <asp:TextBox ID="txtUrl" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                                </tr>
+                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUrl" ErrorMessage="Enter Url" Display="None"></asp:RequiredFieldValidator>
+                                                     </tr>
 
                                                 <tr>
                                                     <td><b>About Work</b></td>
                                                     <td>
                                                         <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox></td>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDesc" ErrorMessage="Enter About Work" Display="None"></asp:RequiredFieldValidator>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Photo</b></td>
@@ -89,15 +99,12 @@
                                     <!-- Portfolio Detail Start images/portfolio/2.jpg portfolio-->
 
                                     <div class="row">
-                                        <div class="col-sm-6 custom-pad-1">
-                                           <%-- <div class="image-carousel">--%>
-                                                <%--<img src="images/portfolio/2.jpg" class="img-responsive" alt="">--%>
-                                                <asp:Image runat="server" ImageUrl='<%# Eval("work_image_name").ToString() == "" ? ConfigurationManager.AppSettings["workurl"] + "writing.jpg" : ConfigurationManager.AppSettings["workurl"] + Eval("work_image_name") %>' CssClass="img-responsive" alt="" />                                                
-                                           <%-- </div>--%>
+                                        <div class="col-sm-5 custom-pad-1">
+                                                <asp:Image runat="server" ImageUrl='<%# Eval("work_image_name").ToString() == "" ? ConfigurationManager.AppSettings["workurl"] + "writing.jpg" : ConfigurationManager.AppSettings["workurl"] + Eval("work_image_name") %>' CssClass="img-responsive" Height="330px" Width="347px"/>                                        
                                         </div>
 
 
-                                        <div class="col-sm-6 custom-pad-2">
+                                        <div class="col-sm-7 custom-pad-2">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered">
                                                     <tbody>
@@ -114,13 +121,12 @@
 
                                                         <tr>
                                                             <td><b>About Work</b></td>
-                                                            <td><%# Eval("work_desc").ToString().Length > 150 ? Eval("work_desc").ToString().Substring(0,150) : Eval("work_desc").ToString() %>
-                                                                
-                                                                <asp:LinkButton runat="server" CommandArgument='<%# Eval("work_id") %>' CommandName="Read" class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>
-                                                            <%--<%# (Eval("work_desc").ToString().Length > 150) ? (Eval("work_desc").ToString().Substring(0, 150) + "...<a onclick='"+ String.Format("myFunction(\"{0}\");", Eval("work_desc"))+"' >read More</a>") : Eval("work_desc")%>--%>
+                                                            <td><%# Eval("work_desc").ToString().Length > 150 ? Eval("work_desc").ToString().Substring(0,150) : Eval("work_desc").ToString() %>                                                                
+                                                                <asp:LinkButton ID="lnkRead" CausesValidation="false" runat="server" OnClientClick='<%# string.Format("Test(\"{0}\");",Eval("work_desc")) %>' class="button button-style button-anim fa fa-long-arrow-right"><span>Read More</span></asp:LinkButton>                                                            
                                                             </td>
                                                             
                                                         </tr>
+                                                        
                                                     </tbody>
                                                 </table>
                                                 

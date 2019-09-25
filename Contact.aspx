@@ -12,6 +12,7 @@
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ValidationGroup="Contact" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>Contact Me</h2>
                 <a href="post.aspx"><i class="icon-home"></i></a>
             </div>
@@ -72,7 +73,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Your Name*"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Enter Name" ControlToValidate="txtName" Display="None"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ValidationGroup="Contact" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Enter Name" ControlToValidate="txtName" Display="None"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
@@ -80,7 +81,7 @@
                                         <div class="form-group">
                                             <asp:TextBox ID="txtContactEmail" runat="server" CssClass="form-control" placeholder="Your Email*"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ControlToValidate="txtContactEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtContactEmail" Display="None"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ValidationGroup="Contact" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtContactEmail" Display="None"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
@@ -99,13 +100,13 @@
 
                                     <div class="col-sm-12">
                                         <asp:TextBox ID="txtSubject" runat="server" CssClass="form-group form-control" placeholder="Subject*"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter Subject" ControlToValidate="txtSubject" Display="None"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ValidationGroup="Contact" ID="RequiredFieldValidator4" runat="server" ErrorMessage="Enter Subject" ControlToValidate="txtSubject" Display="None"></asp:RequiredFieldValidator>
                                     </div>
 
                                     <div class="col-sm-12">
                                         <div class="textarea-message form-group">
                                             <asp:TextBox ID="txtMsg" runat="server" TextMode="MultiLine" CssClass="textarea-message form-control" placeholder="Your Message*" Rows="5"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Enter Message" ControlToValidate="txtMsg" Display="None"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ValidationGroup="Contact" ID="RequiredFieldValidator5" runat="server" ErrorMessage="Enter Message" ControlToValidate="txtMsg" Display="None"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
@@ -117,7 +118,7 @@
 
 
                                     <div class="text-center">
-                                        <button type="submit" id="btnSubmit" class="load-more-button" runat="server" onserverclick="btnSubmit_ServerClick">Send</button>
+                                        <button type="submit" ValidationGroup="Contact" id="btnSubmit" class="load-more-button" runat="server" onserverclick="btnSubmit_ServerClick">Send</button>
                                     </div>
 
                                 </form>
@@ -130,25 +131,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!-- Subscribe Form Start -->
-        <div class="col-md-8 col-md-offset-2" id="dvSubscribe" runat="server">
-                <div class="subscribe-form margin-top-20">
-                    <asp:ValidationSummary  ValidationGroup="first" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
-                    <asp:TextBox runat="server" ID="txtEmail" placeholder="Email ID" CssClass="text-input" ValidationGroup="first"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="rev" runat="server" Display="None" ErrorMessage="Please Enter Valid Email Id" ValidationGroup="first" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>                    
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Enter Email Id" ControlToValidate="txtEmail" ValidationGroup="first" Display="None"></asp:RequiredFieldValidator>
-                    <asp:Button class="submit-btn" ID="btnSubscribe" runat="server" OnClick="btnSubscribe_ServerClick" Text="Subscribe Now" ValidationGroup="first" />
-                </div>
-                <center><p>Subscribe for new post notification</p>
-                <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label></center>
-                <br />
-        </div>
-        <!-- Subscribe Form End -->
-
-
     </div>
     <!-- Contact (Right Sidebar) End -->
 </asp:Content>

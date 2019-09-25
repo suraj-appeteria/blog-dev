@@ -11,7 +11,8 @@
             <div class="sub-title">
                 <center><asp:label id="lblErrorMsg" runat="server" forecolor="Red"></asp:label></center>
 
-                <h2>Comments Requests</h2>
+                <h2>Posts Comments</h2>
+                <a href="addpost.aspx"><i class="icon-home"></i></a>
             </div>
 
 

@@ -10,6 +10,7 @@
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                 <center><h2>Post In Draft</h2></center>
+                <a href="addpost.aspx"><i class="icon-home"></i></a>
             </div>
         </div>
         <asp:Panel ID="pnlDraft" runat="server">

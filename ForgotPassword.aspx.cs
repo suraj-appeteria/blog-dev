@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class ForgotPassword : System.Web.UI.Page
 {
@@ -25,6 +26,7 @@ public partial class ForgotPassword : System.Web.UI.Page
         {
             db.AddParameter("@email", txtEmail.Text);
             db.AddParameter("@otp", partitioned.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("ValidateOTP", CommandType.StoredProcedure);
             if (ds.Tables[0].Rows[0]["validationstatus"].ToString() == "Y")
             {
@@ -49,6 +51,7 @@ public partial class ForgotPassword : System.Web.UI.Page
         try
         {
             db.AddParameter("email", txtEmail.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
             Util.SendEmail(txtEmail.Text, "Your Blog One-Time Password", "Hi Member, Your email OTP is : " + ds.Tables[0].Rows[0]["OTP"] + " And Valid Till " + ds.Tables[0].Rows[0]["valid_till"]);
             lblErrorMsg.Text = "OTP sent";
@@ -65,7 +68,8 @@ public partial class ForgotPassword : System.Web.UI.Page
         {
             db.AddParameter("@email", txtEmail.Text);
             db.AddParameter("@pass", txtConfirm.Text);
-            DataSet ds = db.ExecuteDataSet("update usermaster set password=pwdencrypt(@pass) where email=@email", CommandType.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet ds = db.ExecuteDataSet("update usermaster set password=pwdencrypt(@pass) where email=@email and blog_id=@blog_id", CommandType.Text);
             Response.Redirect("Login.aspx");
 
         }

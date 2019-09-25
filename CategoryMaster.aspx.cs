@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class CategoryMaster : System.Web.UI.Page
 {
@@ -24,6 +25,7 @@ public partial class CategoryMaster : System.Web.UI.Page
     {
         try
         {
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getAllCategories", CommandType.StoredProcedure);
             rpCategory.DataSource = ds;
             rpCategory.DataBind();
@@ -42,7 +44,9 @@ public partial class CategoryMaster : System.Web.UI.Page
             db.AddParameter("@category",txtCategory.Text);
             db.AddParameter("@parentid",0);
             db.AddParameter("@sequence",0);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             db.ExecuteNonQuery("save_category", CommandType.StoredProcedure);
+            FillGrid();
             txtCategory.Text = "";
             lblErrorMsg.Text = "Category Added";
         }

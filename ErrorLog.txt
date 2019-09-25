@@ -1,174 +1,122 @@
 ------------------------------------------------------------------------
-24-Sep-19 5:27:42 PM 
- System.Web.HttpParseException (0x80004005): Type 'System.Web.UI.WebControls.Repeater' does not have a public property named 'safdsf'. ---> System.Web.HttpException (0x80004005): Type 'System.Web.UI.WebControls.Repeater' does not have a public property named 'safdsf'.
-   at System.Web.UI.ControlBuilder.AddProperty(String filter, String name, String value, Boolean mainDirectiveMode)
-   at System.Web.UI.ControlBuilder.PreprocessAttribute(String filter, String attribname, String attribvalue, Boolean mainDirectiveMode, Int32 line, Int32 column)
-   at System.Web.UI.ControlBuilder.PreprocessAttributes(ParsedAttributeCollection attribs)
-   at System.Web.UI.ControlBuilder.Init(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs)
-   at System.Web.UI.ControlBuilder.CreateBuilderFromType(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs, Int32 line, String sourceFileName)
-   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
-   at System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
-   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
+25-Sep-19 1:58:56 PM 
+ System.Web.HttpException (0x80004005): The server tag is not well formed.
+   at System.Web.UI.TemplateParser.ProcessError(String message)
+   at System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
    at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
    at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)------------------------------------------------------------------------
 ------------------------------------------------------------------------
-24-Sep-19 5:28:52 PM 
- System.Web.HttpParseException (0x80004005): Type 'System.Web.UI.WebControls.Repeater' does not have a public property named 'safdsf'. ---> System.Web.HttpException (0x80004005): Type 'System.Web.UI.WebControls.Repeater' does not have a public property named 'safdsf'.
-   at System.Web.UI.ControlBuilder.AddProperty(String filter, String name, String value, Boolean mainDirectiveMode)
-   at System.Web.UI.ControlBuilder.PreprocessAttribute(String filter, String attribname, String attribvalue, Boolean mainDirectiveMode, Int32 line, Int32 column)
-   at System.Web.UI.ControlBuilder.PreprocessAttributes(ParsedAttributeCollection attribs)
-   at System.Web.UI.ControlBuilder.Init(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs)
-   at System.Web.UI.ControlBuilder.CreateBuilderFromType(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs, Int32 line, String sourceFileName)
-   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
-   at System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
-   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
+25-Sep-19 1:59:00 PM 
+ System.Web.HttpException (0x80004005): The server tag is not well formed.
+   at System.Web.UI.TemplateParser.ProcessError(String message)
+   at System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
    at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
    at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)------------------------------------------------------------------------
 ------------------------------------------------------------------------
-24-Sep-19 5:29:21 PM 
- System.Web.HttpParseException (0x80004005): Type 'System.Web.UI.WebControls.Repeater' does not have a public property named 'dfj'. ---> System.Web.HttpException (0x80004005): Type 'System.Web.UI.WebControls.Repeater' does not have a public property named 'dfj'.
-   at System.Web.UI.ControlBuilder.AddProperty(String filter, String name, String value, Boolean mainDirectiveMode)
-   at System.Web.UI.ControlBuilder.PreprocessAttribute(String filter, String attribname, String attribvalue, Boolean mainDirectiveMode, Int32 line, Int32 column)
-   at System.Web.UI.ControlBuilder.PreprocessAttributes(ParsedAttributeCollection attribs)
-   at System.Web.UI.ControlBuilder.Init(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs)
-   at System.Web.UI.ControlBuilder.CreateBuilderFromType(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs, Int32 line, String sourceFileName)
-   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
-   at System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
-   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
-   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
-   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-Sep-19 5:35:44 PM 
- System.Exception: test exception
-   at Post.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Post.aspx.cs:line 11
-   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
-   at System.Web.UI.Control.OnLoad(EventArgs e)
-   at System.Web.UI.Control.LoadRecursive()
-   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-Sep-19 5:36:02 PM 
- System.Exception: test exception
-   at Post.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Post.aspx.cs:line 11
-   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
-   at System.Web.UI.Control.OnLoad(EventArgs e)
-   at System.Web.UI.Control.LoadRecursive()
-   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-Sep-19 5:37:47 PM 
- System.ArgumentException: Parameter cannot be null
-Parameter name: original
-   at Post.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Post.aspx.cs:line 11
-   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
-   at System.Web.UI.Control.OnLoad(EventArgs e)
-   at System.Web.UI.Control.LoadRecursive()
-   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-Sep-19 7:19:06 PM 
- System.NullReferenceException: Object reference not set to an instance of an object.
-   at Draft.Page_PreInit(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Draft.aspx.cs:line 27
-   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
-   at System.Web.UI.Page.OnPreInit(EventArgs e)
-   at System.Web.UI.Page.PerformPreInit()
-   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 22:36:38 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\AdminMaster.master.cs(48): error CS0103: The name 'imgProfile' does not exist in the current context
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 22:39:04 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\AdminMaster.master.cs(49): error CS0103: The name 'imgProfile' does not exist in the current context
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 22:39:20 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\AdminMaster.master.cs(49): error CS0103: The name 'imgProfile' does not exist in the current context
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 22:39:48 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\AdminMaster.master.cs(49): error CS0103: The name 'imgProfile' does not exist in the current context
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 22:48:58 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\AdminMaster.master(99): error CS1061: 'ASP.adminmaster_master' does not contain a definition for 'lblName_Click' and no extension method 'lblName_Click' accepting a first argument of type 'ASP.adminmaster_master' could be found (are you missing a using directive or an assembly reference?)
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 23:20:28 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\BlogAdmin.master(126): error CS1061: 'ASP.blogadmin_master' does not contain a definition for 'btnSubscribe_ServerClick' and no extension method 'btnSubscribe_ServerClick' accepting a first argument of type 'ASP.blogadmin_master' could be found (are you missing a using directive or an assembly reference?)
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 23:21:02 
- System.Web.HttpCompileException (0x80004005): e:\Projects\blog-dev\BlogAdmin.master.cs(93): error CS0103: The name 'lblErrorMsg' does not exist in the current context
-   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
-   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
-   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
-   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
-------------------------------------------------------------------------
-24-09-2019 23:22:44 
- System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The user name or password is incorrect
-   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in e:\Projects\blog-dev\App_Code\DatabaseHelper.cs:line 415
-   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in e:\Projects\blog-dev\App_Code\DatabaseHelper.cs:line 347
-   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in e:\Projects\blog-dev\App_Code\DatabaseHelper.cs:line 328
-   at BlogAdmin.Page_Load(Object sender, EventArgs e) in e:\Projects\blog-dev\BlogAdmin.master.cs:line 18
+25-Sep-19 4:51:29 PM 
+ System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'get_users' expects parameter '@blog_id', which was not supplied.
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 18
    at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
    at System.Web.UI.Control.OnLoad(EventArgs e)
    at System.Web.UI.Control.LoadRecursive()
    at System.Web.UI.Control.LoadRecursive()
    at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
-ClientConnectionId:00000000-0000-0000-0000-000000000000
-Error Number:1326,State:0,Class:20------------------------------------------------------------------------
+ClientConnectionId:d2706238-f89c-4354-9fb4-4e5b1e5e8588
+Error Number:201,State:4,Class:16------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 4:51:30 PM 
+ System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'get_users' expects parameter '@blog_id', which was not supplied.
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 18
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:d2706238-f89c-4354-9fb4-4e5b1e5e8588
+Error Number:201,State:4,Class:16------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 5:16:50 PM 
+ System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'get_users' expects parameter '@blog_id', which was not supplied.
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 18
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:784aa9ed-fc7c-4d43-932b-56d6ade240e3
+Error Number:201,State:4,Class:16------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 5:16:51 PM 
+ System.Data.SqlClient.SqlException (0x80131904): Procedure or function 'get_users' expects parameter '@blog_id', which was not supplied.
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 18
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:784aa9ed-fc7c-4d43-932b-56d6ade240e3
+Error Number:201,State:4,Class:16------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 5:25:54 PM 
+ System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 20
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 5:48:28 PM 
+ System.Web.HttpCompileException (0x80004005): c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\AdminMaster.master.cs(46): error CS1002: ; expected
+   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 5:48:38 PM 
+ System.Web.HttpCompileException (0x80004005): c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\AdminMaster.master.cs(46): error CS1002: ; expected
+   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 6:37:10 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at SinglePost.Page_PreInit(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\SinglePost.aspx.cs:line 31
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Page.OnPreInit(EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+25-Sep-19 6:37:10 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at SinglePost.Page_PreInit(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\SinglePost.aspx.cs:line 31
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Page.OnPreInit(EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
 

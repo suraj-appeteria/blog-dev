@@ -2,26 +2,17 @@
 using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class Post : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
-    {
-        lblError.Text = "";
+    {        
         lblErrorMsg.Text = "";
         if (!IsPostBack)
-        {
-            lblError.Text = "";
-            lblErrorMsg.Text = "";
-            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
-            {
-                dvSubscribe.Visible = true;
-            }
-            else
-            {
-                dvSubscribe.Visible = false;
-            }
+        {            
+            lblErrorMsg.Text = "";            
             FillCategories();
             FillRp();
         }
@@ -38,15 +29,24 @@ public partial class Post : System.Web.UI.Page
     {
         try
         {
-            Session["type"] = "";
+            if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            {
+                Session["type"] = "";
+            }            
             int counter = Convert.ToInt32(hdnPageNo.Value) + 1;
             hdnPageNo.Value = counter.ToString();
+            if (Request.QueryString["c"] != null)
+            {
+                db.AddParameter("@category_id", Request.QueryString["c"].ToString());
+            }
             db.AddParameter("@page_no", counter);
             db.AddParameter("@active", 1);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
-            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1", CommandType.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where blog_id=@blog_id and active=1", CommandType.Text);
             if (ds.Tables[0].Rows.Count >= Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
             {
                 btnLoad.Visible = false;// "End";
@@ -70,7 +70,7 @@ public partial class Post : System.Web.UI.Page
             }
         }
         catch (Exception ex)
-        {
+        {           
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
@@ -80,27 +80,4 @@ public partial class Post : System.Web.UI.Page
         FillRp();
     }
 
-    protected void btnSubscribe_ServerClick(object sender, EventArgs e)
-    {
-        try
-        {
-
-            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
-                {
-                    lblError.Text = txtEmail.Text + " id is already subscribed";
-                    return;
-                }
-            }
-            db.AddParameter("@Email_id", txtEmail.Text);
-            db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
-            lblError.Text = "congratulations you are now subscribed.";
-        }
-        catch (Exception ex)
-        {
-            lblErrorMsg.Text = ex.Message.ToString();
-        }
-    }
 }

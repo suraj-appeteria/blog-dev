@@ -15,6 +15,7 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         db.AddParameter("user_type", "writer");
+        db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
         Session["adminemail"] = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
         Session["adminName"] = Convert.ToString(ds.Tables[0].Rows[0]["firstname"]) + " " + Convert.ToString(ds.Tables[0].Rows[0]["lastname"]);
@@ -25,6 +26,7 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
         {
             ulLogin.Visible = true;
             disqus_thread.Visible = false;
+            dvSubscribe.Visible = true;
         }
         //else if (Session["type"].ToString() == "writer")
         //{
@@ -45,8 +47,11 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
         }
         ulLogin.Visible = false;
         disqus_thread.Visible = true;
+        dvSubscribe.Visible = false;
         db.AddParameter("@userid", Session["userid"].ToString());
+        db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+        Session["url"] = ds.Tables[0].Rows[0]["pic_url"].ToString();
         imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
         lblName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString() +" "+ ds.Tables[0].Rows[0]["LastName"].ToString();
         lblNo.Text = ds.Tables[0].Rows[0]["mobile"].ToString();
@@ -73,20 +78,22 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
     {
         try
         {
-
-            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            db.AddParameter("@email", txtEmail.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet ds = db.ExecuteDataSet("chkSubscribe", CommandType.StoredProcedure);
+            if(ds.Tables[0].Rows[0]["value"].ToString() == "-1")
             {
-                if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
-                {
-                    lblError.Text = txtEmail.Text + " id is already subscribed";
-                    return;
-                }
+                lblError.Text = ds.Tables[0].Rows[0]["Msg"].ToString();
             }
-            db.AddParameter("@Email_id", txtEmail.Text);
-            db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
-            lblError.Text = "Congratulations!!.";
-            txtEmail.Text = string.Empty;
+            else
+            {
+                db.AddParameter("@email_id", txtEmail.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
+                lblError.Text = "Congratulations!!.";
+                txtEmail.Text = string.Empty;
+            }
+            
         }
         catch (Exception ex)
         {

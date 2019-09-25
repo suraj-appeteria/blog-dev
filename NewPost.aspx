@@ -69,9 +69,10 @@
                             <div class="row">
                                 <div class="sub-title" style="padding-top: 0px">
                                     <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
-                                </div>
+                               <a href="addpost.aspx"><i class="icon-home"></i></a>
+                                     </div>
                                 <div class="post-title text-center">
-                                    <h2>Add New Post</h2>
+                                    <h2 style="color:#450c3a">Add New Post</h2>
                                 </div>
                                 <div class="col-md-12 content-page">
                                     <!-- Blog Post Start -->

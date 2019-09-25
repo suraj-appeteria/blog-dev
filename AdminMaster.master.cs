@@ -40,30 +40,30 @@ public partial class AdminMaster : System.Web.UI.MasterPage
     public void AdminSide()
     {
         db.AddParameter("@userid", Session["userid"].ToString());
+        db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);        
         lnkName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
-        
+        imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
         //if (Session["url"].ToString() != null)
-        if(string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[0]["pic_url"])))
-        {
-            imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();            
-        }
-        else
-        {
-            imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
-        }
-        //db.AddParameter("@active", 2);
-        //ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
-        //lblReq.Text = "Comment (" + ds.Tables[0].Rows.Count.ToString() + ")";
-        if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
-        {
-            disqus_thread.Visible = false;
-        }
-        else {
-            disqus_thread.Visible =true;
-        }
-            db.AddParameter("@active", 3);
-        ds = db.ExecuteDataSet("select * from posts where active=@active", CommandType.Text);
+        //if(string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[0]["pic_url"])))
+        //{
+        //    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();            
+        //}
+        //else
+        //{
+        //    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "default.png";
+        //}
+
+        //if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+        //{
+        //    disqus_thread.Visible = false;
+        //}
+        //else {
+        //    disqus_thread.Visible =true;
+        //}
+        db.AddParameter("@active", 3);
+        db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+        ds = db.ExecuteDataSet("select * from posts where active=@active and blog_id=@blog_id", CommandType.Text);
         lblDraft.Text = "Drafts (" + ds.Tables[0].Rows.Count.ToString() + ")";
     }
 

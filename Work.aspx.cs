@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class Work : System.Web.UI.Page
 {
@@ -24,6 +25,7 @@ public partial class Work : System.Web.UI.Page
     {
         try
         {
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_works", CommandType.StoredProcedure);
             rpWorks.DataSource = ds;
             rpWorks.DataBind();
@@ -33,29 +35,4 @@ public partial class Work : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
-
-    //protected void btnSubscribe_ServerClick(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
-
-    //        DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
-    //        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-    //        {
-    //            if (ds.Tables[0].Rows[i]["email"].ToString() == txtEmail.Text)
-    //            {
-    //                lblError.Text = txtEmail.Text + " id is already subscribed";
-    //                return;
-    //            }
-    //        }
-    //        db.AddParameter("@Email_id", txtEmail.Text);
-    //        db.ExecuteNonQuery("save_Subscriber", CommandType.StoredProcedure);
-    //        lblError.Text = "congratulations you are now subscribed.";
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        lblErrorMsg.Text = ex.Message.ToString();
-    //    }
-    //}
-
 }

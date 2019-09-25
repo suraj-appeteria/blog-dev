@@ -18,18 +18,20 @@
         <div class="row">
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
-                <%--<a href="post.aspx" title="Go to Home Page">
+               <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
+                <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Comment" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
+                 <%--<a href="post.aspx" title="Go to Home Page">
                         <h2>Back Home</h2>
                     </a>--%>
                 <h2>
-                    <asp:LinkButton ID="btnBack" OnClick="btnBack_Click" Text="Back Home" runat="server" /></h2>
-                <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
+                    <asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-backward'></i>" runat="server" /></h2>
+                <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a><i class="fa fa-backward"></i>
             </div>
             <div class="col-md-12 content-page">
                 <div class="col-md-12 blog-post">
                     <!-- Post Headline Start -->
-                    <div class="text-right">                                                
-                        <asp:LinkButton ID="lnkFav" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#450c3a"><i style="padding-left:0.3em" class="fa fa-heart-o"></i></asp:LinkButton>
+                    <div class="text-right">
+                        <asp:LinkButton ID="lnkFav" CausesValidation="false" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#450c3a"><i style="padding-left:0.3em" class="fa fa-heart-o"></i></asp:LinkButton>
                     </div>
 
 
@@ -42,13 +44,15 @@
 
                     <!-- Post Detail Start -->
                     <div class="post-info">
+                        <asp:Label ID="lblTags" ForeColor="#450c3a" runat="server" Font-Size="18px"></asp:Label>
+                        <br />
                         <span>
                             <asp:Label ID="lblCreatedOn" runat="server"></asp:Label>
                             <%--/ by <a href="#" target="_blank">
                                 <asp:Label ID="lblcreatedbyemail" runat="server"></asp:Label></a>--%></span>
                     </div>
                     <!-- Post Detail End -->
-                    
+                    <br />
                     <div>
                         <div class="row" style="margin-left: 1em; margin-right: 1em">
                             <p>
@@ -58,7 +62,7 @@
                         <div id="dvlike" class="row" style="margin-left: 1em; margin-right: 1em">
                             <div class="you-may-also-like">
                                 <h3>Do you like this post ?  
-                                <asp:LinkButton ID="lnkLike" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="#450c3a"><i class="fa fa-thumbs-o-up"></i></asp:LinkButton>
+                                <asp:LinkButton ID="lnkLike" CausesValidation="false" runat="server" Font-Size="25" OnClick="lnkLike_Click" TabIndex="0" ForeColor="#450c3a"><i class="fa fa-thumbs-o-up"></i></asp:LinkButton>
                                 </h3>
                             </div>
                         </div>
@@ -99,7 +103,7 @@
                                             <div class="promo-area2">
                                                 <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
                                                 <div class="posts_ids1">
-                                                    <div class="promo-item2" style="background-image: url('<%# ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
+                                                    <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
                                                         <div class="promo-overlay2">
                                                             <h1 class="cat_post_title">
                                                                 <div class="cat"></div>
@@ -109,7 +113,7 @@
 
                                                                 <asp:LinkButton CausesValidation="false" runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" CssClass="promomore a"><span>VIEW POST</span></asp:LinkButton>
                                                                 <%--<a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>--%>
-                                                            </div>                                                            
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -135,7 +139,7 @@
 
                                     <div class="about-author">
                                         <div class="picture">
-                                            <asp:Image ID="imgComment" runat="server" ImageUrl='<%# Eval("picture_url") %>' alt="" />
+                                            <asp:Image ID="imgComment" CssClass="load-more-button" runat="server" ImageUrl='<%# Eval("picture_url").ToString()== "" ? ConfigurationManager.AppSettings["profileUrl"] + "default.png" : ConfigurationManager.AppSettings["profileUrl"] + Eval("picture_url") %>' alt="" />
                                             <%-- <img src="images/baby.jpg" class="img-responsive" alt="">--%>
                                         </div>
                                         <div class="c-padding">
@@ -160,29 +164,16 @@
                         <div id="disqus_thread" class="row">
                             <div class="col-lg-2">
                                 <center>
-                                            <asp:Image ID="imgComment" CssClass="load-more-button" runat="server" ImageUrl="~/images/Profile/default.png" alt="" /></center>
+                                <asp:Image ID="imgComment" CssClass="load-more-button" runat="server" ImageUrl="~/images/Profile/default.png" alt="" /></center>
                             </div>
                             <div class="col-lg-10 ">
                                 <div class="subscribe-form margin-top-10">
-                                    <asp:TextBox runat="server" ID="txtComment" TextMode="MultiLine" placeholder="Write a comment" CssClass="text-input"></asp:TextBox>
-                                    <button id="btnComment" onserverclick="btnComment_ServerClick" runat="server" class="submit-btn1" type="submit">Submit</button>
+                                    <asp:TextBox runat="server" ID="txtComment" ValidationGroup="Comment" TextMode="MultiLine" placeholder="Write a comment" CssClass="text-input"></asp:TextBox>
+                                    <asp:Button ID="btnComment" OnClick="btnComment_ServerClick" ValidationGroup="Comment" runat="server" class="submit-btn1" Text="Submit" />
+                                    <asp:RequiredFieldValidator ValidationGroup="Comment" ID="rfv1" runat="server" ErrorMessage="Enter Comment" Display="None" ControlToValidate="txtComment"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
-                        <asp:Panel runat="server" Visible="false">
-                            <!-- Disqus Code Start  (Please Note: Disqus will not be load on local, You have to upload it on server.)-->
-
-                            <script>
-                                (function () { // DON'T EDIT BELOW THIS LINE
-                                    var d = document, s = d.createElement('script');
-                                    s.src = '//uipasta.disqus.com/embed.js';   // Please change the url from your own disqus id
-                                    s.setAttribute('data-timestamp', +new Date());
-                                    (d.head || d.body).appendChild(s);
-                                })();
-                            </script>
-                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            <!-- Disqus Code End -->
-                        </asp:Panel>
                     </div>
                     <!-- Post Comment (Disqus) End -->
 

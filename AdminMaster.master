@@ -60,14 +60,14 @@
                                         <li><a href="AddWork.aspx">Works</a></li>
                                         <li><a href="AddTestimonial.aspx">Testimonial</a></li>
                                         <li><a href="addpost.aspx">My Post</a></li>
-                                        <li><a href="Subscribers.aspx">Subscribers</a></li>
+                                        <li><a href="Users.aspx">Users</a></li>
                                         <li><a href="Draft.aspx">
                                             <asp:Label runat="server" ID="lblDraft"></asp:Label></a></li>
                                         <li><a href="comments.aspx">
                                             <asp:Label runat="server" ID="lblReq" Text="Comments"></asp:Label></a></li>
                                     </ul>
                                 </div>
-                                <asp:Image ID="imgAdmin" runat="server" ImageUrl="~/images/profile/kimayakolhe.png" alt="" />
+                                <asp:Image ID="imgAdmin" runat="server" ImageUrl="~/images/profile/kimayakolhe.png" alt="" Height="300px" />
                             </div>
                             <div class="my-detail">
                                 <%-- <asp:Image ID="imgProfile" runat="server"  style="width:90px; height:90px" alt="" />--%>
@@ -87,8 +87,8 @@
 
                             
                             <br />
-                            <div id="disqus_thread" runat="server" visible="false">
-                                <div class="row">
+                            <div id="disqus_thread" >
+<%--                                <div class="row">
                                     <div class="col-lg-3" style="padding-left: 2em">
                                         <center>
                                             <asp:Image ID="imgProfile" CssClass="load-more-button" runat="server" ImageUrl="~/images/profile/kimayakolhe.png" /></center>
@@ -100,9 +100,9 @@
                                         <h6>
                                             <asp:Label ID="lblNo" runat="server" Font-Size="15px" Text=""></asp:Label></h6>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="row">
-                                    <asp:LinkButton runat="server" CausesValidation="false" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                                    <asp:LinkButton runat="server" CausesValidation="false" Font-Size="18px" Font-Bold="true" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
                                 </div>
                                 <br />
                             </div>
@@ -116,12 +116,12 @@
                         <!-- Footer Start -->
                         <div class="col-md-12 page-body margin-top-50 footer">
                             <footer>
-                          <ul class="menu-link">
+                          <%--<ul class="menu-link">
                                     <li><a href="post.aspx">Home</a></li>
                                     <li><a href="about.aspx">About</a></li>
                                     <li><a href="work.aspx">Work</a></li>
                                     <li><a href="contact.aspx">Contact</a></li>
-                                </ul>
+                                </ul>--%>
 
                                 <p>©2019 Developed By :<a href="http://appeteria.com" target="_blank"> Appeteria Technologies Pvt. Ltd.</a> All Rights Reserved.</p>
 

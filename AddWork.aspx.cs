@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.SqlClient;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class AddWork : System.Web.UI.Page
 {
@@ -24,6 +19,7 @@ public partial class AddWork : System.Web.UI.Page
     {
         try
         {
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_works", CommandType.StoredProcedure);
             rpWorks.DataSource = ds;
             rpWorks.DataBind();
@@ -38,13 +34,29 @@ public partial class AddWork : System.Web.UI.Page
     {
         try
         {
+            string file_name = string.Empty, extension = string.Empty;
+            file_name = hdnFileUpload.Value;
+
             db.AddParameter("@workid", 0);
             db.AddParameter("@worktitle",txtTitle.Text);
             db.AddParameter("@workurl",txtUrl.Text);
             db.AddParameter("@workdesc",txtDesc.Text);
-            db.AddParameter("@workimg",hdnFileUpload.Value);
+            db.AddParameter("@workimg",file_name);
             db.AddParameter("@modifiedby", Session["userid"]);
-            db.ExecuteNonQuery("save_works", CommandType.StoredProcedure);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            int id = Convert.ToInt32(db.ExecuteScalar("save_works", CommandType.StoredProcedure));
+
+            if (file_name != string.Empty)
+            {
+                extension = file_name.Substring(file_name.LastIndexOf("."));
+                if (System.IO.File.Exists(Server.MapPath(ConfigurationManager.AppSettings["workurl"] + id + extension)))
+                {
+                    System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["workurl"] + id + extension));
+                }
+                System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["workurl"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["workurl"] + id + extension));
+                db.ExecuteNonQuery("update works set work_image_name='" + id + extension + "' where work_id='" + id + "'");
+            }
+
             lblErrorMsg.Text = "Work Added";
             txtDesc.Text = "";
             txtTitle.Text = "";

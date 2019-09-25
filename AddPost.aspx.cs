@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.SqlClient;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class AddPost : System.Web.UI.Page
 {
@@ -28,17 +24,19 @@ public partial class AddPost : System.Web.UI.Page
             hdnPageNo.Value = counter.ToString();
             db.AddParameter("@page_no", counter);
             db.AddParameter("@active", 1);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
             rpPost.DataSource = ds;
             rpPost.DataBind();
-            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1", CommandType.Text);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+            DataSet dsCount = db.ExecuteDataSet("select count(postid) as posts from posts where active=1 and blog_id=@blog_id", CommandType.Text);
             if (ds.Tables[0].Rows.Count == Convert.ToInt32(dsCount.Tables[0].Rows[0]["posts"]))
             {
-                btnLoad.InnerText = "End";
+                btnLoad.Visible = false;
             }
             else
             {
-                btnLoad.InnerText = "More";
+                btnLoad.Visible = true;
             }
 
         }
@@ -65,7 +63,8 @@ public partial class AddPost : System.Web.UI.Page
             else if (e.CommandName == "DEL")
             {
                 db.AddParameter("@postid", e.CommandArgument.ToString());
-                db.ExecuteNonQuery("update posts set active=0 where postid=@postid", CommandType.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update posts set active=0 where postid=@postid and blog_id=@blog_id", CommandType.Text);
                 FillRp();
                 FillTrashGrid(true, false);
                 lblErrorMsg.Text = "Post Deleted Successfully.";
@@ -73,7 +72,8 @@ public partial class AddPost : System.Web.UI.Page
             else if (e.CommandName == "UNPublish")
             {
                 db.AddParameter("@postid", e.CommandArgument.ToString());
-                db.ExecuteNonQuery("update posts set active=3 where postid=@postid", CommandType.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update posts set active=3 where postid=@postid and blog_id=@blog_id", CommandType.Text);
                 FillRp();
                 FillTrashGrid(true, false);
                 AdminMaster admin = Master as AdminMaster;
@@ -83,7 +83,8 @@ public partial class AddPost : System.Web.UI.Page
             else if (e.CommandName == "Active")
             {
                 db.AddParameter("@postid", e.CommandArgument.ToString());
-                db.ExecuteNonQuery("update posts set active=1 where postid=@postid", CommandType.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update posts set active=1 where postid=@postid and blog_id=@blog_id", CommandType.Text);
                 FillTrashGrid(false, true);             
                 FillRp();
                 lblErrorMsg.Text = "Post Active Successfully.";
@@ -138,6 +139,7 @@ public partial class AddPost : System.Web.UI.Page
         {
 
             db.AddParameter("@active", 0);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getAllPosts", CommandType.StoredProcedure);
           
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
