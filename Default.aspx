@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true" 
+    CodeFile="Default.aspx.cs" Inherits="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="css/ForPost.css" rel="stylesheet" />
@@ -13,12 +14,12 @@
 
                 <div>
                     <asp:Button ID="btnAll"  runat="server" Text="All" style="margin-top:3px" CssClass="submit-btn"
-                                PostBackUrl="~/Post.aspx" CausesValidation="false" />
+                                PostBackUrl="~/default.aspx" CausesValidation="false" />
                     <%--<asp:Panel runat="server" ScrollBars="Horizontal" Width="100%">--%>
                     <asp:Repeater ID="rpCategory" runat="server">
                         <ItemTemplate>
                             <asp:Button ID="Button1" runat="server" Text='<%# Eval("category") %>' style="margin-top:3px"
-                                PostBackUrl='<%# "~/Post.aspx?c="+ Eval("categoryid") %>' CausesValidation="false" CssClass="submit-btn" />
+                                PostBackUrl='<%# "~/default.aspx?c="+ Eval("categoryid") %>' CausesValidation="false" CssClass="submit-btn" />
                             
                         </ItemTemplate>
                     </asp:Repeater>

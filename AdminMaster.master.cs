@@ -18,7 +18,7 @@ public partial class AdminMaster : System.Web.UI.MasterPage
 
             if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
             {
-                Response.Redirect("post.aspx");
+                Response.Redirect("default.aspx");
             }
             if (Session["type"].ToString() != "writer")
             {
@@ -76,7 +76,7 @@ public partial class AdminMaster : System.Web.UI.MasterPage
     {
         Session.Clear();
         System.Web.Security.FormsAuthentication.SignOut();
-        Response.Redirect("~/post.aspx");
+        Response.Redirect("~/default.aspx");
     }
 
     protected void lnkName_Click(object sender, EventArgs e)

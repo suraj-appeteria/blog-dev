@@ -61,7 +61,7 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
         
         Session.Clear();
         System.Web.Security.FormsAuthentication.SignOut();
-        Response.Redirect("~/post.aspx");
+        Response.Redirect("~/default.aspx");
     }
 
     protected void lblName_Click(object sender, EventArgs e)

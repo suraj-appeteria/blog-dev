@@ -180,7 +180,7 @@ public partial class SinglePost : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("post.aspx");
+                Response.Redirect("default.aspx");
             }
         }
         catch (Exception ex)

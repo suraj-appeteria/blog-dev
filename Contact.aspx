@@ -14,7 +14,7 @@
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ValidationGroup="Contact" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>Contact Me</h2>
-                <a href="post.aspx"><i class="icon-home"></i></a>
+                <a href="default.aspx"><i class="icon-home"></i></a>
             </div>
 
 

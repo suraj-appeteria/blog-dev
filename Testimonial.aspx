@@ -12,7 +12,7 @@
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <h2>Testimonial</h2>
-                <a href="post.aspx"><i class="icon-home"></i></a>
+                <a href="default.aspx"><i class="icon-home"></i></a>
             </div>
 
 

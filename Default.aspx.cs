@@ -4,7 +4,7 @@ using System.Data;
 using DAL.SQLDataAccess;
 using System.Configuration;
 
-public partial class Post : System.Web.UI.Page
+public partial class Default : System.Web.UI.Page
 {
     DatabaseHelper db = new DatabaseHelper();
     protected void Page_Load(object sender, EventArgs e)
