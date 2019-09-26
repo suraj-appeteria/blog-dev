@@ -20,7 +20,8 @@ public partial class Default : System.Web.UI.Page
 
     private void FillCategories()
     {
-        DataSet ds = db.ExecuteDataSet("select distinct c.categoryid, c.category from CategoryMaster c inner join PostCategory p on c.categoryid = p.categoryid");
+        db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+        DataSet ds = db.ExecuteDataSet("get_blog_categories",CommandType.StoredProcedure);
         rpCategory.DataSource = ds;
         rpCategory.DataBind();
     }

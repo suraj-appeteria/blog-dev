@@ -107,7 +107,8 @@ public partial class SinglePost : System.Web.UI.Page
             else
             {
                 db.AddParameter("@active", 1);
-            }            
+            }
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("getPostById", CommandType.StoredProcedure);
             lblposttitle.Text = ds.Tables[0].Rows[0]["posttitle"].ToString(); 
             lblTags.Text = ds.Tables[0].Rows[0]["tags"].ToString();

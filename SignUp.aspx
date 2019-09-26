@@ -38,10 +38,11 @@
     <div class="wrapper">
         <div class="inner">
             <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="White" Text=""></asp:Label></center>
-            <asp:HiddenField id="hdnUserID" runat="server"/>
+            
             <br />
             <%--<img src="Login/images/image-1.png" alt="" class="image-1">--%>
             <form runat="server" action="">
+                <asp:HiddenField id="hdnUserID" runat="server"/>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>
                 <asp:Panel runat="server" ID="pnlemail" Visible="true">
                     <h3 style="font-size:16px">Verify e-mail to continue</h3>
