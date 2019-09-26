@@ -119,4 +119,12 @@ Error Number:201,State:4,Class:16-----------------------------------------------
    at System.Web.UI.Page.OnPreInit(EventArgs e)
    at System.Web.UI.Page.PerformPreInit()
    at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+26-09-2019 17:46:21 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at SinglePost.Page_PreInit(Object sender, EventArgs e) in e:\Projects\blog-dev\SinglePost.aspx.cs:line 31
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Page.OnPreInit(EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
 

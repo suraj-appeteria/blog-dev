@@ -14,8 +14,9 @@ public partial class Default : System.Web.UI.Page
         {            
             lblErrorMsg.Text = "";            
             FillCategories();
-            FillRp();
+        
         }
+        FillRp();
     }
 
     private void FillCategories()
@@ -44,6 +45,10 @@ public partial class Default : System.Web.UI.Page
                 btnAll.Attributes.Add("class", "submit-btn-selected");
                 //btnAll.Attributes.CssStyle.Value= "submit-btn-selected";
             }
+
+            rpPost.DataSource = null;
+            rpPost.DataBind();
+            
             db.AddParameter("@page_no", counter);
             db.AddParameter("@active", 1);
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
@@ -85,4 +90,6 @@ public partial class Default : System.Web.UI.Page
         FillRp();
     }
 
+
+   
 }

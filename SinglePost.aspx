@@ -24,8 +24,8 @@
                         <h2>Back Home</h2>
                     </a>--%>
                 <h2>
-                    <asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-backward'></i>" runat="server" /></h2>
-                <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a><i class="fa fa-backward"></i>
+                    <asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-arrow-circle-left'></i>" runat="server" /></h2>
+                <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
             </div>
             <div class="col-md-12 content-page">
                 <div class="col-md-12 blog-post">
@@ -149,7 +149,7 @@
                                                     <h5><%# Eval("comments") %></h5>
                                                 </div>
                                                 <div class="col-lg-1">
-                                                    <asp:LinkButton runat="server" ID="lnkDel" Visible='<%# Convert.ToString(Eval("userid"))==Session["userid"].ToString() || Session["type"].ToString() == "writer" %>' CommandArgument='<%# Eval("commentsid") %>' Font-Size="18" CommandName="DEL" OnClientClick="return confirm('Are you sure want to delete comment ?')"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                                    <asp:LinkButton runat="server" ID="lnkDel" Visible='<%#  Session["userid"] !=null && Convert.ToString(Eval("userid"))==Session["userid"].ToString() && Session["type"].ToString() == "writer" %>' CommandArgument='<%# Eval("commentsid") %>' Font-Size="18" CommandName="DEL" OnClientClick="return confirm('Are you sure want to delete comment ?')"><i class="fa fa-trash-o"></i></asp:LinkButton>
                                                 </div>
                                             </div>
 

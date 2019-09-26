@@ -14,7 +14,7 @@
 
                 <div>
                     <asp:Button ID="btnAll"  runat="server" Text="All" style="margin-top:3px" CssClass="submit-btn"
-                                PostBackUrl="~/default.aspx" CausesValidation="false" />
+                                PostBackUrl="~/default.aspx" CausesValidation="false"  />
                     <%--<asp:Panel runat="server" ScrollBars="Horizontal" Width="100%">--%>
                     <asp:Repeater ID="rpCategory" runat="server">
                         <ItemTemplate>

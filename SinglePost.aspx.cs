@@ -17,14 +17,22 @@ public partial class SinglePost : System.Web.UI.Page
     {
         try
         {
-            if (Session["type"].ToString() == "writer")
+            if (Session["type"] != null)
             {
-                this.MasterPageFile = "~/AdminMaster.master";
+                if (Session["type"].ToString() == "writer")
+                {
+                    this.MasterPageFile = "~/AdminMaster.master";
+                }
+                else {
+                    this.MasterPageFile = "~/BlogAdmin.master";
+                }
             }
             else
             {
                 this.MasterPageFile = "~/BlogAdmin.master";
             }
+
+           
         }
         catch (Exception ex)
         {
@@ -39,6 +47,11 @@ public partial class SinglePost : System.Web.UI.Page
         {            
             if (!IsPostBack)
             {
+
+                if (Request.QueryString["postid"] == null)
+                {
+                    Response.Redirect("default.aspx");
+                }
 
                 if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
                 {
