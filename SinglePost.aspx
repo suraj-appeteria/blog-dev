@@ -20,11 +20,9 @@
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Comment" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
-                 <%--<a href="post.aspx" title="Go to Home Page">
-                        <h2>Back Home</h2>
-                    </a>--%>
-                <h2>
-                    <asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-arrow-circle-left'></i>" runat="server" /></h2>
+                 
+                <h2><asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-arrow-circle-left'></i>" runat="server" /></h2>
+              
                 <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
             </div>
             <div class="col-md-12 content-page">

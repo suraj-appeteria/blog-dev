@@ -89,6 +89,18 @@ public partial class Draft : System.Web.UI.Page
             {
                 Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString() + "&type=Draft");
             }
+            else if (e.CommandName == "EDT")
+            {
+                Response.Redirect("newpost.aspx?postid=" + e.CommandArgument.ToString());
+            }
+            else if (e.CommandName == "DEL")
+            {
+                db.AddParameter("@postid", e.CommandArgument.ToString());
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update posts set active=0 where postid=@postid and blog_id=@blog_id", CommandType.Text);
+                FillRp();                
+                lblErrorMsg.Text = "Post Deleted Successfully.";
+            }
 
         }
         catch (Exception ex)

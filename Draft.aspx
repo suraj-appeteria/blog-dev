@@ -27,9 +27,13 @@
                                             <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
                                                 <ul class="knowledge text-center">
                                                     <li class="bg-color-6">
-                                                       <asp:LinkButton ID="LinkButton1" ToolTip="Edit Post" runat="server" Font-Bold="true" CommandArgument='<%# Eval("postid") %>' Font-Size="12" CommandName="Publish">Publish Now</asp:LinkButton>
+                                                       <asp:LinkButton ID="LinkButton1" ToolTip="Edit Post" runat="server" Font-Bold="true" CommandArgument='<%# Eval("postid") %>' Font-Size="12" CommandName="Publish">Publish Now</asp:LinkButton></li>
+                                                    <li class="bg-color-6"><asp:LinkButton ID="lnkEdit" ToolTip="Edit Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="14"  CommandName="EDT"><i class="fa fa-edit"></i></asp:LinkButton></li>
+                                                        <li class="bg-color-6"><asp:LinkButton ID="lnkDel" ToolTip="Delete Post" runat="server" CommandArgument='<%# Eval("postid") %>' Font-Size="14" CommandName="DEL"><i class="fa fa-trash-o"></i></asp:LinkButton>                                                       
+                                                    
                                                     </li>
                                                 </ul>
+                                               
                                                 <div class="promo-overlay2">
 
 

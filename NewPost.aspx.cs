@@ -49,10 +49,11 @@ public partial class NewPost : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
+
     protected void loadmorepost_Click(object sender, EventArgs e)
     {
         try
-        {
+        {          
             string file_name = string.Empty, extension = string.Empty;
             file_name = hdnFileUpload.Value;
 
@@ -72,17 +73,45 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             int id = Convert.ToInt32(db.ExecuteScalar("Save_posts", CommandType.StoredProcedure));
 
-            if (file_name != string.Empty)
+            if (fuImage.HasFile)
             {
-                extension = file_name.Substring(file_name.LastIndexOf("."));
-                if (System.IO.File.Exists(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension)))
+                if (IsPostBack && fuImage.PostedFile != null)
                 {
-                    System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
+                    file_name = fuImage.FileName;
+                    extension = file_name.Substring(file_name.LastIndexOf("."));
+                    if (extension.ToLower().Equals(".png") || extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg"))
+                    {
+                        hdnFileUpload.Value = file_name;
+                        if (Request.QueryString["postid"] != null)
+                        {                            
+                            fuImage.SaveAs(Server.MapPath("images/PostImage/" + hdnPostId.Value + extension));
+                            db.ExecuteNonQuery("update posts set imageurl='" + hdnPostId.Value + extension + "' where postid='" + hdnPostId.Value+ "'");
+
+                        }
+                        else
+                        {
+                            fuImage.SaveAs(Server.MapPath("images/PostImage/" + file_name));
+                            if (System.IO.File.Exists(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + hdnPostId.Value + extension)))
+                            {
+                                System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + hdnPostId.Value + extension));
+                            }
+                            System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + hdnPostId.Value + extension));
+                            db.ExecuteNonQuery("update posts set imageurl='" + hdnPostId.Value + extension + "' where postid='" + hdnPostId.Value + "'");
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        lblErrorMsg.Text = "Please select .Png, .Jpg or jpeg file only";
+                        return;
+                    }
                 }
-                System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
-                db.ExecuteNonQuery("update posts set imageurl='" + id + extension + "' where postid='" + id + "'");
             }
 
+
+       
             string[] arry = (Request.Form["required"]).ToString().Split(',');
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             db.ExecuteNonQuery("delete from PostCategory where postid="+hdnPostId.Value, CommandType.Text);
@@ -106,37 +135,6 @@ public partial class NewPost : System.Web.UI.Page
             txtTitle.Text = "";
             Response.Redirect("addpost.aspx");
             
-        }
-        catch (Exception ex)
-        {
-            lblErrorMsg.Text = ex.Message.ToString();
-        }
-    }
-
-
-    protected void fuImage_PreRender(object sender, EventArgs e)
-    {
-        try
-        {
-            if (fuImage.HasFile)
-            {
-                if (IsPostBack && fuImage.PostedFile != null)
-                {
-                    string file_name = string.Empty, extension = string.Empty;
-                    file_name = fuImage.FileName;
-                    extension = file_name.Substring(file_name.LastIndexOf("."));
-                    if (extension.ToLower().Equals(".png") || extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg"))
-                    {                       
-                            hdnFileUpload.Value = file_name;
-                            fuImage.SaveAs(Server.MapPath("images/PostImage/" + file_name));
-                    }
-                    else
-                    {
-                        lblErrorMsg.Text = "Please select .Png, .Jpg or jpeg file only";
-                        return;
-                    }
-                }
-            }
         }
         catch (Exception ex)
         {
