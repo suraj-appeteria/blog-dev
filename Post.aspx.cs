@@ -39,6 +39,10 @@ public partial class Post : System.Web.UI.Page
             {
                 db.AddParameter("@category_id", Request.QueryString["c"].ToString());
             }
+            else {
+                btnAll.Attributes.Add("class", "submit-btn-selected");
+                //btnAll.Attributes.CssStyle.Value= "submit-btn-selected";
+            }
             db.AddParameter("@page_no", counter);
             db.AddParameter("@active", 1);
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());

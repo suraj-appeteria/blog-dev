@@ -15,7 +15,7 @@
     <meta name="url" content="http://www.appeteria.com" />
     <meta name="copyright" content="Appeteria Technologoies Pvt LTd" />
     <meta name="robots" content="index,follow" />
-    <title>Blog Admin</title>
+    <title>Frankly Speaking</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="Login/images/Author.png" />
@@ -79,11 +79,11 @@
                                     <%--<asp:LinkButton CausesValidation="false" runat="server" ID="lnkLogout" OnClick="lnkLogout_Click">Logout</asp:LinkButton>--%>
                                 </div>
 
-                                <ul class="social-icon">
+                             <%--   <ul class="social-icon">
                                     <li><a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="https://twitter.com/login" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="https://www.linkedin.com/" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
+                                </ul>--%>
 
                             
                             <br />

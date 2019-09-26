@@ -129,6 +129,7 @@ public partial class SinglePost : System.Web.UI.Page
     {
         try
         {
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             db.AddParameter("@postid", Convert.ToInt32(Request.QueryString["postid"]));
             DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
             rpComment.DataSource = ds;

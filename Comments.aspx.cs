@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
+using System.Configuration;
 
 public partial class Comments : System.Web.UI.Page
 {
@@ -24,6 +25,7 @@ public partial class Comments : System.Web.UI.Page
         try
         {
             db.AddParameter("@active", 1);
+            db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
             rpComments.DataSource = ds;
             rpComments.DataBind();
@@ -42,6 +44,7 @@ public partial class Comments : System.Web.UI.Page
             {
                 db.AddParameter("@commentid",e.CommandArgument.ToString());
                 db.AddParameter("@active", 1);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
                 DataSet ds = db.ExecuteDataSet("get_comments", CommandType.StoredProcedure);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

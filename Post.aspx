@@ -12,15 +12,17 @@
                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
 
                 <div>
-                    <asp:Panel runat="server" ScrollBars="Horizontal" Width="100%">
+                    <asp:Button ID="btnAll"  runat="server" Text="All" style="margin-top:3px" CssClass="submit-btn"
+                                PostBackUrl="~/Post.aspx" CausesValidation="false" />
+                    <%--<asp:Panel runat="server" ScrollBars="Horizontal" Width="100%">--%>
                     <asp:Repeater ID="rpCategory" runat="server">
                         <ItemTemplate>
                             <asp:Button ID="Button1" runat="server" Text='<%# Eval("category") %>' style="margin-top:3px"
-                                PostBackUrl='<%# "~/Post.aspx?c="+ Eval("categoryid") %>' CausesValidation="false" />
+                                PostBackUrl='<%# "~/Post.aspx?c="+ Eval("categoryid") %>' CausesValidation="false" CssClass="submit-btn" />
                             
                         </ItemTemplate>
                     </asp:Repeater>
-                        </asp:Panel>
+                        <%--</asp:Panel>--%>
                 </div>
 
             </div>

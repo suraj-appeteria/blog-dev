@@ -958,6 +958,20 @@ blockquote {
     outline: none;
 }
 
+.submit-btn-selected {
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    color: #ffffff;
+    background: #e5a2b0;
+    border: none;
+    top: 7px;
+    right: 5px;
+    bottom: 7px;
+    border-radius: 64px;
+    text-align: center;
+    outline: none;
+}
+
 .subscribe-form .submit-btn {
 	position: absolute;
     font-size: 16px;
