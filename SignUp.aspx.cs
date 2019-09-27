@@ -52,7 +52,6 @@ public partial class SignUp : System.Web.UI.Page
         }
     }
 
-
     protected void btnOtp_Click(object sender, EventArgs e)
     {
         try
@@ -61,6 +60,7 @@ public partial class SignUp : System.Web.UI.Page
             db.AddParameter("@email", txtEmail.Text);
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+            
             if (ds.Tables[0].Rows[0]["value"].ToString() == "-1")
             {
                 lblErrorMsg.Text = ds.Tables[0].Rows[0]["Msg"].ToString();
@@ -72,8 +72,8 @@ public partial class SignUp : System.Web.UI.Page
                 db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
                 ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
                 Util.SendEmail(txtEmail.Text, "OTP To Varify Your Account", "Your 4 Digit OTP for account varification is " + ds.Tables[0].Rows[0]["OTP"] + " And Valid Till " + ds.Tables[0].Rows[0]["valid_till"]);
-                //lblErrorMsg.Text = "OTP sent to "+txtEmail.Text;
-                lblErrorMsg.Text = "Your Otp Is : " + ds.Tables[0].Rows[0]["OTP"].ToString();
+                lblErrorMsg.Text = "OTP sent to "+txtEmail.Text;
+                //lblErrorMsg.Text = "Your Otp Is : " + ds.Tables[0].Rows[0]["OTP"].ToString();
             }
         }
         catch (Exception ex)
@@ -81,7 +81,6 @@ public partial class SignUp : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
-
 
     protected void btnNext_ServerClick(object sender, EventArgs e)
     {
@@ -114,8 +113,6 @@ public partial class SignUp : System.Web.UI.Page
             lblErrorMsg.Text = ex.Message.ToString();
         }
     }
-
-
 
     protected void fuImg_PreRender(object sender, EventArgs e)
     {

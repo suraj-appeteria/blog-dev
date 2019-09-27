@@ -4,6 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <!-- Refresh Tag -->
+    <meta http-equiv="Refresh" content="900" />
     <!-- Meta Tag -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,6 +58,10 @@
     <link href="css/kendo.material.min.css" rel="stylesheet" />
     <%--<script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>--%>
     <script src="https://kendo.cdn.telerik.com/2019.2.619/js/kendo.all.min.js"></script>
+
+
+     <!--Session Script -->
+
 </head>
 <body>
     <div id="main">
@@ -63,6 +69,7 @@
             <div class="row">
                 <form id="form1" runat="server">
                     <div class="col-md-1"></div>
+                 
                     <!-- Blog Post (Right Sidebar) Start -->
                     <div class="col-md-10">
                         <div class="col-md-12 page-body">
@@ -90,8 +97,11 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="post-title">
+                                           
                                                 <asp:Label runat="server" Text="Image Url"></asp:Label>
-                                                <asp:FileUpload runat="server" ID="fuImage" ClientIDMode="Static"  /><%--onchange="this.form.submit()"--%>
+                                                <asp:FileUpload runat="server" ID="fuImage" OnPreRender="fuImage_PreRender" onchange="this.form.submit()" ClientIDMode="Static" /><%--onchange="this.form.submit()"--%>                                                
+                                                 <asp:Label ID="lblMsg" ForeColor="Green" runat="server" Text="Image Url"></asp:Label>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -172,9 +182,11 @@
                             </div>
                             <!-- Blog Post (Right Sidebar) End -->
                         </div>
+                        </div>
                         <div class="col-md-1">
                         </div>
                         <asp:HiddenField runat="server" ID="hdnFileUpload" />
+ 
                 </form>
             </div>
         </div>

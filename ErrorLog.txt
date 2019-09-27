@@ -143,4 +143,234 @@ Error Number:201,State:4,Class:16-----------------------------------------------
    at System.Web.UI.Page.OnPreInit(EventArgs e)
    at System.Web.UI.Page.PerformPreInit()
    at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 11:41:59 AM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): Logon failure: unknown user name or bad password
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at Default.FillCategories() in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 25
+   at Default.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 16
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 12:17:05 PM 
+ System.Web.HttpException (0x80004005): Maximum request length exceeded.
+   at System.Web.HttpRequest.GetEntireRawContent()
+   at System.Web.HttpRequest.GetMultipartContent()
+   at System.Web.HttpRequest.FillInFormCollection()
+   at System.Web.HttpRequest.EnsureForm()
+   at System.Web.HttpRequest.get_Form()
+   at System.Web.HttpRequest.get_HasForm()
+   at System.Web.UI.Page.GetCollectionBasedOnMethod(Boolean dontReturnNull)
+   at System.Web.UI.Page.DeterminePostBackMode()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 12:17:22 PM 
+ System.Web.HttpException (0x80004005): Maximum request length exceeded.
+   at System.Web.HttpRequest.GetEntireRawContent()
+   at System.Web.HttpRequest.GetMultipartContent()
+   at System.Web.HttpRequest.FillInFormCollection()
+   at System.Web.HttpRequest.EnsureForm()
+   at System.Web.HttpRequest.get_Form()
+   at System.Web.HttpRequest.get_HasForm()
+   at System.Web.UI.Page.GetCollectionBasedOnMethod(Boolean dontReturnNull)
+   at System.Web.UI.Page.DeterminePostBackMode()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:01:27 PM 
+ System.Web.HttpParseException (0x80004005): Unknown server tag 'asp:ToolkitScriptManager'. ---> System.Web.HttpException (0x80004005): Unknown server tag 'asp:ToolkitScriptManager'.
+   at System.Web.UI.TagPrefixTagNameToTypeMapper.System.Web.UI.ITagNameToTypeMapper.GetControlType(String tagName, IDictionary attribs)
+   at System.Web.UI.MainTagNameToTypeMapper.GetControlType2(String tagName, IDictionary attribs, Boolean fAllowHtmlTags)
+   at System.Web.UI.MainTagNameToTypeMapper.GetControlType(String tagName, IDictionary attribs, Boolean fAllowHtmlTags)
+   at System.Web.UI.RootBuilder.GetChildControlType(String tagName, IDictionary attribs)
+   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   at System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:01:33 PM 
+ System.Web.HttpParseException (0x80004005): Unknown server tag 'asp:ToolkitScriptManager'. ---> System.Web.HttpException (0x80004005): Unknown server tag 'asp:ToolkitScriptManager'.
+   at System.Web.UI.TagPrefixTagNameToTypeMapper.System.Web.UI.ITagNameToTypeMapper.GetControlType(String tagName, IDictionary attribs)
+   at System.Web.UI.MainTagNameToTypeMapper.GetControlType2(String tagName, IDictionary attribs, Boolean fAllowHtmlTags)
+   at System.Web.UI.MainTagNameToTypeMapper.GetControlType(String tagName, IDictionary attribs, Boolean fAllowHtmlTags)
+   at System.Web.UI.RootBuilder.GetChildControlType(String tagName, IDictionary attribs)
+   at System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   at System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:36:16 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at Default.FillCategories() in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 25
+   at Default.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 16
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:36:33 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at Default.FillCategories() in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 25
+   at Default.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 16
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:47:19 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at NewPost.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\NewPost.aspx.cs:line 14
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:47:19 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at NewPost.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\NewPost.aspx.cs:line 14
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 3:50:47 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): Logon failure: unknown user name or bad password
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at Default.FillCategories() in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 25
+   at Default.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 16
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 4:04:49 PM 
+ System.NullReferenceException: Object reference not set to an instance of an object.
+   at NewPost.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\NewPost.aspx.cs:line 29
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 4:09:05 PM 
+ System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 20
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 4:09:07 PM 
+ System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 20
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 4:09:15 PM 
+ System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 20
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 4:14:00 PM 
+ System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 20
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 6:19:45 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 19
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 6:19:45 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): The network path was not found
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 19
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 6:51:53 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): Logon failure: unknown user name or bad password
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 19
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+27-Sep-19 6:51:54 PM 
+ System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (0x80004005): Logon failure: unknown user name or bad password
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at BlogAdmin.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master.cs:line 19
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:1326,State:0,Class:20------------------------------------------------------------------------
 

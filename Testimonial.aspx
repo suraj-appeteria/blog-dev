@@ -11,7 +11,7 @@
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
-                <h2>Testimonial</h2>
+                <h2>Reviews</h2>
                 <a href="default.aspx"><i class="icon-home"></i></a>
             </div>
 
@@ -20,7 +20,7 @@
                 <div class="col-md-12 blog-post">
                     <!-- Testimonials Start -->
                     <div class="post-title margin-top-50">
-                        <h2>I hope you've checked <a href="work.aspx" data-toggle="tooltip" data-placement="top" title="Check out my work.">my work</a>, Let's take a look on what other reders said about my work.</h2>
+                        <h4>Let's take a look on what reders said about "<asp:Label ID="lblWork" runat="server"></asp:Label>" .</h4>
                     </div>
 
                     <asp:Repeater ID="rptestimonial" runat="server">
@@ -35,7 +35,7 @@
                                     <div class="testimonial-client-info">
 
                                         <div class="testimonial-client client-thumb">
-                                            <img src="images/testimonial/1.png" alt="">
+                                            <asp:Image ID="imgComment" CssClass="load-more-button" runat="server" ImageUrl='<%# Eval("photo_name").ToString()== "" ? ConfigurationManager.AppSettings["profileUrl"] + "default.png" : ConfigurationManager.AppSettings["profileUrl"] + Eval("photo_name") %>' alt="" />
                                         </div>
 
                                         <div class="client-text">
@@ -43,6 +43,7 @@
                                             <span><%# Eval("desingation") %>, <%# Eval("company_name") %></span>
                                         </div>
                                     </div>
+                                    <br />
                                 </div>
                         
                         </ItemTemplate>

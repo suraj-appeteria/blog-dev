@@ -84,10 +84,10 @@ button {
 }
 
 .content-page {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px dashed #dedede;
-    border-bottom: 1px dashed #dedede;
+    /*padding-top: 10px;
+    padding-bottom: 10px;*/
+    /*border-top: 1px dashed #dedede;
+    border-bottom: 1px dashed #dedede;*/
 }
 
 .grabbing {
@@ -495,7 +495,7 @@ tr > td:nth-child(2) {
 /* Testimonials */
 
 .testimonial-content {
-    background: #333333;
+    background: #450c3a;
     padding: 20px 30px;
     position: relative;
     margin-top: 40px;

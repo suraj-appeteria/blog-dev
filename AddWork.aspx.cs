@@ -11,6 +11,7 @@ public partial class AddWork : System.Web.UI.Page
         lblErrorMsg.Text = "";
         if(!IsPostBack)
         {
+            hdnWorkId.Value = "0";
             lblErrorMsg.Text = "";
             FillRp();
         }
@@ -19,6 +20,7 @@ public partial class AddWork : System.Web.UI.Page
     {
         try
         {
+
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("get_works", CommandType.StoredProcedure);
             rpWorks.DataSource = ds;
@@ -37,7 +39,7 @@ public partial class AddWork : System.Web.UI.Page
             string file_name = string.Empty, extension = string.Empty;
             file_name = hdnFileUpload.Value;
 
-            db.AddParameter("@workid", 0);
+            db.AddParameter("@workid", hdnWorkId.Value);
             db.AddParameter("@worktitle",txtTitle.Text);
             db.AddParameter("@workurl",txtUrl.Text);
             db.AddParameter("@workdesc",txtDesc.Text);
@@ -56,11 +58,12 @@ public partial class AddWork : System.Web.UI.Page
                 System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["workurl"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["workurl"] + id + extension));
                 db.ExecuteNonQuery("update works set work_image_name='" + id + extension + "' where work_id='" + id + "'");
             }
-
+            FillRp();
             lblErrorMsg.Text = "Work Added";
             txtDesc.Text = "";
             txtTitle.Text = "";
             txtUrl.Text = "";
+            hdnWorkId.Value = "0";
         }
         catch (Exception ex)
         {
@@ -91,6 +94,38 @@ public partial class AddWork : System.Web.UI.Page
                     }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
+
+    protected void rpWorks_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
+    {
+        try
+        {
+            if(e.CommandName == "EDT")
+            {
+                hdnWorkId.Value = e.CommandArgument.ToString();
+                db.AddParameter("@work_id", e.CommandArgument.ToString());                
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                DataSet ds = db.ExecuteDataSet("get_works", CommandType.StoredProcedure);
+                txtDesc.Text = ds.Tables[0].Rows[0]["work_desc"].ToString();
+                txtTitle.Text = ds.Tables[0].Rows[0]["work_title"].ToString();
+                txtUrl.Text = ds.Tables[0].Rows[0]["work_url"].ToString();
+                hdnFileUpload.Value = ds.Tables[0].Rows[0]["work_image_name"].ToString();
+            }
+            else if(e.CommandName  == "DEL")
+            {
+                db.AddParameter("@work_id", e.CommandArgument.ToString());
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                db.ExecuteNonQuery("update works set active=0 where work_id=@work_id and blog_id=@blog_id", CommandType.Text);
+                FillRp();
+                
+                lblErrorMsg.Text = "Work Deleted Successfully.";
+            }
+
         }
         catch (Exception ex)
         {

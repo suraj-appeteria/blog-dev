@@ -19,7 +19,7 @@
 <body>
     <div class="wrapper">
         <div class="inner">
-            <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="White" Text=""></asp:Label></center>
+           <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red" Text=""></asp:Label></center>
               
             <br />
           <%--  <img src="Login/images/image-1.png" alt="" class="image-1">--%>

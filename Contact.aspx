@@ -25,10 +25,10 @@
 
                     <!-- Intro Start -->
                     <div class="post-title margin-bottom-10">
-                        <h1>Looking for a <span class="main-color">online presence</span>?</h1>
+                        <h1>Hello,</h1>
                     </div>
 
-                    <p>I am in the website field since 2004 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper metus. <b>I am a developer</b>, et accumsan nisi. Duis laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodales. Sed posuere nisi ipsum, eget dignissim nunc dapibus eget. Aenean elementum sollicitudin sapien ut sapien fermentum aliquet mollis. Curabitur ac quam orci sodales quam ut tempor.</p>
+                    <p>Friends, if you want to give some feedback or have any query or just want to say hi, don’t hesitate to contact me via Email. My Email ID is given below. Or fill the form and hit 'Send' button.</p>
                     <!-- Intro End -->
 
                     <!-- Contact Me Start -->

@@ -5,6 +5,7 @@
     top: 10px;
     margin-left: 0.25%;
     margin-right: 0.25% !important;
+    margin-top: 15px;
     height: 350px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -23,7 +24,7 @@
     text-align: center;
     position: absolute;
     width: 80%;
-    margin-top: 60px;
+    margin-top: 0px;
     margin-left: 10%;
 }
 

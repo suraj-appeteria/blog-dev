@@ -30,6 +30,7 @@ public partial class Testimonial : System.Web.UI.Page
                 DataSet ds = db.ExecuteDataSet("get_testimonial", CommandType.StoredProcedure);
                 rptestimonial.DataSource = ds;
                 rptestimonial.DataBind();
+                lblWork.Text = ds.Tables[0].Rows[0]["work_title"].ToString();
             }
         }
         catch(Exception ex)
