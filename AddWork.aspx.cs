@@ -129,7 +129,7 @@ public partial class AddWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lblErrorMsg.Text = ex.Message.ToString();
+            lblErrorMsg.Text = ex.Message.ToString(); //yeso
         }
     }
 }
