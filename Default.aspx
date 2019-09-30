@@ -104,7 +104,7 @@
                                                 <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") %> </li>
                                                 <li class="bg-color-4"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>#dvlike"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </a></li>
                                                 <li class="bg-color-5"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>#comment"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </a></li>
-                                                <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
+                                                <%--<asp:LinkButton ID="lnkLike" CausesValidation="false" runat="server" Font-Size="25" CommandArgument='<%# Eval("postid") %>' CommandName="Like" TabIndex="0" ForeColor="#450c3a"><i class="fa fa-thumbs-o-up"></i></asp:LinkButton>--%>
                                             </ul>
 
                                         </div>

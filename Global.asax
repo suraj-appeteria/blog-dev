@@ -1,11 +1,17 @@
 ﻿<%@ Application Language="C#" %>
+<%@ Import Namespace="System.Web.Routing" %> 
 
 <script runat="server">
 
     void Application_Start(object sender, EventArgs e) 
     {
         // Code that runs on application startup
+        //RegisterRoutes(RouteTable.Routes);
 
+    }
+    static void RegisterRoutes(RouteCollection routes)
+    {
+        //routes.MapPageRoute("SinglePost", "Post/{postid}", "~/singlepost.aspx");
     }
     
     void Application_End(object sender, EventArgs e) 

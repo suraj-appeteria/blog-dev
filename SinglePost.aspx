@@ -12,30 +12,34 @@
         <div class="row">
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
-               <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
                 <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="Comment" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
-                 
-                <h2><asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-arrow-circle-left'></i>" runat="server" /></h2>
-              
+
+                <h2>
+                    <asp:LinkButton CausesValidation="false" ID="btnBack" OnClick="btnBack_Click" Text="<i class='fa fa-arrow-circle-left'></i>" runat="server" /></h2>
+
                 <a href="#comment" class="smoth-scroll"><i class="icon-bubbles"></i></a>
             </div>
             <div class="col-md-12 content-page">
                 <div class="col-md-12 blog-post">
                     <!-- Post Headline Start -->
-                    <div class="text-right">
-                        <asp:LinkButton ID="lnkFav" CausesValidation="false" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#450c3a"><i style="padding-left:0.3em" class="fa fa-heart-o"></i></asp:LinkButton>
+                    <div class="row">
+                        <div class="col-lg-11">
+                            <div class="post-title">
+                                <h1>
+                                    <asp:Label ID="lblposttitle" runat="server"></asp:Label></h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-1">
+                            <asp:LinkButton ID="lnkFav" CausesValidation="false" runat="server" Font-Size="25" OnClick="lnkFav_Click" TabIndex="0" ForeColor="#450c3a"><i style="padding-left:0.3em" class="fa fa-heart-o"></i></asp:LinkButton>
+                        </div>
                     </div>
 
-
-                    <div class="post-title">
-                        <h1>
-                            <asp:Label ID="lblposttitle" runat="server"></asp:Label></h1>
-                    </div>
                     <!-- Post Headline End -->
 
 
                     <!-- Post Detail Start -->
-                    <div class="post-info">
+                    <div class="post-info" style="margin-left: 1em; margin-right: 1em">
                         <asp:Label ID="lblTags" ForeColor="#450c3a" runat="server" Font-Size="18px"></asp:Label>
                         <br />
                         <span>
@@ -141,7 +145,7 @@
                                                     <h5><%# Eval("comments") %></h5>
                                                 </div>
                                                 <div class="col-lg-1">
-                                                    <asp:LinkButton runat="server" ID="lnkDel" Visible='<%#  Session["userid"] !=null && Convert.ToString(Eval("userid"))==Session["userid"].ToString() || Session["type"].ToString() == "writer" %>' CommandArgument='<%# Eval("commentsid") %>' Font-Size="18" CommandName="DEL" OnClientClick="return confirm('Are you sure want to delete comment ?')"><i class="fa fa-trash-o"></i></asp:LinkButton>
+                                                    <asp:LinkButton runat="server" ID="lnkDel" Visible='<%#  Session["userid"] != null && Convert.ToString(Eval("userid")) == Session["userid"].ToString() || Session["type"].ToString() == "writer"  %>' CommandArgument='<%# Eval("commentsid") %>' Font-Size="18" CommandName="DEL" OnClientClick="return confirm('Are you sure want to delete comment ?')"><i class="fa fa-trash-o"></i></asp:LinkButton>
                                                 </div>
                                             </div>
 

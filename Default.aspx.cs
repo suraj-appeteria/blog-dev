@@ -3,6 +3,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using DAL.SQLDataAccess;
 using System.Configuration;
+using System.Drawing;
 
 public partial class Default : System.Web.UI.Page
 {
@@ -78,6 +79,37 @@ public partial class Default : System.Web.UI.Page
                 db.ExecuteNonQuery("save_PostView", CommandType.StoredProcedure);
                 Response.Redirect("singlepost.aspx?postid=" + e.CommandArgument.ToString());
             }
+            //else if(e.CommandName=="Like")
+            //{
+            //    if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
+            //    {
+            //        Response.Redirect("Login.aspx");
+            //        return;
+            //    }
+                
+            //    LinkButton link = e.Item.FindControl("lnkLike") as LinkButton;
+            //    if (link.TabIndex.ToString() == "0")
+            //    {
+            //        link.Text = "<i class='fa fa-thumbs-up'></i>";
+            //        link.ForeColor = ColorTranslator.FromHtml("#450c3a");
+            //        link.TabIndex = 1;
+            //        link.ToolTip = "Unlike";
+            //        lblErrorMsg.Text = "Post Liked";
+            //    }
+            //    else if (link.TabIndex.ToString() == "1")
+            //    {
+            //        link.Text = "<i class='fa fa-thumbs-o-up'></i>";
+            //        link.ForeColor = ColorTranslator.FromHtml("#450c3a");
+            //        link.TabIndex = 0;
+            //        link.ToolTip = "Like";
+            //        lblErrorMsg.Text = "Post Unliked";
+            //    }
+            //    db.AddParameter("@reactionid", 0);
+            //    db.AddParameter("@Postid", e.CommandArgument.ToString());
+            //    db.AddParameter("@userid", Session["userid"]);
+            //    db.AddParameter("@reactiontypeid", 1);
+            //    DataSet ds = db.ExecuteDataSet("save_reaction", CommandType.StoredProcedure);
+            //}
         }
         catch (Exception ex)
         {           
@@ -90,6 +122,4 @@ public partial class Default : System.Web.UI.Page
         FillRp();
     }
 
-
-   
 }

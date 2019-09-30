@@ -373,4 +373,56 @@ Error Number:1326,State:0,Class:20----------------------------------------------
    at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ClientConnectionId:00000000-0000-0000-0000-000000000000
 Error Number:1326,State:0,Class:20------------------------------------------------------------------------
+------------------------------------------------------------------------
+30-Sep-19 12:36:03 PM 
+ System.Web.HttpCompileException (0x80004005): c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master(127): error CS1061: 'ASP.blogadmin_master' does not contain a definition for 'btnComment_ServerClick' and no extension method 'btnComment_ServerClick' accepting a first argument of type 'ASP.blogadmin_master' could be found (are you missing a using directive or an assembly reference?)
+   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
+------------------------------------------------------------------------
+30-Sep-19 12:36:08 PM 
+ System.Web.HttpCompileException (0x80004005): c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\BlogAdmin.master(127): error CS1061: 'ASP.blogadmin_master' does not contain a definition for 'btnComment_ServerClick' and no extension method 'btnComment_ServerClick' accepting a first argument of type 'ASP.blogadmin_master' could be found (are you missing a using directive or an assembly reference?)
+   at System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   at System.Web.UI.BaseTemplateParser.GetReferencedType(VirtualPath virtualPath, Boolean allowNoCompile)
+   at System.Web.UI.PageParser.ProcessMainDirectiveAttribute(String deviceName, String name, String value, IDictionary parseData)
+   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)------------------------------------------------------------------------
+------------------------------------------------------------------------
+30-Sep-19 1:55:42 PM 
+ System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=841; handshake=14802;  ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at Default.FillCategories() in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 26
+   at Default.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 17
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:48da1e2a-a470-452a-86a9-819b0507b5f2
+Error Number:-2,State:0,Class:11------------------------------------------------------------------------
+------------------------------------------------------------------------
+30-Sep-19 1:55:57 PM 
+ System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=792; handshake=14803;  ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at DAL.SQLDataAccess.DatabaseHelper.HandleExceptions(Exception ex) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 415
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype, ConnectionState connectionstate) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 347
+   at DAL.SQLDataAccess.DatabaseHelper.ExecuteDataSet(String query, CommandType commandtype) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\App_Code\DatabaseHelper.cs:line 328
+   at Default.FillCategories() in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 26
+   at Default.Page_Load(Object sender, EventArgs e) in c:\Users\appeteria3\Documents\Visual Studio 2015\WebSites\blog-dev\Default.aspx.cs:line 17
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+ClientConnectionId:b7b01345-8f11-4730-bae7-e1816ea133dc
+Error Number:-2,State:0,Class:11------------------------------------------------------------------------
 

@@ -17,7 +17,7 @@
             <div class="sub-title">
                 <center><asp:Label ID="lblErrorMsg" runat="server" ForeColor="Red"></asp:Label></center>
                  <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
-               
+               <h2>My works on amazon kindle</h2>
                 <a href="contact.aspx"><i class="icon-envelope"></i></a>
             </div>
 
@@ -28,7 +28,7 @@
 
                     <!-- Intro Start -->
                     <div class="post-title margin-bottom-30">
-                        <h1>Let's take a look on <span class="main-color">My Work</span></h1>
+                        <h2>Let's take a look on <span class="main-color">My Work</span></h2>
                     </div>
                     <!-- Intro End -->
 
