@@ -42,6 +42,7 @@
                 
                 <form runat="server">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>  
+                    <a href="default.aspx"><i class="icon-home"></i></a>
                     <h3>Login</h3>
                     <div class="form-holder">
                         <span class="lnr lnr-envelope"></span>

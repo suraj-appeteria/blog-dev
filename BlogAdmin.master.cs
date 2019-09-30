@@ -20,8 +20,14 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
         Session["adminemail"] = Convert.ToString(ds.Tables[0].Rows[0]["email"]);
         Session["adminName"] = Convert.ToString(ds.Tables[0].Rows[0]["firstname"]) + " " + Convert.ToString(ds.Tables[0].Rows[0]["lastname"]);
         lnkName.InnerText = Convert.ToString(ds.Tables[0].Rows[0]["firstname"]) + " " + ds.Tables[0].Rows[0]["lastname"].ToString();
-        imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
-
+        if (ds.Tables[0].Rows[0]["pic_url"] != null)
+        {
+            imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
+        }
+        else
+        {
+            imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "Default.png";
+        }
         if (string.IsNullOrEmpty(Convert.ToString(Session["email"])) || string.IsNullOrEmpty(Convert.ToString(Session["password"])))
         {
             ulLogin.Visible = true;
@@ -52,7 +58,14 @@ public partial class BlogAdmin : System.Web.UI.MasterPage
         db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
         Session["url"] = ds.Tables[0].Rows[0]["pic_url"].ToString();
-        imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
+        if (ds.Tables[0].Rows[0]["pic_url"] != null)
+        {
+            imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
+        }
+        else
+        {
+            imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "Default.png";
+        }        
         lblName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString() +" "+ ds.Tables[0].Rows[0]["LastName"].ToString();
         lblNo.Text = ds.Tables[0].Rows[0]["mobile"].ToString();
     }

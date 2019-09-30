@@ -50,11 +50,22 @@ public partial class ForgotPassword : System.Web.UI.Page
     {
         try
         {
-            db.AddParameter("email", txtEmail.Text);
+            db.AddParameter("@email", txtEmail.Text);
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
-            DataSet ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
-            Util.SendEmail(txtEmail.Text, "Your Blog One-Time Password", "Hi Member, Your email OTP is : " + ds.Tables[0].Rows[0]["OTP"] + " And Valid Till " + ds.Tables[0].Rows[0]["valid_till"]);
-            lblErrorMsg.Text = "OTP sent";
+            DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);
+
+            if (ds.Tables[0].Rows[0]["value"].ToString() == "1")
+            {
+                lblErrorMsg.Text = "User does not exist";
+            }
+            else
+            {
+                db.AddParameter("email", txtEmail.Text);
+                db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
+                ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
+                Util.SendEmail(txtEmail.Text, "Your Blog One-Time Password", "Hi Member, Your email OTP is : " + ds.Tables[0].Rows[0]["OTP"] + " And Valid Till " + ds.Tables[0].Rows[0]["valid_till"]);
+                lblErrorMsg.Text = "OTP sent";
+            }
         }
         catch (Exception ex)
         {
@@ -66,12 +77,13 @@ public partial class ForgotPassword : System.Web.UI.Page
     {
         try
         {
+
             db.AddParameter("@email", txtEmail.Text);
             db.AddParameter("@pass", txtConfirm.Text);
             db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
             DataSet ds = db.ExecuteDataSet("update usermaster set password=pwdencrypt(@pass) where email=@email and blog_id=@blog_id", CommandType.Text);
             Response.Redirect("Login.aspx");
-
+           
         }
         catch (Exception ex)
         {

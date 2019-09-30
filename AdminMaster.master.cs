@@ -43,8 +43,15 @@ public partial class AdminMaster : System.Web.UI.MasterPage
         db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
         DataSet ds = db.ExecuteDataSet("get_users", CommandType.StoredProcedure);        
         lnkName.Text = ds.Tables[0].Rows[0]["FirstName"].ToString() + " " + ds.Tables[0].Rows[0]["LastName"].ToString();
-        imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
-        //if (Session["url"].ToString() != null)
+        if (ds.Tables[0].Rows[0]["pic_url"] != null)
+        {
+            imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();
+        }
+        else
+        {
+            imgAdmin.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + "Default.png";
+        }
+            //if (Session["url"].ToString() != null)
         //if(string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[0]["pic_url"])))
         //{
         //    imgProfile.ImageUrl = ConfigurationManager.AppSettings["profileUrl"] + ds.Tables[0].Rows[0]["pic_url"].ToString();            
