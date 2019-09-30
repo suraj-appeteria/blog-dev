@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" ValidateRequest="false" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -13,19 +13,19 @@
                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="True" ShowModelStateErrors="False" ShowSummary="False" />
 
                 <div>
-                    
+
                     <%--<asp:Panel runat="server" ScrollBars="Horizontal" Width="100%">--%>
                     <asp:Repeater ID="rpCategory" runat="server">
                         <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" Text='<%# Eval("category") %>' style="margin-top:3px"
+                            <asp:Button ID="Button1" runat="server" Text='<%# Eval("category") %>' Style="margin-top: 3px"
                                 PostBackUrl='<%# "~/default.aspx?c="+ Eval("categoryid") %>' CausesValidation="false" CssClass="submit-btn" />
-                            
+
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:Button ID="btnAll"  runat="server" Text="All" style="margin-top:3px" CssClass="submit-btn"
-                                PostBackUrl="~/default.aspx" CausesValidation="false"  />
+                    <asp:Button ID="btnAll" runat="server" Text="All" Style="margin-top: 3px" CssClass="submit-btn"
+                        PostBackUrl="~/default.aspx" CausesValidation="false" />
 
-                        <%--</asp:Panel>--%>
+                    <%--</asp:Panel>--%>
                 </div>
 
             </div>
@@ -69,37 +69,50 @@
                     <div class="col-lg-4">
                         <div class="col-md-12 content-page">
                             <br />
-                            <div class="promo-area2">
-                                <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
-                                <div class="posts_ids1">
-                                    <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
-                                        <div class="promo-overlay2">
-                                            <h1 class="cat_post_title">
-                                                <div class="cat"></div>
-                                                <%# Eval("posttitle") %>   </h1>
-                                            <div class="promomore">
-                                                <br />
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <a href="SinglePost.aspx?postid=<%# Eval("postid") %>">
+                                            <div class="promo-area2">
+                                                <%--<div class="promo-item2" style="background-image:url( http://hannahgale.co.uk/wp-content/uploads/2019/06/10744126784_IMG_3068.jpg)">--%>
+                                                <div class="posts_ids1">
+                                                    <div class="promo-item2" style="background-image: url('<%# Eval("imageurl").ToString() == "" ? ConfigurationManager.AppSettings["postImg"] + "background.jpg" : ConfigurationManager.AppSettings["postImg"] + Eval("imageurl") %>')">
+                                                        <br />
+                                                    </div>
 
-                                                <asp:LinkButton CausesValidation="false" runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" CssClass="promomore a"><span>VIEW POST</span></asp:LinkButton>
-                                                <%--<a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>--%>
+
+                                                </div>
                                             </div>
-                                            <br />
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="promo-overlay2">
+                                            <h1 style="margin-top:9px;">
+
+                                                <%--<div class="cat"></div>--%>
+                                                <%# Eval("posttitle") %>   </h1>
+                                            <%--<div class="promomore">
+                                    <br />
+
+                                    <asp:LinkButton CausesValidation="false" runat="server" CommandArgument='<%# Eval("postid") %>' CommandName="Read" CssClass="promomore a"><span>VIEW POST</span></asp:LinkButton>
+                                    <a href="http://hannahgale.co.uk/2019/06/26/menstrual-cycle-journaling-how-i-do-it-and-what-ive-learned/">VIEW POST</a>
+                                </div>--%>
+
                                             <ul class="knowledge">
                                                 <li class="bg-color-6"><i class="fa fa-eye" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : " " + Eval("viewscount") %> </li>
-                                                <li class="bg-color-4"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=like"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </a></li>
-                                                <li class="bg-color-5"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>&req=comment"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </a></li>
+                                                <li class="bg-color-4"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>#dvlike"><i class="fa fa-thumbs-o-up" style="font-size: 18px"></i><%# Eval("likescount").ToString() == "0" ? "" : " " + Eval("likescount") %> </a></li>
+                                                <li class="bg-color-5"><a href="SinglePost.aspx?postid=<%# Eval("postid") %>#comment"><i class="fa fa-comment-o" style="font-size: 18px"></i><%# Eval("commentscount").ToString() == "0" ? "" : " " + Eval("commentscount") %> </a></li>
                                                 <%--<li class="bg-color-6"><i class="fa fa-share" style="font-size: 18px"></i><%# Eval("viewscount").ToString() == "0" ? "" : Eval("viewscount") %> </li>--%>
                                             </ul>
 
                                         </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-
                 </ItemTemplate>
             </asp:Repeater>
         </div>

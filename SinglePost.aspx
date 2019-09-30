@@ -1,15 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BlogAdmin.master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeFile="SinglePost.aspx.cs" Inherits="SinglePost" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script type="text/javascript">
-        function demo()
-        {           
-            $(document).ready(function () {
-                alert('Hello World');
-                doSomething($('#dvlike'));
-            });
-        }
-</script>
+    <%--<script type="text/javascript">
+        window.location.href = "#comment";
+</script>--%>
         <link href="css/ForPost.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
