@@ -120,11 +120,14 @@ public partial class NewPost : System.Web.UI.Page
                     db.ExecuteNonQuery("save_postCategory", CommandType.StoredProcedure);
                 }
             }
-            lblErrorMsg.Text = "Post Shared...";
-            txtDescription.Text = "";
-            txtTitle.Text = "";
-            Response.Redirect("addpost.aspx");
+            lblErrorMsg.Text = "Post Sace To Draft...";
+            
         }
+        catch (Exception ex)
+        {
+            lblErrorMsg.Text = ex.Message.ToString();
+        }
+    }
 
     protected void loadmorepost_Click(object sender, EventArgs e)
     {
