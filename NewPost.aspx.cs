@@ -75,7 +75,7 @@ public partial class NewPost : System.Web.UI.Page
             db.AddParameter("@postdescription", st);
             db.AddParameter("@ImageUrl", hdnFileUpload.Value);
             db.AddParameter("@VideoUrl", DBNull.Value);
-            db.AddParameter("@CreatedBy", Session["userid"].ToString());
+            db.AddParameter("@CreatedBy", Session["userid"]);
             db.AddParameter("@tags", txtTags.Text);
             db.AddParameter("@CreatedOn", Convert.ToDateTime(DateTime.Today));
             db.AddParameter("@CreatedByEmail", Session["email"].ToString());
@@ -97,7 +97,7 @@ public partial class NewPost : System.Web.UI.Page
                 {
                     System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
                 }
-                System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
+                //System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
 
                 db.ExecuteNonQuery("update posts set imageurl='" + id + extension + "' where postid='" + id + "'");
             }
@@ -124,13 +124,7 @@ public partial class NewPost : System.Web.UI.Page
             txtDescription.Text = "";
             txtTitle.Text = "";
             Response.Redirect("addpost.aspx");
-
         }
-        catch (Exception ex)
-        {
-            lblErrorMsg.Text = ex.Message.ToString();
-        }
-    }
 
     protected void loadmorepost_Click(object sender, EventArgs e)
     {
@@ -167,7 +161,7 @@ public partial class NewPost : System.Web.UI.Page
                 {
                     System.IO.File.Delete(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
                 }
-                System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
+                //System.IO.File.Move(Server.MapPath(ConfigurationManager.AppSettings["postImg"] + file_name), Server.MapPath(ConfigurationManager.AppSettings["postImg"] + id + extension));
                 
                 db.ExecuteNonQuery("update posts set imageurl='" + id + extension + "' where postid='" + id + "'");
             }

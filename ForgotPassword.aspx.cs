@@ -64,7 +64,7 @@ public partial class ForgotPassword : System.Web.UI.Page
                 db.AddParameter("@blog_id", ConfigurationManager.AppSettings["BlogId"].ToString());
                 ds = db.ExecuteDataSet("getOTP", CommandType.StoredProcedure);
                 Util.SendEmail(txtEmail.Text, "Your Blog One-Time Password", "Hi Member, Your email OTP is : " + ds.Tables[0].Rows[0]["OTP"] + " And Valid Till " + ds.Tables[0].Rows[0]["valid_till"]);
-                lblErrorMsg.Text = "OTP sent";
+                lblErrorMsg.Text = "OTP sent to : " +txtEmail.Text;
             }
         }
         catch (Exception ex)
